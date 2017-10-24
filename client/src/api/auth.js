@@ -5,13 +5,12 @@ const auth = axios.create({
 });
 
 function saveUserInfo({ token, user }) {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  localStorage.setItem('token', token);
-  localStorage.setItem('user', JSON.stringify(user));
-};
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  localStorage.setItem("token", token);
+  localStorage.setItem("user", JSON.stringify(user));
+}
 
 const api = {
-
   signup: userInfo => {
     return auth.post("/signup", userInfo).then(response => {
       return response.data;
@@ -19,21 +18,31 @@ const api = {
   },
 
   login: (username, password, vm) => {
-    return auth.post('/login', { username, password })
-    .then(response => {
+    return auth.post("/login", { username, password }).then(response => {
       saveUserInfo(response.data);
       vm.user = response.data.user;
       return response.data;
     });
   },
 
-  logout: (vm) => {
-    localStorage.removeItem('token');
-    vm.user = null;
-    delete axios.defaults.headers.common['Authorization'];
+  checkUser: vm => {
+    const token = localStorage.getItem("token");
+    const userInfo = localStorage.getItem("user");
+    if (token && userInfo) {
+      const user = JSON.parse(userInfo);
+      saveUserInfo({
+        token,
+        user
+      });
+      vm.user = user;
+    }
   },
 
+  logout: vm => {
+    localStorage.removeItem("token");
+    vm.user = null;
+    delete axios.defaults.headers.common["Authorization"];
+  }
 };
-
 
 export default api;
