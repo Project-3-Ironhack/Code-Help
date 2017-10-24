@@ -1,11 +1,11 @@
 <template>
   <div>
-    <form>
+    <form @submit.prevent="login">
       <label>Username
-        <input type="text" name="" value="">
+        <input type="text" required v-model="username">
       </label><br/>
       <label>Password
-        <input type="password" name="" value="">
+        <input type="password" required v-model="password">
       </label><br/>
       <button type="submit" name="button">Log in</button>
     </form>
@@ -14,10 +14,13 @@
 </template>
 
 <script>
+import api from '@/api/auth'
+
+
 export default {
   data() {
     return {
-
+      
     }
   }
 }

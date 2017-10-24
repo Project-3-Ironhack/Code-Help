@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="error">
+      {{ error }}
+    </div>
     <form @submit.prevent="signup">
       <label>Username
         <input type="text" required v-model="username">
@@ -39,7 +42,7 @@ export default {
       }).then(() => {
         this.$router.push('/login')
       }).catch(err => {
-        console.log(err)
+        this.error = err.response.data.error.message
       })
     }
   }
