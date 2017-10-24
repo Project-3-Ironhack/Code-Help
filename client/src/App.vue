@@ -1,12 +1,23 @@
 <template>
   <div id="app">
+    <nav>
+      <a v-if="$root.user" @click.prevent="logout" href="#">Logout</a>
+    </nav>
     <router-view/>
   </div>
 </template>
 
 <script>
+import api from "@/api/auth"
+
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    logout() {
+      api.logout(this.$root);
+      this.$router.push('/');
+    },
+  },
 }
 </script>
 
