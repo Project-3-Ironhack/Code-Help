@@ -13,15 +13,27 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      component: HomePage
+      component: HomePage,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.token) next("/dashboard");
+        else next();
+      },
     },
     {
       path: "/signup",
-      component: Signup
+      component: Signup,
+      beforeEnter: (to, from, next) => {
+      if (localStorage.token) next("/dashboard");
+      else next();
+      },
     },
     {
       path: "/login",
-      component: Login
+      component: Login,
+      beforeEnter: (to, from, next) => {
+      if (localStorage.token) next("/dashboard");
+      else next();
+      },
     },
     {
       path: "/dashboard",
