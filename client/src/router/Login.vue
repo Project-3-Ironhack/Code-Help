@@ -28,7 +28,7 @@ export default {
     login() {
       api.login(this.username, this.password, this.$root)
       .then(data => {
-        this.$router.push('/')
+        this.$router.push('/dashboard')
       });
     },
   },
