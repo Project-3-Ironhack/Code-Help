@@ -20,9 +20,18 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      
+      username: '',
+      password: '',
     }
-  }
+  },
+  methods: {
+    login() {
+      api.login(this.username, this.password, this.$root)
+      .then(data => {
+        this.$router.push('/')
+      });
+    },
+  },
 }
 </script>
 
