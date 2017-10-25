@@ -6,11 +6,12 @@ const config = require("../config");
 
 // sign up route
 router.post("/signup", (req, res, next) => {
-  const { username, name, password } = req.body;
+  const { username, name, role, password } = req.body;
 
   const user = new User({
     username,
-    name
+    name,
+    role,
   });
 
   User.register(user, password, err => {
@@ -24,7 +25,6 @@ router.post("/signup", (req, res, next) => {
 });
 
 // log in route
-
 const authenticate = User.authenticate();
 
 router.post("/login", (req, res, next) => {

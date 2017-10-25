@@ -4,6 +4,14 @@
       {{ error }}
     </div>
     <form @submit.prevent="signup">
+    <input type="radio" id="student" value="Student" v-model="role">
+    <label for="one">Student</label>
+    <br>
+    <input type="radio" id="teacher" value="Teacher" v-model="role">
+    <label for="two">Teacher</label>
+    <br>
+    <span>Role: {{ role }}</span>
+      </label><br/>
       <label>Username
         <input type="text" required v-model="username">
       </label><br/>
@@ -26,6 +34,7 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
+      role: '',
       username: '',
       password: '',
       name: '',
@@ -36,6 +45,7 @@ export default {
     signup() {
       this.error = null
       api.signup({
+        role: this.role,
         username: this.username,
         name: this.name,
         password: this.password
