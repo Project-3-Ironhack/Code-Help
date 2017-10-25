@@ -6,7 +6,7 @@
         Code Help
       </router-link>
       <router-link class="navbar-item" v-if="$root.user" to="/account">
-        Your Account
+        {{userName}}'s Account
       </router-link>
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
@@ -38,6 +38,11 @@ export default {
       api.logout(this.$root);
       this.$router.push('/');
     },
+  },
+  computed: {
+    userName: function () {
+      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+    }
   },
 }
 </script>

@@ -49,7 +49,10 @@ const api = {
       return response.data;
     });
   },
+// need to save the info to the db
+  teacherUpdate: (name, description, skills, photo) => {
 
+  }
 };
 
 export default api;

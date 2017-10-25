@@ -2,12 +2,14 @@
   <div>
 
     <h1>Welcome to your Dashboard, {{ userName }}!</h1>
-    <!-- PUT IN COMPUTED? -->
+ 
+    <teacher-info v-if="$root.user.role==='Teacher'"></teacher-info>
+ 
 <!-- SEARCH STARTS HERE -->
 
-    <search-bar></search-bar>
+    <search-bar v-if="$root.user.role==='Student'"></search-bar>
 
-    <div v-for='user in users'>{{user.name}}</div>
+    <!-- <div v-for='user in users'>{{user}}</div> -->
 
 
 <!-- SEARCH ENDS HERE -->
@@ -20,9 +22,13 @@
 
 import SearchBar from "@/components/SearchBar"
 import api from "@/api/auth"
+import TeacherInfo from "@/components/TeacherInfo"
 
 export default {
-  components: { SearchBar },
+  components: { 
+    SearchBar,
+    TeacherInfo,
+    },
   data() {
     return {
       users: []

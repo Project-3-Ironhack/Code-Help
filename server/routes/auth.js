@@ -48,7 +48,8 @@ router.post("/login", (req, res, next) => {
           user: {
             name: user.name,
             username: user.username,
-            _id: user._id
+            _id: user._id,
+            role: user.role
           },
           token
         });
