@@ -42,6 +42,12 @@ const api = {
     localStorage.removeItem("token");
     vm.user = null;
     delete axios.defaults.headers.common["Authorization"];
+  },
+
+  getAll: () => {
+    return auth.get("/users").then(response => {
+      return response.data;
+    });
   }
 };
 

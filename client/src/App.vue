@@ -2,7 +2,7 @@
   <div id="app">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">
+      <a class="navbar-item" href="/">
         Code Help
       </a>
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
@@ -10,16 +10,18 @@
       </a>
     </div>
   </nav>
+  <section class="content">
     <router-view/>
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-          <strong>Code Help</strong> by Stuart & Thibaut.
-          </p>
-        </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+        <strong>Code Help</strong> by Stuart & Thibaut.
+        </p>
       </div>
-    </footer>
+    </div>
+  </footer>
   </div>
 </template>
 
