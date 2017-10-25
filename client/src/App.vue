@@ -2,9 +2,12 @@
   <div id="app">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <router-link class="navbar-item" to="/">
         Code Help
-      </a>
+      </router-link>
+      <router-link class="navbar-item" v-if="$root.user" to="/account">
+        Your Account
+      </router-link>
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
       </a>
