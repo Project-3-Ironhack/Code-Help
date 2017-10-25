@@ -1,7 +1,8 @@
 <template lang="html">
   <div>
 
-    <h1>Welcome to your Dashboard!</h1>
+    <h1>Welcome to your Dashboard, {{ userName }}!</h1>
+    <!-- PUT IN COMPUTED? -->
 <!-- SEARCH STARTS HERE -->
 
     <search-bar></search-bar>
@@ -31,6 +32,11 @@ export default {
     api.getAll().then(users => {
       this.users = users;
     })
+  },
+  computed: {
+    userName: function () {
+      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+    }
   },
 }
 </script>

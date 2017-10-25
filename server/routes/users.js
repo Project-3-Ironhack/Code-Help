@@ -1,6 +1,5 @@
 const express = require("express");
 const User = require("../models/user");
-
 const router = express.Router();
 
 router.get("/users", (req, res, next) => {
@@ -9,5 +8,7 @@ router.get("/users", (req, res, next) => {
     res.json(users);
   });
 });
+
+// CAN YOU PUT ANYTHING IN PLACE OF /users?
 
 module.exports = router;

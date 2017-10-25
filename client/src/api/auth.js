@@ -48,7 +48,8 @@ const api = {
     return auth.get("/users").then(response => {
       return response.data;
     });
-  }
+  },
+
 };
 
 export default api;
