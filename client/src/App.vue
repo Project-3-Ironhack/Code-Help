@@ -2,7 +2,7 @@
   <div id="app">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">
+      <a class="navbar-item" href="/">
         Code Help
       </a>
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
