@@ -25,24 +25,15 @@ export default {
       this.editor = ace.edit(this.$el)
       this.editor.$blockScrolling = Infinity
       this.editor.setTheme('ace/theme/chrome')
-      this.editor.setValue('Type or paste your code here')
+      this.editor.setValue(`Select a language above and then let's start coding!`)
       await import(`brace/mode/${this.lang}`)
       this.editor.getSession().setMode(`ace/mode/${this.lang}`)
   },
   watch: {
       async lang (lang) {
+          let text = this.editor.getValue();
           await import(`brace/mode/${lang}`)
           this.editor.getSession().setMode(`ace/mode/${lang}`)
-          if(this.lang === 'javascript'){
-          this.editor.setValue('//Type or paste your code here')
-          };
-          if(this.lang === 'html'){
-          this.editor.setValue(`<!DOCTYPE html>
-<!--  Type or paste your code here  -->`)
-          };
-          if(this.lang === 'css'){
-          this.editor.setValue('/*  Type or paste your code here  */')
-          };
       }
   }
 }

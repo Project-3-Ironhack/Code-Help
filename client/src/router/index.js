@@ -4,6 +4,7 @@ import HomePage from "@/router/HomePage";
 import Signup from "@/router/Signup";
 import Login from "@/router/Login";
 import Dashboard from "@/router/Dashboard";
+import Lesson from "@/router/Lesson";
 import api from "@/api/auth";
 
 Vue.use(Router);
@@ -41,7 +42,14 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/lesson',
+      component: Lesson,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 });
 

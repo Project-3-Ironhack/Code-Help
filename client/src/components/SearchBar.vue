@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <div class="field">
       <label class="label">Search for a topic
@@ -9,11 +9,10 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link">Submit</button>
+        <button class="button is-primary">Submit</button>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -24,7 +23,9 @@ export default {
       users: [],
     }
   },
-  props: ['query'],
+    methods: {
+    // ADD WAY TO QUERY DB FOR TEACHERS
+  }
 }
 </script>
 

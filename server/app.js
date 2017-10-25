@@ -15,6 +15,9 @@ mongoose.connect("mongodb://localhost/code-help"),
     useMongoClient: true
   };
 
+  const authRoutes = require("./routes/auth");
+const users = require("./routes/users");
+
 const app = express();
 
 // uncomment after placing your favicon in /public
@@ -54,9 +57,8 @@ const strategy = new Strategy(
 );
 passport.use(strategy);
 
-const authRoutes = require("./routes/auth");
-
 app.use("/api", authRoutes);
+app.use("/api", users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

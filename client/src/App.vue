@@ -10,16 +10,18 @@
       </a>
     </div>
   </nav>
+  <section class="content">
     <router-view/>
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-          <strong>Code Help</strong> by Stuart & Thibaut.
-          </p>
-        </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+        <strong>Code Help</strong> by Stuart & Thibaut.
+        </p>
       </div>
-    </footer>
+    </div>
+  </footer>
   </div>
 </template>
 
