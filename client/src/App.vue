@@ -4,6 +4,15 @@
       <a v-if="$root.user" @click.prevent="logout" href="#">Logout</a>
     </nav>
     <router-view/>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+          <strong>Code Help</strong> by Stuart & Thibaut.
+          </p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 

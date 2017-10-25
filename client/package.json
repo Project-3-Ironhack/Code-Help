@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+<<<<<<< HEAD
     "brace": "^0.10.0",
+=======
+>>>>>>> 22ef8ddd9d0f9164cd69ee79bfb72f9644c8582a
     "buefy": "^0.5.4",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
