@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <nav>
-      <a v-if="$root.user" @click.prevent="logout" href="#">Logout</a>
-    </nav>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        Code Help
+      </a>
+      <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
+        Logout
+      </a>
+    </div>
+  </nav>
     <router-view/>
     <footer class="footer">
       <div class="container">
