@@ -10,7 +10,7 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-primary" @click="searchTeachers">Search</button> <!-- add @click to the search button to trigger the method -->
+        <button class="button is-primary">Search</button> <!-- add @click to the search button to trigger the method -->
         <div v-for="query in queryResults">
         Teacher: {{ query.name }}
         Skills: {{ query.skills[0].name }}
