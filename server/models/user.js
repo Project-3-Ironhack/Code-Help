@@ -18,6 +18,7 @@ const userSchema = new Schema({
     enum: ["Student", "Teacher"],
     required: true
   },
+  price: Number,
 });
 
 userSchema.plugin(passportLocalMongoose);

@@ -2,9 +2,12 @@
   <div id="app">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <router-link class="navbar-item" to="/">
         Code Help
-      </a>
+      </router-link>
+      <router-link class="navbar-item" v-if="$root.user" to="/account">
+        {{userName}}'s Account
+      </router-link>
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
       </a>
@@ -35,6 +38,11 @@ export default {
       api.logout(this.$root);
       this.$router.push('/');
     },
+  },
+  computed: {
+    userName: function () {
+      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+    }
   },
 }
 </script>

@@ -5,7 +5,9 @@ import Signup from "@/router/Signup";
 import Login from "@/router/Login";
 import Dashboard from "@/router/Dashboard";
 import Lesson from "@/router/Lesson";
+import Account from "@/router/Account";
 import api from "@/api/auth";
+
 
 Vue.use(Router);
 
@@ -50,6 +52,13 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/account',
+      component: Account,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 });
 

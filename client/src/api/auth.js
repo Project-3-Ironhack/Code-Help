@@ -43,6 +43,15 @@ const api = {
     vm.user = null;
     delete axios.defaults.headers.common["Authorization"];
   },
+  getAll: () => {
+    return auth.get("/users").then(response => {
+      return response.data;
+    });
+  },
+// need to save the info to the db
+  teacherUpdate: (name, description, skills, photo) => {
+
+  }
 };
 
 export default api;

@@ -1,10 +1,13 @@
 <template lang="html">
   <div>
 
-    <h1>Welcome to your Dashboard!</h1>
+    <h1>Welcome to your Dashboard, {{ userName }}!</h1>
+
+    <teacher-info v-if="$root.user.role==='Teacher'"></teacher-info>
+
 <!-- SEARCH STARTS HERE -->
 
-    <search-bar></search-bar>
+    <search-bar v-if="$root.user.role==='Student'"></search-bar>
 
     <div v-for='user in users'>Name: {{user.name}}</div>
 
@@ -19,9 +22,13 @@
 
 import SearchBar from "@/components/SearchBar"
 import api from "@/api/auth"
+import TeacherInfo from "@/components/TeacherInfo"
 
 export default {
-  components: { SearchBar },
+  components: {
+    SearchBar,
+    TeacherInfo,
+    },
   data() {
     return {
       users: []
@@ -38,7 +45,12 @@ export default {
         this.teachers = teacher;
       })
     }
-  }
+  },
+  computed: {
+    userName: function () {
+      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+    }
+  },
 }
 </script>
 

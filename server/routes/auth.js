@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/user");
 const config = require("../config");
 
-// sign up route
+// SIGN UP ROUTE
 router.post("/signup", (req, res, next) => {
   const { username, name, role, password } = req.body;
 
@@ -24,7 +24,7 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-// log in route
+// LOG IN ROUTE
 const authenticate = User.authenticate();
 
 router.post("/login", (req, res, next) => {
@@ -48,7 +48,8 @@ router.post("/login", (req, res, next) => {
           user: {
             name: user.name,
             username: user.username,
-            _id: user._id
+            _id: user._id,
+            role: user.role
           },
           token
         });
