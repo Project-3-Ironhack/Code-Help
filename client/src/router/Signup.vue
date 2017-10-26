@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div v-if="error">
-      {{ error }}
-    </div>
     <form @submit.prevent="signup">
     <input type="radio" id="student" value="Student" v-model="role">
     <label for="one">Student</label>
@@ -23,12 +20,14 @@
       </label><br/>
       <button type="submit" name="button">Sign up</button>
     </form>
+    <div class="error-message" v-if="error">
+      {{ error }}
+    </div>
     Already have an account? <router-link to="/login">Click here to log in.</router-link>
   </div>
 </template>
 
 <script>
-
 import api from '@/api/auth'
 
 export default {
@@ -60,4 +59,7 @@ export default {
 </script>
 
 <style lang="css">
+  .error-message {
+    color: salmon;
+  }
 </style>

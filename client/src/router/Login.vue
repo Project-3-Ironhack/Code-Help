@@ -9,6 +9,9 @@
       </label><br/>
       <button type="submit" name="button">Log in</button>
     </form>
+    <div class="error-message" v-if="error">
+      {{ error }}
+    </div>
     Don't have an account? <router-link to="/signup">Click here to sign up.</router-link>
   </div>
 </template>
@@ -22,13 +25,17 @@ export default {
     return {
       username: '',
       password: '',
+      error: null,
     }
   },
   methods: {
     login() {
+      this.error = null
       api.login(this.username, this.password, this.$root)
       .then(data => {
         this.$router.push('/dashboard')
+      }).catch(err => {
+        this.error = err.response.data.error
       });
     },
   },
@@ -36,4 +43,7 @@ export default {
 </script>
 
 <style lang="css">
+  .error-message {
+    color: salmon;
+  }
 </style>

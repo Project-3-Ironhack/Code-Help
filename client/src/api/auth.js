@@ -43,10 +43,7 @@ const api = {
     vm.user = null;
     delete axios.defaults.headers.common["Authorization"];
   },
-// need to save the info to the db
-  teacherUpdate: (name, description, skills, photo) => {
 
-  }
 };
 
 export default api;

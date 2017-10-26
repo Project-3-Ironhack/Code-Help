@@ -6,9 +6,9 @@
         <label>Your name
             <input type="text" required v-model="name">
         </label><br/>
-        
+
         <label>Introduce yourself
-            <textarea rows="6" cols="30" required v-model="bio" placeholder="Tell us about yourself..."></textarea>
+            <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
         <label>Areas of expertise
@@ -16,23 +16,32 @@
         </label><br/>
 
         <label>Upload your photo
-            <input type="text" required v-model="photo">
+            <input type="text" required v-model="image">
         </label><br/>
-        <button>Submit</button>
+
+        <label>Your price per minute
+            <input type="number" required v-model="price">
+        </label><br/>
+
+        <button>Update your information</button>
     </form>
+
 </div>
 </template>
 
 <script>
-import api from "@/api/auth"
+import apiUsers from "@/api/users"
 
 export default {
-    datat(){
+    data(){
         return{
-            // name: , // how do we populate the name in the text field based on name entered at sign up? and how do we reference it here?
+            name: 'ggg', // how do we populate the name in the text field based on name entered at sign up? and how do we reference it here?
             description: '',
-            // skills: '',
-            // photo: '',
+            skills: '',
+            image: '',
+            price: '',
+            error: null,
+            user: '',
         };
     },
     computed: {
@@ -41,9 +50,22 @@ export default {
     }
   },
   methods: {
-    teacherUpdate(){
-
-    }
+    teacherUpdate(){ //deleted this.skills
+        this.error = null
+        const userId = this.$root.user._id;
+        apiUsers.teacherUpdate(userId, this.name, this.description, this.image, this.price)
+        .then(data => {
+            this.$router.push('/dashboard');
+        }).catch(err => {
+            this.error = error.response;
+        })
+    },
+  },
+  created(){
+    const userId = this.$root.user._id;
+    apiUsers.getTeacherById(userId).then(user => {
+        this.user = user;
+    });
   },
 }
 </script>

@@ -3,7 +3,9 @@
 
     <h1>Welcome to your Dashboard, {{ userName }}!</h1>
 
-    <teacher-info v-if="$root.user.role === 'Teacher'"></teacher-info>
+    <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
+    <!-- need to update for skills -->
+    <teacher-info v-if="$root.user.role==='Teacher' && (!user.name || !user.description || !user.image || !user.price)"></teacher-info>
 
 <!-- SEARCH STARTS HERE -->
 
@@ -22,7 +24,6 @@
 import SearchBar from "@/components/SearchBar";
 import SearchResults from "@/components/SearchResults";
 import TeacherInfo from "@/components/TeacherInfo";
-import api from "@/api/auth";
 import apiUsers from "@/api/users";
 
 export default {
@@ -36,6 +37,12 @@ export default {
       users: [],
       query: ""
     };
+  },
+  created(){
+    const userId = this.$root.user._id;
+    apiUsers.getTeacherById(userId).then(user => {
+        this.user = user;
+    });
   },
   computed: {
     userName: function() {
