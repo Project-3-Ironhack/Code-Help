@@ -5,7 +5,7 @@ const router = express.Router();
 // Route only displaying teachers, used in SearchBar
 
 router.get("/users", (req, res, next) => {
-  User.find().then(users => {
+  User.find( {role: "Teacher"} ).then(users => {
     res.json(users);
   });
 });
