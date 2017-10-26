@@ -6,7 +6,7 @@
 
     <search-bar></search-bar>
 
-    <div v-for='user in users'>{{user.name}}</div>
+    <div v-for='user in users'>Name: {{user.name}}</div>
 
 
 <!-- SEARCH ENDS HERE -->
@@ -32,6 +32,13 @@ export default {
       this.users = users;
     })
   },
+  methods: {
+    searchTeachers() {
+      api.getAll(this.query).then(teacher => {
+        this.teachers = teacher;
+      })
+    }
+  }
 }
 </script>
 

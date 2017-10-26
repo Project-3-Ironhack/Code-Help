@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost/code-help"),
     useMongoClient: true
   };
 
-  const authRoutes = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 const users = require("./routes/users");
 
 const app = express();

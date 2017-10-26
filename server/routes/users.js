@@ -3,9 +3,11 @@ const User = require("../models/user");
 
 const router = express.Router();
 
+// Route only displaying teachers, used in SearchBar
+
 router.get("/users", (req, res, next) => {
   console.log("you're here")
-  User.find().then(users => {
+  User.find({ role: "Teacher" }).then(users => {
     res.json(users);
   });
 });
