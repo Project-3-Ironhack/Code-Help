@@ -6,8 +6,10 @@ const users = axios.create({
 
 const apiUsers = {
   getAll: () => {
-    return auth.get("/users").then(response => {
+    return users.get("/users").then(response => {
       return response.data;
     });
   }
-}
+};
+
+export default apiUsers;
