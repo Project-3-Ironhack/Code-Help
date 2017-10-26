@@ -9,6 +9,4 @@ router.get("/users", (req, res, next) => {
   });
 });
 
-// CAN YOU PUT ANYTHING IN PLACE OF /users?
-
 module.exports = router;
