@@ -12,14 +12,14 @@ const apiUsers = {
   },
 
   getTeacherById: (id) => {
-    return auth.get('/teacher/'+id).then(response => {
+    return users.get('/teacher/'+id).then(response => {
       return response.data;
     });
   },
 
 // need to add skills
   teacherUpdate: (id, name, description, image, price) => {
-    return auth.patch('/teacher/:id', {
+    return users.patch('/teacher/:id', {
     id, name, description, image, price
   }).then(response => {
     return response.data;

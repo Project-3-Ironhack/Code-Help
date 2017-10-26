@@ -1,13 +1,12 @@
 <template>
   <div>
-    !! TEACHER CARD: NEED TO BE ITERATED ON
-    Name: NEED TO BE FILLED
-    Skills : NEED TO BE FILLED
+    {{result.name}}
   </div>
 </template>
 
 <script>
 export default {
+  props: ['result'],
 }
 </script>
 

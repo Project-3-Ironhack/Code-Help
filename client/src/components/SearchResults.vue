@@ -1,7 +1,13 @@
 <template>
   <div>
-    It should appear:
-    {{ teachers }}
+    <div v-if="query" v-for="result in queryResults">
+        <teacher-card :result="result" />
+    </div>
+    <div v-else>
+      <ul>
+        <li v-for="teacher in teachers">{{ teacher.name }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -14,6 +20,7 @@ export default {
   data() {
     return {
       teachers: [],
+      queryResults: [],
     }
   },
   components: {
@@ -22,8 +29,9 @@ export default {
   props: ['query'],
   created() {
     apiUsers.getAll().then(teachers => {
+      console.log("TEACHERS:", teachers)
       this.teachers = teachers;
-    })
+    }).then(window.addEventListener('keyup', this.searchTeachers))
   },
   methods: {
     searchTeachers() {
@@ -33,8 +41,15 @@ export default {
       var fuse = new Fuse (this.teachers, options)
       console.log("OPTIONS: ", options)
       console.log("FUSE EXECUTED WITh THIS QUERY:", this.query)
-      console.log(fuse.search(this.query))
+      console.log("EXECUTING FUSE SEARCH: ", fuse.search(this.query))
+      console.log(fuse)
       this.queryResults = fuse.search(this.query)
+    },
+    computed: {
+      search: function(query) {
+        console.log("hello")
+        return this.searchTeachers();
+      }
     },
   }
 }
