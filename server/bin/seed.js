@@ -1,6 +1,7 @@
+require('dotenv').config();
 const User = require("../models/user");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/code-help");
+mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true});
 
 const teachersData = [
   {

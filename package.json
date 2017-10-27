@@ -1,0 +1,21 @@
+{
+  "name": "Code-Help",
+  "version": "1.0.0",
+  "description": "Project 3 for Ironhack",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server && npm install",
+    "start": "cd server && npm start"
+   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Project-3-Ironhack/Code-Help.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Project-3-Ironhack/Code-Help/issues"
+  },
+  "homepage": "https://github.com/Project-3-Ironhack/Code-Help#readme"
+}
