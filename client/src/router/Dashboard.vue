@@ -9,9 +9,11 @@
  <!--TO BE ADDED BACK ABOVE...    && ( !user.description || !user.image || !user.price) --> 
 <!-- SEARCH STARTS HERE -->
 
-    <search-bar v-if="$root.user.role === 'Student'" v-model="query"></search-bar>
+  <div class="student-search" v-show="$root.user.role === 'Student'">
+    <search-bar v-model="query"></search-bar>
 
     <search-results :query="query"/>
+  </div>
 
 
 <!-- SEARCH ENDS HERE -->

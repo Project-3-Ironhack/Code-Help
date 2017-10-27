@@ -6,40 +6,75 @@ mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true});
 const teachersData = [
   {
     name: "Rob",
-    image: "http://placeholder/url/ph.jpg",
+    image: "http://via.placeholder.com/350x350",
     description: "A nice teacher who only knows JS",
     skills: [
       {
         name: "Javascript",
-        icon: "js-image"
+        icon: "js-image",
+      },
+      {
+        name: "Vue",
+        icon: "vue-image",
+      },
+      {
+        name: "HTML",
+        icon: "html-image",
       }
     ],
     role: "Teacher",
+    rating: 0,
     price: 500
   },
   {
-    name: "Bob",
-    image: "http://placeholder/url/ph2.jpg",
+    name: "Vob",
+    image: "http://via.placeholder.com/350x350",
     description: "A good teacher",
     skills: [
       {
         name: "Javascript",
         icon: "js-image"
+      },
+      {
+        name: "Redis",
+        icon: "redis-image",
+      },
+      {
+        name: "Vue",
+        icon: "js-image",
+      },
+      {
+        name: "CSS",
+        icon: "CSS-image",
+      },
+      {
+        name: "HTML",
+        icon: "html-image",
       }
     ],
     role: "Teacher",
+    rating: 4,
     price: 300
   },
   {
-    name: "Gob",
-    image: "http://placeholder/url/ph2.jpg",
+    name: "Wob",
+    image: "http://via.placeholder.com/350x350",
     description: "A cool teacher",
     skills: [
       {
         name: "Vue.js",
         icon: "vuejs-image"
+      },
+      {
+        name: "Postman",
+        icon: "postman-image",
+      },
+      {
+        name: "MongoDB",
+        icon: "mongodb-image",
       }
     ],
+    rating: 5,
     role: "Teacher",
     price: 200
   }

@@ -1,13 +1,15 @@
 <template>
+  <div class="container">
   <div>
-    <div v-if="query" v-for="result in queryResults">
-        <teacher-card :result="result" />
-    </div>
-    <div v-if="query === ''">
-      <ul>
-        <li v-for="teacher in teachers">{{ teacher }}</li>
-      </ul>
-    </div>
+    <h1>Start a call with one of our teachers</h1>
+  </div>
+      <div class="columns is-multiline is-8">
+        <teacher-card :result="result" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
+        <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in teachers" class="column is-one-quarter"/>
+      </div>
+      <div >
+
+      </div>
   </div>
 </template>
 
