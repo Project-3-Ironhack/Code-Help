@@ -5,8 +5,8 @@ mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true});
 
 const teachersData = [
   {
-    name: "Yob",
-    image: "http://placeholder/url/ph.jpg",
+    name: "Rob",
+    image: "http://via.placeholder.com/350x350",
     description: "A nice teacher who only knows JS",
     skills: [
       {
@@ -23,11 +23,12 @@ const teachersData = [
       }
     ],
     role: "Teacher",
+    rating: 0,
     price: 500
   },
   {
-    name: "Pob",
-    image: "http://placeholder/url/ph2.jpg",
+    name: "Vob",
+    image: "http://via.placeholder.com/350x350",
     description: "A good teacher",
     skills: [
       {
@@ -52,11 +53,12 @@ const teachersData = [
       }
     ],
     role: "Teacher",
+    rating: 4,
     price: 300
   },
   {
-    name: "Fob",
-    image: "http://placeholder/url/ph2.jpg",
+    name: "Wob",
+    image: "http://via.placeholder.com/350x350",
     description: "A cool teacher",
     skills: [
       {
@@ -72,6 +74,7 @@ const teachersData = [
         icon: "mongodb-image",
       }
     ],
+    rating: 5,
     role: "Teacher",
     price: 200
   }

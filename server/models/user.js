@@ -18,6 +18,11 @@ const userSchema = new Schema({
     enum: ["Student", "Teacher"],
     required: true
   },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+  },
   price: Number,
 });
 
