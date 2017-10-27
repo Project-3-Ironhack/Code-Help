@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cd server && npm install",
     "start": "cd server && npm start"
-   },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Project-3-Ironhack/Code-Help.git"
