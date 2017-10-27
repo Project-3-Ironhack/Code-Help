@@ -5,8 +5,8 @@
 
     <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
     <!-- need to update for skills -->
-    <teacher-info v-if="$root.user.role==='Teacher' && (!user.name || !user.description || !user.image || !user.price)"></teacher-info>
-
+    <teacher-info v-if="$root.user.role==='Teacher'"></teacher-info>
+ <!--TO BE ADDED BACK ABOVE...    && ( !user.description || !user.image || !user.price) --> 
 <!-- SEARCH STARTS HERE -->
 
     <search-bar v-if="$root.user.role === 'Student'" v-model="query"></search-bar>
@@ -35,7 +35,8 @@ export default {
   data() {
     return {
       users: [],
-      query: ""
+      query: "",
+      user: "",
     };
   },
   created(){

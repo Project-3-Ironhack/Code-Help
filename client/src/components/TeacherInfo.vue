@@ -2,10 +2,10 @@
 <div>
   <h2>Hello {{userName}}, and welcome to Code Help!</h2>
     <p>Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
-    <form @submit.prevent="teacherUpdate">
-        <label>Your name
+    <form @submit.prevent="teacherUpdate(); saveImage();">
+        <!-- <label>Your name
             <input type="text" required v-model="name">
-        </label><br/>
+        </label><br/> -->
 
         <label>Introduce yourself
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
@@ -16,12 +16,21 @@
         </label><br/>
 
         <label>Upload your photo
-            <input type="text" required v-model="image">
+            <input type="file" name="image" required @change="image = $event.target.files[0]">
         </label><br/>
+         <img :src="user.image" v-if="user.image" width="100">
+         <br>
 
         <label>Your price per minute
-            <input type="number" required v-model="price">
+            <!-- NEED TO UPDATE THE MODEL IF WE WANT TO KEEP CURRENCY -->
+                    <select>
+                        <option value="dollar">$</option>
+                        <option value="euro">€</option>
+                        <option value="sterling">£</option>
+                    </select>
+            <input type="number" min="0" max="1000" step="any" required v-model="price">
         </label><br/>
+
 
         <button>Update your information</button>
     </form>
@@ -35,7 +44,6 @@ import apiUsers from "@/api/users"
 export default {
     data(){
         return{
-            name: 'ggg', // how do we populate the name in the text field based on name entered at sign up? and how do we reference it here?
             description: '',
             skills: '',
             image: '',
@@ -50,12 +58,21 @@ export default {
     }
   },
   methods: {
-    teacherUpdate(){ //deleted this.skills
+    teacherUpdate(){ //deleted this.skills and this.image
         this.error = null
         const userId = this.$root.user._id;
-        apiUsers.teacherUpdate(userId, this.name, this.description, this.image, this.price)
+        apiUsers.teacherUpdate(userId,this.description, this.price)
         .then(data => {
             this.$router.push('/dashboard');
+        }).catch(err => {
+            this.error = error.response;
+        })
+    },
+    saveImage(){
+        const userId = this.$root.user._id;
+        apiUsers.saveImage(userId, this.image)
+        .then(response => {
+            this.image = this.$root.user.image
         }).catch(err => {
             this.error = error.response;
         })

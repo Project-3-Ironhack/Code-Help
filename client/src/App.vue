@@ -8,9 +8,9 @@
       <router-link class="navbar-item" v-if="$root.user" to="/account">
         {{userName}}'s Account
       </router-link>
-      <router-link class="navbar-item" to="/lesson">
+      <!-- <router-link class="navbar-item" to="/lesson">
         Lesson
-      </router-link>
+      </router-link> -->
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
       </a>
