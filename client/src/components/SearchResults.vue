@@ -3,56 +3,45 @@
     <div v-if="query" v-for="result in queryResults">
         <teacher-card :result="result" />
     </div>
-    <div v-else>
+    <div v-if="query === ''">
       <ul>
-        <li v-for="teacher in teachers">{{ teacher.name }}</li>
+        <li v-for="teacher in teachers">{{ teacher }}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-
-import TeacherCard from '@/components/TeacherCard'
-import apiUsers from '@/api/users'
+import TeacherCard from "@/components/TeacherCard";
+import apiUsers from "@/api/users";
 
 export default {
   data() {
     return {
-      teachers: [],
-      queryResults: [],
-    }
+      teachers: []
+    };
   },
   components: {
-    TeacherCard,
+    TeacherCard
   },
-  props: ['query'],
+  props: ["query"],
   created() {
     apiUsers.getAll().then(teachers => {
-      console.log("TEACHERS:", teachers)
       this.teachers = teachers;
-    }).then(window.addEventListener('keyup', this.searchTeachers))
+    });
   },
-  methods: {
-    searchTeachers() {
+  computed: {
+    fuse() {
       var options = {
-        keys: ['name', 'skills.name']
-      }
-      var fuse = new Fuse (this.teachers, options)
-      console.log("OPTIONS: ", options)
-      console.log("FUSE EXECUTED WITh THIS QUERY:", this.query)
-      console.log("EXECUTING FUSE SEARCH: ", fuse.search(this.query))
-      console.log(fuse)
-      this.queryResults = fuse.search(this.query)
+        keys: ["name", "skills.name"]
+      };
+      return new Fuse(this.teachers, options);
     },
-    computed: {
-      search: function(query) {
-        console.log("hello")
-        return this.searchTeachers();
-      }
-    },
+    queryResults() {
+      return this.fuse.search(this.query);
+    }
   }
-}
+};
 </script>
 
 <style lang="css">
