@@ -90,4 +90,8 @@ export default {
   text-transform: capitalize;
 }
 
+footer {
+  max-height: 80px;
+}
+
 </style>
