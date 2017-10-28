@@ -1,5 +1,7 @@
 <template>
-  <div id="visitor-list"></div>
+  <div id="visitor-list">
+      this is the admin panel
+  </div>
 </template>
 
 <script>

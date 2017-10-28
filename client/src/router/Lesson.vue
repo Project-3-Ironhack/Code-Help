@@ -15,7 +15,7 @@
     <br>
     <br>
     <AceEditor :lang="lang.toLowerCase()"></AceEditor>
-    <textarea rows="40" cols="90"></textarea>
+    <textarea class="own-text-editor" rows="40" cols="90"></textarea>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style>
-textarea{
+.own-text-editor{
     background: url(http://i.imgur.com/2cOaJ.png);
     background-attachment: local;
     background-repeat: no-repeat;
