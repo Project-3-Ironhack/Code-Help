@@ -101,6 +101,7 @@ export default {
             this.skills = user.skills;
             this.image = user.image;
         }
+        // need to set student price to something, as otherwise need to create a new function without price as a parameter
         if(this.user.role === 'Student'){
             this.price = 0;
         }
