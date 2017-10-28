@@ -32,4 +32,7 @@ export default {
 </script>
 
 <style lang="css">
+img{
+  object-fit: cover;
+}
 </style>
