@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-    <h1>Welcome to your Dashboard, {{ userName }}!</h1>
+    <h1>Welcome to your Dashboard, <span id="capitalise">{{ userName }}</span>!</h1>
 
     <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
     <!-- need to update for skills -->
@@ -57,4 +57,7 @@ export default {
 </script>
 
 <style lang="css">
+#capitalise{
+  text-transform: capitalize;
+}
 </style>

@@ -7,7 +7,7 @@
         Code Help
       </router-link>
 
-      <router-link class="navbar-item" v-if="$root.user" to="/account">
+      <router-link class="navbar-item account" v-if="$root.user" to="/account">
         {{userName}}'s Account
       </router-link>
 
@@ -81,5 +81,9 @@ export default {
 
 .navbar {
   margin-bottom: 2%;
+}
+
+.account{
+  text-transform: capitalize;
 }
 </style>
