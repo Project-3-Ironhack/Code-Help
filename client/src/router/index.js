@@ -7,6 +7,8 @@ import Dashboard from "@/router/Dashboard";
 import Lesson from "@/router/Lesson";
 import Account from "@/router/Account";
 import TeacherAdmin from '@/router/TeacherAdmin'
+import Payment from '@/router/Payment'
+
 import api from "@/api/auth";
 
 
@@ -63,6 +65,13 @@ const router = new Router({
     {
       path:'/admin',
       component: TeacherAdmin,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:'/checkout',
+      component: Payment,
       meta: {
         requiresAuth: true
       }
