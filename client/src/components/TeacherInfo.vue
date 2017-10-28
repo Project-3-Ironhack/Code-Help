@@ -12,18 +12,18 @@
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
-        <label>Areas of expertise
+        <label><span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
             <input type="text" required v-model="skills">
         </label><br/>
 
-        <p v-if="getURL === '/account'">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
+        <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
         <br>
-        <label><span v-if="getURL === '/dashboard'">Upload your photo</span><span v-if="getURL === '/account'">Change your photo</span>
+        <label><span v-if="image === undefined">Upload your photo</span><span v-else>Change your photo</span>
             <input type="file" name="image" :required="!user.image" @change="image = $event.target.files[0]">
         </label><br/>
          <br>
 
-        <label>Your price per minute
+        <label v-if="$root.user.role==='Teacher'">Your price per minute
             <!-- NEED TO UPDATE THE MODEL IF WE WANT TO KEEP CURRENCY -->
                     <select>
                         <option value="dollar">$</option>
@@ -65,7 +65,6 @@ export default {
   },
   methods: {
     teacherUpdate(){ //deleted this.skills
-    console.log('name testing', this.name)
         this.error = null
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.price)
@@ -101,6 +100,9 @@ export default {
             this.price = user.price;
             this.skills = user.skills;
             this.image = user.image;
+        }
+        if(this.user.role === 'Student'){
+            this.price = 0;
         }
     });
   },
