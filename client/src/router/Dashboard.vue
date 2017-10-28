@@ -6,16 +6,12 @@
     <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
     <!-- need to update for skills -->
     <teacher-info v-if="$root.user.role==='Teacher' && ( !user.description || !user.image || !user.price)"></teacher-info>
- <!--TO BE ADDED BACK ABOVE...    && ( !user.description || !user.image || !user.price) --> 
-<!-- SEARCH STARTS HERE -->
 
+<!-- SEARCH STARTS HERE -->
   <div class="student-search" v-show="$root.user.role === 'Student'">
     <search-bar v-model="query"></search-bar>
-
     <search-results :query="query"/>
   </div>
-
-
 <!-- SEARCH ENDS HERE -->
 
 
