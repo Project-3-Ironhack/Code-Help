@@ -82,7 +82,9 @@ export default {
 
 .navbar {
   margin-bottom: 2%;
+  position: fixed !important; top: 0; left: 0; right: 0; z-index: 10;
 }
+
 
 .account{
   text-transform: capitalize;

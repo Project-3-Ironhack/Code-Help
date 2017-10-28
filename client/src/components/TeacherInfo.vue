@@ -15,10 +15,10 @@
         <label><span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
             <input type="text" required v-model="skills">
         </label><br/>
-
+        <!-- LIFECYCLE HOOKS QUESTION // create a new teacher, fill in info inc photo, click submit, get sent to account page, all the info is there except photo. if you do something in created and save then photo appears. after this, the photo then appears always. -->
         <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
         <br>
-        <label><span v-if="image === undefined">Upload your photo</span><span v-else>Change your photo</span>
+        <label><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
             <input type="file" name="image" :required="!user.image" @change="image = $event.target.files[0]">
         </label><br/>
          <br>
@@ -90,6 +90,7 @@ export default {
     },
   },
   created(){
+      
     const userId = this.$root.user._id;
     apiUsers.getTeacherById(userId).then(user => {
         // update name to the name from the DB, so that when we patch, name isn't set to an empty string
