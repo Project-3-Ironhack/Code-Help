@@ -18,9 +18,10 @@ const apiUsers = {
   },
 
 // need to add skills, deleted image
-  teacherUpdate: (id, description, price) => {
+  teacherUpdate: (id, name, description, price) => {
+    console.log('name testing again,', name)
     return users.patch('/teacher/:id', {
-    id, description, price
+    id, name, description, price
   }).then(response => {
     return response.data;
   }).catch(err => {
@@ -29,13 +30,9 @@ const apiUsers = {
   },
 
   saveImage: (id, image) => {
-    console.log("DEBUG id", id)
-    console.log("DEBUG image", image)
     const formData = new FormData();
     formData.append('image', image);
     formData.append('id', id);
-    console.log("DEBUG formData", formData)
-    console.log('i made it here', id, image, formData);
 
     return users.patch('/images/upload',
       formData, { headers: {'Content-Type': 'multipart/form-data'}

@@ -33,8 +33,14 @@
 
 <script>
 import api from "@/api/auth"
+import apiUsers from "@/api/users"
 
 export default {
+  data(){
+    return {
+      name: '',
+    };
+  },
   name: 'app',
   methods: {
     logout() {
@@ -44,7 +50,12 @@ export default {
   },
   computed: {
     userName: function () {
-      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+      const userId = this.$root.user._id;
+      apiUsers.getTeacherById(userId)
+      .then(user => {
+        this.name = user.name;
+      });
+      return this.name.charAt(0).toUpperCase()+this.name.slice(1);
     }
   },
 }

@@ -39,19 +39,21 @@ export default {
       users: [],
       query: "",
       user: "",
+      name: '',
     };
   },
   created(){
     const userId = this.$root.user._id;
     apiUsers.getTeacherById(userId).then(user => {
         this.user = user;
+        this.name = user.name;
     });
   },
   computed: {
     userName: function() {
       return (
-        this.$root.user.name.charAt(0).toUpperCase() +
-        this.$root.user.name.slice(1)
+        this.name.charAt(0).toUpperCase() +
+        this.name.slice(1)
       );
     }
   }

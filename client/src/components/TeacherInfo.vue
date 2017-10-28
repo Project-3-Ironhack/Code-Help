@@ -1,11 +1,12 @@
 <template>
 <div>
-  <h2>Hello {{userName}}, and welcome to Code Help!</h2>
-    <p>Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
+  <h2 v-if="getURL === '/dashboard'">Hello {{userName}}, and welcome to Code Help!</h2>
+    <p v-if="getURL === '/dashboard'">Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
     <form @submit.prevent="teacherUpdate(); saveImage();">
-        <!-- <label>Your name
+        <!-- DON'T SHOW THE NAME FIELD ON THE DASHBOARD PAGE -->
+        <label v-if="getURL !== '/dashboard'">Your name
             <input type="text" required v-model="name">
-        </label><br/> -->
+        </label><br/>
 
         <label>Introduce yourself
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
@@ -15,10 +16,11 @@
             <input type="text" required v-model="skills">
         </label><br/>
 
-        <label>Upload your photo
-            <input type="file" name="image" required @change="image = $event.target.files[0]">
+        <p v-if="getURL === '/account'">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
+        <br>
+        <label><span v-if="getURL === '/dashboard'">Upload your photo</span><span v-if="getURL === '/account'">Change your photo</span>
+            <input type="file" name="image" :required="!user.image" @change="image = $event.target.files[0]">
         </label><br/>
-         <img :src="user.image" v-if="user.image" width="100">
          <br>
 
         <label>Your price per minute
@@ -28,7 +30,7 @@
                         <option value="euro">€</option>
                         <option value="sterling">£</option>
                     </select>
-            <input type="number" min="0" max="1000" step="any" required v-model="price">
+            <input type="number" min="0" max="10" step=".01" required v-model="price">
         </label><br/>
 
 
@@ -44,6 +46,7 @@ import apiUsers from "@/api/users"
 export default {
     data(){
         return{
+            name: '',
             description: '',
             skills: '',
             image: '',
@@ -54,34 +57,51 @@ export default {
     },
     computed: {
     userName: function () {
-      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+      return this.name.charAt(0).toUpperCase()+this.name.slice(1);
+    },
+    getURL: function() {
+        return this.$route.path;
     }
   },
   methods: {
-    teacherUpdate(){ //deleted this.skills and this.image
+    teacherUpdate(){ //deleted this.skills
+    console.log('name testing', this.name)
         this.error = null
         const userId = this.$root.user._id;
-        apiUsers.teacherUpdate(userId,this.description, this.price)
+        apiUsers.teacherUpdate(userId, this.name, this.description, this.price)
         .then(data => {
-            this.$router.push('/dashboard');
+            this.$router.push('/account');
         }).catch(err => {
             this.error = error.response;
         })
     },
     saveImage(){
-        const userId = this.$root.user._id;
-        apiUsers.saveImage(userId, this.image)
-        .then(response => {
-            this.image = this.$root.user.image
-        }).catch(err => {
-            this.error = error.response;
-        })
+        // if you don't upload an image on the account page, it doesn't change the image to an empty string
+        if(this.$route.path === '/dashboard' || (this.$route.path === '/account' && typeof this.image !=='string')){
+            console.log('testing', typeof this.image)
+            const userId = this.$root.user._id;
+            apiUsers.saveImage(userId, this.image)
+            .then(response => {
+            // change the image when the user uploads a new image
+                this.user.image = response.data.image;
+            }).catch(err => {
+                this.error = error.response;
+            })
+        }
     },
   },
   created(){
     const userId = this.$root.user._id;
     apiUsers.getTeacherById(userId).then(user => {
+        // update name to the name from the DB, so that when we patch, name isn't set to an empty string
+        this.name = user.name; 
         this.user = user;
+        if(this.$route.path === '/account'){
+            this.description = user.description;
+            this.price = user.price;
+            this.skills = user.skills;
+            this.image = user.image;
+        }
     });
   },
 }
