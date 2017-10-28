@@ -9,7 +9,7 @@
     <div class="card-content">
       <div class="media-right">
         <div class="media-content">
-          <p class="title is-4">{{result.name}}</p>
+          <p class="title is-4">{{result.name.charAt(0).toUpperCase() + result.name.slice(1)}}</p>
           <p class="subtitle is-6">{{result.rating}}</p>
         </div>
       </div>
