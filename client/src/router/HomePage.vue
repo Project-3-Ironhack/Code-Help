@@ -6,6 +6,11 @@
     <h2>Learn to code with experts from around the world</h2>
   </div>
 
+    <!-- <div>
+    TESTING // Ready to get started? Click here to <button @click="!isShow = isShow">Sign Up</button><br>
+    <signup v-show="isShow"></signup>
+    </div> -->
+
   <div>
     Ready to get started? Click here to <router-link to="/signup">Sign Up</router-link><br>
     Already have an account? Click here to <router-link to="/login">Log In</router-link>
@@ -32,7 +37,10 @@
 </template>
 
 <script>
+import Signup from '@/router/Signup'
+
 export default {
+  components: {Signup},
 }
 </script>
 

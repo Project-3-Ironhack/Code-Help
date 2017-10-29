@@ -31,10 +31,11 @@
 
         <label v-if="$root.user.role==='Teacher'">Your price per minute
             <!-- NEED TO UPDATE THE MODEL IF WE WANT TO KEEP CURRENCY -->
-                    <select>
-                        <option value="dollar">$</option>
-                        <option value="euro">€</option>
-                        <option value="sterling">£</option>
+                    <select v-model="currency">
+                        <option value="" selected>Select your currency</option>
+                        <option value="dollar">$ USD</option>
+                        <option value="euro">€ EUR</option>
+                        <option value="sterling">£ GBP</option>
                     </select>
             <input type="number" min="0" max="10" step=".01" required v-model="price">
         </label><br/>
@@ -65,6 +66,7 @@ export default {
             skills: '',
             image: '',
             price: '',
+            currency: '',
             error: null,
             user: '',
         };
@@ -78,11 +80,11 @@ export default {
     }
   },
   methods: {
-    teacherUpdate(){ //deleted this.skills
-    console.log('the selected skills are...', this.skills);
+    teacherUpdate(){
+        console.log('curremcy test', this.currency)
         this.error = null
         const userId = this.$root.user._id;
-        apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price)
+        apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency)
         .then(data => {
             this.$router.push('/account');
         }).catch(err => {
@@ -114,12 +116,14 @@ export default {
         if(this.$route.path === '/account'){
             this.description = user.description;
             this.price = user.price;
+            this.currency = user.currency;
             this.skills = user.skills;
             this.image = user.image;
         }
         // need to set student price to something, as otherwise need to create a new function without price as a parameter
         if(this.user.role === 'Student'){
             this.price = 0;
+            this.currency = undefined;
         }
     });
   },

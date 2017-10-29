@@ -23,12 +23,12 @@
   </nav>
 
 <!-- how does router-view work? -->
-  <section class="content">
+  <section class="content main-inner">
     <router-view/>
   </section>
 
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-container">
       <div class="content has-text-centered">
         <p>
         <strong>Code Help</strong> by Stuart & Thibaut // Get in touch if you're hiring
@@ -82,17 +82,27 @@ export default {
 }
 
 .navbar {
-  margin-bottom: 2%;
   position: fixed !important; top: 0; left: 0; right: 0; z-index: 10;
 }
-
 
 .account{
   text-transform: capitalize;
 }
 
-footer {
-  max-height: 80px;
+.main-inner {
+  padding-top: 3%;
+  box-sizing: border-box;
+}
+
+.footer {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.footer-container {
+  padding-top: 5%;
 }
 
 </style>
