@@ -31,8 +31,9 @@
     <div class="container">
       <div class="content has-text-centered">
         <p>
-        <strong>Code Help</strong> by Stuart & Thibaut // Get in touch if you're hiring <icon name="heart"></icon>
+        <strong>Code Help</strong> by Stuart & Thibaut // Get in touch if you're hiring
         </p>
+        <icon name="heart"></icon>
         <p><a href="mailto:stuartogardner@gmail.com">stuartogardner@gmail.com</a> // <a href="mailto:thibaut.davoult@gmail.com">thibaut.davoult@gmail.com</a></p>
       </div>
     </div>

@@ -12,9 +12,15 @@
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
-        <label><span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
+        <!-- <label><span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
             <input type="text" required v-model="skills">
-        </label><br/>
+        </label><br/> -->
+
+        <!-- trying multi-select dropdown -->
+        <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
+        <v-select multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
+
+
         <!-- LIFECYCLE HOOKS QUESTION // create a new teacher, fill in info inc photo, click submit, get sent to account page, all the info is there except photo. if you do something in created and save then photo appears. after this, the photo then appears always. -->
         <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
         <br>
@@ -43,9 +49,17 @@
 <script>
 import apiUsers from "@/api/users"
 
+// mutli select
+import vSelect from "vue-select"
+
 export default {
+    // multi select
+    components: {vSelect},
     data(){
         return{
+            // start multi select
+            options: ['JavaScript','Vue.js','HTML','CSS','React','Angular','Git', "GitHub",'Bootstrap','Bulma','Heroku','Docker','AWS','Google Maps'],
+            //end multi select
             name: '',
             description: '',
             skills: '',
@@ -65,9 +79,10 @@ export default {
   },
   methods: {
     teacherUpdate(){ //deleted this.skills
+    console.log('the selected skills are...', this.skills);
         this.error = null
         const userId = this.$root.user._id;
-        apiUsers.teacherUpdate(userId, this.name, this.description, this.price)
+        apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price)
         .then(data => {
             this.$router.push('/account');
         }).catch(err => {

@@ -9,8 +9,8 @@
     <div class="card-content">
       <div class="media-right">
         <div class="media-content">
-          <p class="title is-4">{{result.name}}</p>
-          <p class="subtitle is-6">{{result.rating}}</p>
+          <p class="title is-4 capitalise">{{result.name}}</p>
+          <p class="subtitle is-6 capitalise">{{result.rating}}</p>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ img{
   object-fit: cover;
 }
 
-p{
+.capitalise{
   text-transform: capitalize;
 }
 </style>

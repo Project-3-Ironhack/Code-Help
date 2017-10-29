@@ -18,10 +18,10 @@ const apiUsers = {
   },
 
 // need to add skills, deleted image
-  teacherUpdate: (id, name, description, price) => {
-    console.log('name testing again,', name, description, price)
+  teacherUpdate: (id, name, description, skills, price) => {
+    console.log('name testing again,', name, 'desc', description, 'skills', skills, 'price',price)
     return users.patch('/teacher/:id', {
-    id, name, description, price
+    id, name, description, skills, price
   }).then(response => {
     return response.data;
   }).catch(err => {
