@@ -1,5 +1,21 @@
 <template>
   <div id='app'>
+<!--  -->
+<a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a>
+    <select v-model="lang">
+      <option disabled value="">Please select one</option>
+      <option>JavaScript</option>
+      <option>HTML</option>
+      <option>CSS</option>
+    </select>
+    <span>Selected: {{ lang }}</span>
+    <br>
+    <br>
+
+    <AceEditor :lang="lang.toLowerCase()"></AceEditor>
+      <br>
+<!--  -->
+
     <h1>Enter your payment details, below</h1>
     
     <form @submit.prevent="login">
@@ -36,18 +52,27 @@
 <script>
 // import { stripeKey, stripeOptions } from './stripeConfig.json'
 import { Card, createToken } from 'vue-stripe-elements'
+
+// 
+import AceEditor from '@/components/Editor'
+// 
  
 export default {
   data () {
     return {
       complete: false,
+
+      // 
+        lang: '',
+      // 
+
     //   stripeOptions: {
     //     // see https://stripe.com/docs/stripe.js#element-options for details
     //   }
     }
   },
  
-  components: { Card },
+  components: { Card, AceEditor },
  
   methods: {
     pay () {

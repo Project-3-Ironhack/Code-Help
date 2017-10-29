@@ -13,11 +13,14 @@
     </select>
     <span>Selected: {{ lang }}</span>
     <br>
-    <br> -->
+    <br>
 
+    <AceEditor :lang="lang.toLowerCase()"></AceEditor>
+      <br> -->
+      
     <codemirror v-model="code" :options="editorOptions"></codemirror>
+      <br>
 
-    <!-- <AceEditor :lang="lang.toLowerCase()"></AceEditor> -->
     <textarea class="own-text-editor" rows="40" cols="90"></textarea>
   </div>
 </template>
@@ -41,6 +44,8 @@ export default {
         theme: 'cobalt',
         lineNumbers: true,
         line: true,
+
+        // lang: '',
 
         // 高级配置（需要引入对应的插件包）,codemirror advanced options(You need to manually introduce the corresponding codemirror function script code)
         // sublime、emacs、vim三种键位模式，支持你的不同操作习惯
@@ -79,7 +84,10 @@ export default {
     console.log('this is current editor object', this.editor)
     // you can use this.editor to do something...
   },
-  components: {codemirror, CodeMirror},
+  components: {
+    codemirror, CodeMirror,
+    // AceEditor,
+  }
   // end of code mirror
 
 //Ace Editor
