@@ -20,13 +20,24 @@ router.get('/teacher/:id', (req, res, next) => {
 
 // UPDATE TEACHER INFO
 router.patch('/teacher/:id', (req, res, next) => {
+  console.log('and testing the name again', req.body);
 
-  const {id, description, price} = req.body;
-  const infoToUpdate = {id, description, price}
+  const {id, name, description, skills, price, currency} = req.body;
+  const infoToUpdate = {id, name, description, skills, price, currency}
 
   User.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(updatedUser => {
     res.json(updatedUser);
   });
 });
+
+// UPDATE TEACHER ONLINE STATUS
+router.post('/status/:id', (req, res, next) => {
+  console.log('the body contains...', req.body.status);
+  const {id} = req.body;
+  User.findByIdAndUpdate(id, {status: req.body.status}, { new: true }).then(updatedUser => {
+    console.log('the updated user is ', updatedUser);
+    res.json(updatedUser);
+  });
+})
 
 module.exports = router;

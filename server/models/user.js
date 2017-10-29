@@ -7,12 +7,7 @@ const userSchema = new Schema({
   name: String,
   image: String,
   description: String,
-  skills: [
-    {
-      name: String,
-      icon: String
-    }
-  ],
+  skills: [ String ],
   role: {
     type: String,
     enum: ["Student", "Teacher"],
@@ -24,6 +19,8 @@ const userSchema = new Schema({
     max: 5,
   },
   price: Number,
+  currency: String,
+  status: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
