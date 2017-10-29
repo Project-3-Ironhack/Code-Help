@@ -36,14 +36,26 @@ export default {
       query: "",
       user: "",
       name: '',
+      status: '',
     };
   },
   created(){
     const userId = this.$root.user._id;
+    this.status = 'online';
+
     apiUsers.getTeacherById(userId).then(user => {
         this.user = user;
         this.name = user.name;
     });
+
+     console.log('the online status is now', this.status);
+
+    apiUsers.updateOnlineStatus(userId, this.status).then(user => {
+      console.log('we made it to here', user);
+    }).catch(err => {
+        this.error = error.response;
+    });
+
   },
   computed: {
     userName: function() {

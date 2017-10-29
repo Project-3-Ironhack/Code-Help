@@ -19,15 +19,31 @@
           <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i].name}}</a>
         </div>
         <p>Student's comment</p>
+        <br>
+        <p v-if="result.status === 'online'">this teacher is ONLIIIINE</p>
       </div>
     </div>
   </div>
+
 </div>
 </template>
 
 <script>
+
 export default {
+  data(){
+    return {
+      userId: '',
+    };
+  },
+
   props: ['result'],
+
+  created(){
+    const userId = this.$root.user._id;
+    console.log('user id', userId);
+  },
+
 }
 </script>
 

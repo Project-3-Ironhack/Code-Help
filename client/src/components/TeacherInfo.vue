@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     teacherUpdate(){
-        console.log('curremcy test', this.currency)
+
         this.error = null
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency)

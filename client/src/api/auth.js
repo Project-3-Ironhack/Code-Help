@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiUsers from "@/api/users";
 
 const auth = axios.create({
   baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api"
@@ -40,6 +41,10 @@ const api = {
 
   logout: vm => {
     localStorage.removeItem("token");
+    console.log('vmuser', vm.user)
+    console.log('changing online status', vm.user._id, 'offline')
+    apiUsers.updateOnlineStatus(vm.user._id, 'offline');
+
     vm.user = null;
     delete axios.defaults.headers.common["Authorization"];
   },

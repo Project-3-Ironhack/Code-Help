@@ -41,7 +41,18 @@ const apiUsers = {
     }).catch(err => {
       console.error(err);
     });
-  }
+  },
+
+  updateOnlineStatus: (id, status) => {
+    console.log('and we made it here', status)
+    return users.post('/status/:id', {
+      id, status
+    }).then(response => {
+      return response.data
+    }).catch(err => {
+      console.error(err);
+    });
+  },
 };
 
 export default apiUsers;
