@@ -31,7 +31,7 @@
 </template>
 
 <script>
-// On Image: need to use object-fit to force keeping image's ratio
+import apiSessions from "@/api/sessions"
 
 export default {
   data(){
@@ -54,7 +54,7 @@ export default {
       apiSessions.saveSession(result._id).then(session => {
         this.session = session;
       })
-      this.$router.push("/lesson/" + this.session._id)
+      this.$router.push("/lesson/" + this.session._id);
     }
   }
 
