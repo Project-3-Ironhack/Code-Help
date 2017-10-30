@@ -18,9 +18,10 @@ const apiUsers = {
   },
 
 // need to add skills, deleted image
-  teacherUpdate: (id, description, price) => {
+  teacherUpdate: (id, name, description, skills, price, currency) => {
+    console.log('name testing again,', name, 'desc', description, 'skills', skills, 'price',price, 'currency', currency)
     return users.patch('/teacher/:id', {
-    id, description, price
+    id, name, description, skills, price, currency
   }).then(response => {
     return response.data;
   }).catch(err => {
@@ -29,13 +30,9 @@ const apiUsers = {
   },
 
   saveImage: (id, image) => {
-    console.log("DEBUG id", id)
-    console.log("DEBUG image", image)
     const formData = new FormData();
     formData.append('image', image);
     formData.append('id', id);
-    console.log("DEBUG formData", formData)
-    console.log('i made it here', id, image, formData);
 
     return users.patch('/images/upload',
       formData, { headers: {'Content-Type': 'multipart/form-data'}
@@ -44,7 +41,18 @@ const apiUsers = {
     }).catch(err => {
       console.error(err);
     });
-  }
+  },
+
+  updateOnlineStatus: (id, status) => {
+    console.log('and we made it here', status)
+    return users.post('/status/:id', {
+      id, status
+    }).then(response => {
+      return response.data
+    }).catch(err => {
+      console.error(err);
+    });
+  },
 };
 
 export default apiUsers;

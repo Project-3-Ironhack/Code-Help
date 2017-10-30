@@ -6,10 +6,17 @@ import router from "./router";
 import api from "@/api/auth";
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
+
+import VueCodeMirror from 'vue-codemirror'
+Vue.use(VueCodeMirror)
 
 Vue.use(Buefy)
+Vue.component('icon', Icon)
 
 Vue.config.productionTip = false;
+
 
 /* eslint-disable no-new */
 new Vue({

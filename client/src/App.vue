@@ -1,30 +1,40 @@
 <template>
   <div id="app">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-info" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
+
       <router-link class="navbar-item" to="/">
         Code Help
       </router-link>
-      <router-link class="navbar-item" v-if="$root.user" to="/account">
+
+      <router-link class="navbar-item account" v-if="$root.user" to="/account">
         {{userName}}'s Account
       </router-link>
+
       <!-- <router-link class="navbar-item" to="/lesson">
         Lesson
       </router-link> -->
+
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
       </a>
+
     </div>
   </nav>
-  <section class="content">
+
+<!-- how does router-view work? -->
+  <section class="content main-inner">
     <router-view/>
   </section>
+
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-container">
       <div class="content has-text-centered">
         <p>
-        <strong>Code Help</strong> by Stuart & Thibaut.
+        <strong>Code Help</strong> by Stuart & Thibaut // Get in touch if you're hiring
         </p>
+        <icon name="heart"></icon>
+        <p><a href="mailto:stuartogardner@gmail.com">stuartogardner@gmail.com</a> // <a href="mailto:thibaut.davoult@gmail.com">thibaut.davoult@gmail.com</a></p>
       </div>
     </div>
   </footer>
@@ -33,8 +43,14 @@
 
 <script>
 import api from "@/api/auth"
+import apiUsers from "@/api/users"
 
 export default {
+  data(){
+    return {
+      name: '',
+    };
+  },
   name: 'app',
   methods: {
     logout() {
@@ -44,7 +60,12 @@ export default {
   },
   computed: {
     userName: function () {
-      return this.$root.user.name.charAt(0).toUpperCase()+this.$root.user.name.slice(1);
+      const userId = this.$root.user._id;
+      apiUsers.getTeacherById(userId)
+      .then(user => {
+        this.name = user.name;
+      });
+      return this.name.charAt(0).toUpperCase()+this.name.slice(1);
     }
   },
 }
@@ -59,4 +80,29 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.navbar {
+  position: fixed !important; top: 0; left: 0; right: 0; z-index: 10;
+}
+
+.account{
+  text-transform: capitalize;
+}
+
+.main-inner {
+  padding-top: 3%;
+  box-sizing: border-box;
+}
+
+.footer {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.footer-container {
+  padding-top: 5%;
+}
+
 </style>

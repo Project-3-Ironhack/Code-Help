@@ -7,23 +7,15 @@ const userSchema = new Schema({
   name: String,
   image: String,
   description: String,
-  skills: [
-    {
-      name: String,
-      icon: String
-    }
-  ],
+  skills: [ String ],
   role: {
     type: String,
     enum: ["Student", "Teacher"],
     required: true
   },
-  rating: {
-    type: Number,
-    min: 0,
-    max: 5,
-  },
   price: Number,
+  currency: String,
+  status: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
