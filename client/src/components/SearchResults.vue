@@ -41,7 +41,7 @@ export default {
       };
       return new Fuse(this.teachers, options);
     },
-    queryResults() {
+      queryResults() {
       return this.fuse.search(this.query);
     }
   }

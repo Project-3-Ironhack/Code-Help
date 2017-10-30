@@ -10,14 +10,15 @@ const apiSessions = {
     return session
       .post("/session", { teacherId })
       .then(response => {
-        return response.data;
+        console.log(response)
+        return response;
       })
       .catch(err => {
         console.error(err);
       });
   },
 
-// WIP under this line
+  // WIP under this line
 
   updateSession: (teacherId, rating, duration) => {
     return session
@@ -32,3 +33,5 @@ const apiSessions = {
 
   // WIP above this line
 };
+
+export default apiSessions;
