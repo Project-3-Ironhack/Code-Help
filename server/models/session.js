@@ -13,7 +13,7 @@ const sessionSchema = new Schema({
   student:
   {
     // add student info here with ref
-  }
+  },
 
   // time: Number,
   // feedback: {

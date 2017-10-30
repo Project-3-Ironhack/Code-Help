@@ -42,6 +42,7 @@
 
 
         <button>Update your information</button>
+        <p v-if="okMessage"> Update successful</p>
     </form>
 
 </div>
@@ -69,6 +70,7 @@ export default {
             currency: '',
             error: null,
             user: '',
+            okMessage: false,
         };
     },
     computed: {
@@ -87,6 +89,8 @@ export default {
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency)
         .then(data => {
             this.$router.push('/account');
+            this.okMessage = true;
+            setTimeout(() => this.okMessage = false, 5000);
         }).catch(err => {
             this.error = error.response;
         })
