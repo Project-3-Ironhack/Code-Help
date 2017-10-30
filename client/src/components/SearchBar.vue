@@ -10,11 +10,8 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-primary">Search</button> <!-- add @click to the search button to trigger the method -->
-        <div v-for="query in queryResults">
-        Teacher: {{ query.name }}
-        Skills: {{ query.skills[0].name }}
-        </div>
+        <button class="button is-primary">Search</button>
+        <!-- Search button currently useless. Try to add feedback on clicking it. Maybe return only exact matches of the search -->
       </div>
     </div>
   </div>
