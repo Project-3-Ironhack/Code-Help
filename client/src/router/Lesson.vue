@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Let's start your lesson!</h1>
-    <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a>
+    <!-- <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a> -->
+    <!-- <a href="javascript:tagoveApp.max()"></a> -->
+
     <br>
     <h2>Select a language below to use our code editor</h2>
 
@@ -73,7 +75,7 @@ export default {
     onEditorCodeChange(newCode) {
       console.log('this is new code', newCode)
       this.code = newCode
-    }
+    },
   },
   computed: {
     editor() {
@@ -87,7 +89,7 @@ export default {
   components: {
     codemirror, CodeMirror,
     // AceEditor,
-  }
+  },
   // end of code mirror
 
 //Ace Editor
@@ -97,6 +99,15 @@ export default {
   //     lang: '',
   //   }
   // }
+
+  beforeRouteEnter(){
+    window.tagoveWatcher.callWhenLoaded(() => {
+      tagoveApp.max()
+    })
+  },
+  beforeRouteLeave(){
+    tagoveApp.min()
+  }
 }
 </script>
 
