@@ -5,11 +5,16 @@ const User = require("./user");
 const sessionSchema = new Schema({
   //!\\ Commented out: Commenting, focusing on rating at the moment //!\\
   // studentId: { type: mongoose.Schema.Types.ObjectId, ref: "User"},
-  teacherId:
+  teacher:
   {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
+  student:
+  {
+    // add student info here with ref
+  }
+
   // time: Number,
   // feedback: {
   rating: Number

@@ -4,7 +4,7 @@
     <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a>
     <br>
     <h2>Select a language below to use our code editor</h2>
-    
+
     <!-- <select v-model="lang">
       <option disabled value="">Please select one</option>
       <option>JavaScript</option>
@@ -17,7 +17,7 @@
 
     <AceEditor :lang="lang.toLowerCase()"></AceEditor>
       <br> -->
-      
+
     <codemirror v-model="code" :options="editorOptions"></codemirror>
       <br>
 
@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script> 
+<script>
 
 import AceEditor from '@/components/Editor'
 import { codemirror, CodeMirror } from 'vue-codemirror'

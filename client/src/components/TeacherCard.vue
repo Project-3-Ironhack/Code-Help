@@ -20,8 +20,9 @@
         </div>
         <p>Student's comment</p>
         <br>
-        <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link>
-        </p>
+        <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
+
+        <span @click="startLesson(result)">this teacher is ONLINE, start call</span>
       </div>
     </div>
   </div>
@@ -45,6 +46,18 @@ export default {
     const userId = this.$root.user._id;
     console.log('user id', userId);
   },
+  methods: {
+    startLesson(result) {
+      // when clicking to start lesson, launches function that creates the session in the DB, filled with student and teacher ID. This will be used on call end, as we'll pass all the session data to the next page (LessonSummary)
+      // May have to create another function (createSession, without rating) and change saveSession to updateSession
+      const userId = this.$root.user._id
+      apiSessions.saveSession(result._id).then(session => {
+        this.session = session;
+      })
+      this.$router.push("/lesson/" + this.session._id)
+    }
+  }
+
 
 }
 
