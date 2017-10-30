@@ -18,17 +18,21 @@
 <br>
   <div class="columns">
     <div class="column is-one-third">
-      <icon name="beer" scale="3"></icon>
+      <icon name="code" scale="3"></icon>
       <h4>Learn to code with experts from all over the world</h4>
     </div>
 
     <div class="column is-one-third">
-      <icon name="beer" scale="3"></icon>
+      <icon width="100">
+        <icon name="bug" scale="2"></icon>
+        <icon name="ban" scale="3.5"></icon>
+
+      </icon>
       <h4>Learn to code with experts from all over the world</h4>
     </div>
 
     <div class="column is-one-third">
-      <icon name="beer" scale="3"></icon>
+      <icon name="graduation-cap" scale="3"></icon>
       <h4>Learn to code with experts from all over the world</h4>
     </div>
   </div>
@@ -50,4 +54,5 @@ export default {
   max-width: 30%;
   margin: auto;
 }
+
 </style>

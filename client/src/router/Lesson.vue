@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script>
+<script> 
 
 import AceEditor from '@/components/Editor'
 import { codemirror, CodeMirror } from 'vue-codemirror'

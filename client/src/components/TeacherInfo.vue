@@ -130,6 +130,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+label {
+    vertical-align: top;
+    /* display:block; */
+}
+
+/* textarea {
+    display:block;
+} */
 
 </style>
