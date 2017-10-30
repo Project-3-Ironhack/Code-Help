@@ -11,15 +11,16 @@ const config = require("./config");
 const passport = require("passport");
 const { Strategy, ExtractJwt } = require("passport-jwt");
 const cors = require("cors");
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
-const multer = require('multer');
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+const multer = require("multer");
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 const authRoutes = require("./routes/auth");
 const users = require("./routes/users");
-const imagesRoutes = require('./routes/images');
+const imagesRoutes = require("./routes/images");
+const sessionsRoutes = require("./routes/sessions");
 
 const app = express();
 
@@ -60,9 +61,12 @@ const strategy = new Strategy(
 );
 passport.use(strategy);
 
+
 app.use("/api", authRoutes);
 app.use("/api", users);
-app.use('/api/images', imagesRoutes);
+app.use("/api/images", imagesRoutes);
+app.use("/api", sessionsRoutes);
+
 
 const clientRoot = path.join(__dirname, "../client/dist");
 app.use("/", express.static(clientRoot));

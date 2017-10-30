@@ -20,7 +20,8 @@
         </div>
         <p>Student's comment</p>
         <br>
-        <p v-if="result.status === 'online'">this teacher is ONLIIIINE</p>
+        <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link>
+        </p>
       </div>
     </div>
   </div>
