@@ -26,9 +26,13 @@
 </template>
 
 <script>
+// On Image: need to use object-fit to force keeping image's ratio
+
 export default {
   props: ['result'],
 }
+
+
 </script>
 
 <style lang="css">
