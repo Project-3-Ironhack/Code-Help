@@ -17,12 +17,28 @@ const apiUsers = {
     });
   },
 
-// need to add skills, deleted image
+  getStudentById: (id) => {
+    return users.get('/student/'+id).then(response => {
+      return response.data;
+    });
+  },
+
   teacherUpdate: (id, name, description, skills, price, currency) => {
     console.log('name testing again,', name, 'desc', description, 'skills', skills, 'price',price, 'currency', currency)
     return users.patch('/teacher/:id', {
     id, name, description, skills, price, currency
   }).then(response => {
+    return response.data;
+  }).catch(err => {
+    console.error(err);
+  });
+  },
+
+  paymentUpdate: (id, billingDetails) => {
+    return users.patch('/student/:id', {
+    id, billingDetails
+  }).then(response => {
+    console.log('the response is...', response);
     return response.data;
   }).catch(err => {
     console.error(err);

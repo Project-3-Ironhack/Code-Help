@@ -30,6 +30,25 @@ router.patch('/teacher/:id', (req, res, next) => {
   });
 });
 
+// GET STUDENT INFO
+router.get('/student/:id', (req, res, next) => {
+  const id = req.params.id;
+  User.findById(id).then(user => {
+    res.json(user);
+  })
+});
+
+// UPDATE STUDENT PAYMENT INFO
+router.patch('/student/:id', (req, res, next) => {
+  const id = req.body.id;
+  const { nameOnCard, billingAddress, city, postalCode, country} = req.body.billingDetails;
+  const infoToUpdate = {id, nameOnCard, billingAddress, city, postalCode, country};
+
+  User.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(updatedUser => {
+    res.json(updatedUser);
+  });
+});
+
 // UPDATE TEACHER ONLINE STATUS
 router.post('/status/:id', (req, res, next) => {
   console.log('the body contains...', req.body.status);

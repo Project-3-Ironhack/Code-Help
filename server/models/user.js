@@ -16,6 +16,14 @@ const userSchema = new Schema({
   price: Number,
   currency: String,
   status: String,
+  
+  nameOnCard: String,
+  billingAddress: String,
+  city: String,
+  postalCode: String,
+  country: String,
+  // cardNumber: Number,
+
 });
 
 userSchema.plugin(passportLocalMongoose);
