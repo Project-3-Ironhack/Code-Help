@@ -8,20 +8,7 @@ const teachersData = [
     name: "Rob",
     image: "http://via.placeholder.com/350x350",
     description: "A nice teacher who only knows JS",
-    skills: [
-      {
-        name: "Javascript",
-        icon: "js-image",
-      },
-      {
-        name: "Vue",
-        icon: "vue-image",
-      },
-      {
-        name: "HTML",
-        icon: "html-image",
-      }
-    ],
+    skills: ['JavaScript','Vue.js','HTML','CSS','React','Angular','Git', "GitHub",'Bootstrap','Bulma','Heroku','Docker','AWS','Google Maps'],
     role: "Teacher",
     rating: 0,
     price: 500
@@ -30,28 +17,7 @@ const teachersData = [
     name: "Vob",
     image: "http://via.placeholder.com/350x350",
     description: "A good teacher",
-    skills: [
-      {
-        name: "Javascript",
-        icon: "js-image"
-      },
-      {
-        name: "Redis",
-        icon: "redis-image",
-      },
-      {
-        name: "Vue",
-        icon: "js-image",
-      },
-      {
-        name: "CSS",
-        icon: "CSS-image",
-      },
-      {
-        name: "HTML",
-        icon: "html-image",
-      }
-    ],
+    skills: ['JavaScript','Vue.js','HTML','CSS','React','Angular','Git', "GitHub",'Bootstrap','Bulma','Heroku','Docker','AWS','Google Maps'],
     role: "Teacher",
     rating: 4,
     price: 300
@@ -60,20 +26,7 @@ const teachersData = [
     name: "Wob",
     image: "http://via.placeholder.com/350x350",
     description: "A cool teacher",
-    skills: [
-      {
-        name: "Vue.js",
-        icon: "vuejs-image"
-      },
-      {
-        name: "Postman",
-        icon: "postman-image",
-      },
-      {
-        name: "MongoDB",
-        icon: "mongodb-image",
-      }
-    ],
+    skills: ['JavaScript','Vue.js','HTML','CSS','React','Angular','Git', "GitHub",'Bootstrap','Bulma','Heroku','Docker','AWS','Google Maps'],
     rating: 5,
     role: "Teacher",
     price: 200

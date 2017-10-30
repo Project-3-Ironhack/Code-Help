@@ -16,11 +16,12 @@
 
       <div class="content">
         <div class="tags">
-          <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i].name}}</a>
+          <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
         </div>
         <p>Student's comment</p>
         <br>
-        <p v-if="result.status === 'online'">this teacher is ONLIIIINE</p>
+        <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link>
+        </p>
       </div>
     </div>
   </div>
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+// On Image: need to use object-fit to force keeping image's ratio
 
 export default {
   data(){
@@ -45,6 +47,8 @@ export default {
   },
 
 }
+
+
 </script>
 
 <style lang="css">
