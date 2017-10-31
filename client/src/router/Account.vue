@@ -3,7 +3,7 @@
     <h2>Welcome to your account</h2>
     <h3>Feel free to update your information, below</h3>
     <teacher-info/>
-    <payment/>
+    <payment v-if="role==='Student'"></payment>
     <lesson-history/>
     </div>
 </template>
@@ -16,7 +16,7 @@ import LessonHistory from '@/components/LessonHistory'
 export default {
     data() {
         return {
-
+            role: '',
         };
     },
     components: {
@@ -24,6 +24,17 @@ export default {
         Payment,
         LessonHistory,
     },
+
+    created(){
+        const userId = this.$root.user._id;
+
+        apiUsers.getTeacherById(userId).then(user => {
+            this.role = user.role;
+        })
+        .catch(err => {
+        this.error = error.response;
+        });
+    }
 }
 </script>
 

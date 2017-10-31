@@ -32,7 +32,7 @@
       @change='complete = $event.complete'
     />
     <button class='pay-with-stripe'>Add payment details</button>
-    <p v-if="okMessage">Thank you, we'll now re-direct you to your lesson</p>
+    <p v-if="okMessage">Thank you!</p>
     <!-- <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Checkout</button> -->
 
     </form><br>
@@ -79,8 +79,7 @@ export default {
             apiUsers.paymentUpdate(userId, billingDetails)
             .then(data => {
                 this.okMessage = true;
-                setTimeout(() => this.okMessage = false, 5000);
-                this.$parent.close();
+                setTimeout(() => this.$parent.close(), 1000);
 
             }).catch(err => {
                 this.error = error.response;
