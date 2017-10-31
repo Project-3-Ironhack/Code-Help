@@ -25,6 +25,7 @@
           <button class="button is-success" @click="startLesson(result._id)">start call</button>
         </div>
         <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
+        <div>{{currency}}{{ result.price }} / min</div>
       </div>
     </div>
   </div>
@@ -66,6 +67,21 @@ export default {
             });
         }
       });
+    }
+  },
+  computed: {
+    currency: function() {
+      switch (this.result.currency) {
+        case "dollar":
+          return "$";
+          break;
+        case "euro":
+          return "€";
+          break;
+        case "sterling":
+          return "£"
+          break;
+      }
     }
   }
 };

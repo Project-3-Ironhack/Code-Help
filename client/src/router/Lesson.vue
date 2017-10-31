@@ -3,7 +3,7 @@
     <h1>Let's start your lesson!</h1>
     <!-- <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a> -->
     <!-- <a href="javascript:tagoveApp.max()"></a> -->
-
+    <span @click="endLesson">End lesson</span>
     <br>
     <h2>Select a language below to use our code editor</h2>
 
@@ -32,12 +32,14 @@
 import AceEditor from '@/components/Editor'
 import { codemirror, CodeMirror } from 'vue-codemirror'
 import 'codemirror/keymap/sublime';
+import apiSessions from '@/api/sessions';
 
 export default {
 
   // start of code mirror
   data () {
     return {
+      session: '',
       code: 'const a = 10',
       editorOptions: {
         // codemirror options
@@ -76,6 +78,16 @@ export default {
       console.log('this is new code', newCode)
       this.code = newCode
     },
+    endLesson() {
+      const id = this.$route.params[0]
+      apiSessions.endSession(id).then(session => {
+        console.log("session from view:", session.data.response)
+        this.session = session.data.response;
+        console.log("this.session:", this.session._id)
+      }).then(() => {
+        this.$router.push('/lesson-summary/' + this.session._id)
+      })
+    }
   },
   computed: {
     editor() {

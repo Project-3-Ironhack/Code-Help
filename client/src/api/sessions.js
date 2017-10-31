@@ -10,11 +10,21 @@ const apiSessions = {
     return session
       .post("/session", { teacherId, studentId })
       .then(response => {
-        console.log(response)
+        console.log(response);
         return response;
       })
       .catch(err => {
         console.error(err);
+      });
+  },
+  endSession: (id) => {
+    return session.patch("/session/" + id)
+      .then(response => {
+        console.log(response);
+        return response;
+      })
+      .catch(err => {
+        console.log(err);
       });
   },
 
