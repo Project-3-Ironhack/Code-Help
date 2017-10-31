@@ -4,10 +4,11 @@ const Session = require("../models/session");
 const router = express.Router();
 
 router.post("/session", (req, res, next) => {
-  const { teacherId, rating } = req.body;
+  console.log(req.body)
+  const { teacherId } = req.body;
+  console.log("Teacher ID: ", teacherId)
   const session = new Session({
-    teacherId,
-    rating
+    teacher: teacherId,
   });
 
   session.save().then(session => {

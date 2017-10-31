@@ -22,6 +22,10 @@ const sessionSchema = new Schema({
   // max: 5,
   // comment: String,
   // },
-});
+  },
+  {
+    timestamps: true
+  }
+);
 
 module.exports = mongoose.model("Session", sessionSchema);

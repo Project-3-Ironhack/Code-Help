@@ -23,7 +23,7 @@ export default {
   },
   props: ['teacher'],
   methods: {
-    saveSession() {
+    updateSession() {
       const userId = this.$root.user._id
       apiSessions.saveSession(teacherId, rating)
     }

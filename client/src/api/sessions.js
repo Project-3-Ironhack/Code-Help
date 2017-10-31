@@ -6,14 +6,32 @@ const session = axios.create({
 });
 
 const apiSessions = {
-  saveSession: (teacherId, rating) => {
+  createSession: teacherId => {
     return session
-      .post("/savesession", { teacherId, rating })
+      .post("/session", { teacherId })
       .then(response => {
-        return response.data;
+        console.log(response)
+        return response;
       })
       .catch(err => {
         console.error(err);
       });
+  },
+
+  // WIP under this line
+
+  updateSession: (teacherId, rating, duration) => {
+    return session
+      .patch("/session", { teacherId, rating, duration })
+      .then(response => {
+        return response.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
+
+  // WIP above this line
 };
+
+export default apiSessions;
