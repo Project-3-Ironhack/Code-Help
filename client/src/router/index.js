@@ -71,7 +71,7 @@ const router = new Router({
       }
     },
     {
-      path:'/lesson-summary',
+      path:'/lesson-summary/*',
       component: LessonSummary,
       meta: {
         requiresAuth: true
