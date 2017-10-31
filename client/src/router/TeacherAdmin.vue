@@ -1,6 +1,6 @@
 <template>
   <div id="visitor-list">
-      this is the admin panel
+      Let's teach some students!
   </div>
 </template>
 
