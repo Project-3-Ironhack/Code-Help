@@ -17,8 +17,9 @@ const apiSessions = {
         console.error(err);
       });
   },
-  endSession: (id) => {
-    return session.patch("/session/" + id)
+  endSession: id => {
+    return session
+      .patch(`/session/${id}/endDate`)
       .then(response => {
         console.log(response);
         return response;
@@ -28,22 +29,18 @@ const apiSessions = {
       });
   },
 
-  // WIP under this line
-
   updateSession: (id, rating) => {
-    console.log("hi from API:", rating)
+    console.log("hi from API:", rating);
     return session
-      .patch("/session/" + id, {rating})
+      .patch(`/session/${id}`, { rating })
       .then(response => {
-        console.log(response)
+        console.log(response);
         return response.data;
       })
       .catch(err => {
         console.log(err);
       });
   }
-
-  // WIP above this line
 };
 
 export default apiSessions;

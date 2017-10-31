@@ -10,8 +10,8 @@ router.post("/session", (req, res, next) => {
     teacher: teacherId,
     student: studentId,
     startDate: startDate,
-    endDate: '',
-    rating: '',
+    endDate: "",
+    rating: ""
   });
 
   session.save().then(session => {
@@ -22,14 +22,22 @@ router.post("/session", (req, res, next) => {
   });
 });
 
-router.patch("/session/:id", (req, res, next) => {
-  const id = req.params.id
+router.patch("/session/:id/endDate", (req, res, next) => {
+  const id = req.params.id;
   const endDate = Date.now();
   const infoToUpdate = { endDate };
-  Session.findByIdAndUpdate(id, infoToUpdate, { new: true })
-  .then(response => {
-    res.json({response})
-  })
+  Session.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(response => {
+    res.json({ response });
+  });
+});
+
+router.patch("/session/:id", (req, res, next) => {
+  const id = req.params.id;
+  const rating = req.body.rating;
+  console.log("HI FROM SERVER:", rating);
+  Session.findByIdAndUpdate(id, { rating }, { new: true }).then(response => {
+    res.json({ response });
+  });
 });
 
 router.get("/sessions", (req, res, next) => {
