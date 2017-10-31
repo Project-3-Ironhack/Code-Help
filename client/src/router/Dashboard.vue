@@ -42,6 +42,7 @@ export default {
       name: '',
       status: '',
       description: '',
+      role: '',
     };
   },
   created(){
@@ -52,11 +53,12 @@ export default {
         this.user = user;
         this.name = user.name;
         this.description = user.description;
+        this.role = user.role;
     }).
     then(apiUsers.updateOnlineStatus(userId, this.status))
     .then(user => {
       console.log('we made it to here', user);
-      if(this.description !== ''){
+      if(this.description !== '' && this.role === 'Teacher'){
       console.log('empty description, i think not!')
         this.$router.push('/teach');
       }

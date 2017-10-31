@@ -22,24 +22,35 @@
         <br>
         <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
         <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
-          <button class="button is-success" @click="startLesson(result._id)">start call</button>
+          <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ result.name }}</span></button>
         </div>
         <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
       </div>
     </div>
   </div>
+
+        <b-modal :active.sync="isModalActive" has-modal-card>
+          <modal-form></modal-form>
+            <!-- <modal-form v-bind="formProps"></modal-form> -->
+        </b-modal>
+
 </div>
 </template>
 
 <script>
 import apiSessions from "@/api/sessions";
 import apiUsers from "@/api/users";
+import ModalForm from '@/components/ModalForm'
 
 export default {
+  components: {
+    ModalForm
+  },
   data() {
     return {
       userId: "",
-      session: ""
+      session: "",
+      isModalActive: false,
     };
   },
 
@@ -54,7 +65,8 @@ export default {
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
-          this.$router.push("/account");
+          this.isModalActive = true;
+          // this.$router.push("/account");
         } else {
           apiSessions
             .createSession(result, userId)

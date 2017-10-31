@@ -3,8 +3,8 @@
   <h2 v-if="getURL === '/dashboard'">Hello {{userName}}, and welcome to Code Help!</h2>
     <p v-if="getURL === '/dashboard'">Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
     <form @submit.prevent="teacherUpdate(); saveImage();">
-        <!-- DON'T SHOW THE NAME FIELD ON THE DASHBOARD PAGE -->
-        <label v-if="getURL !== '/dashboard'">Your name
+ 
+         <label v-if="getURL !== '/dashboard'">Your name
             <input type="text" required v-model="name">
         </label><br/>
 
@@ -12,16 +12,10 @@
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
-        <!-- <label><span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
-            <input type="text" required v-model="skills">
-        </label><br/> -->
-
-        <!-- trying multi-select dropdown -->
         <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
         <v-select multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
 
 
-        <!-- LIFECYCLE HOOKS QUESTION // create a new teacher, fill in info inc photo, click submit, get sent to account page, all the info is there except photo. if you do something in created and save then photo appears. after this, the photo then appears always. -->
         <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
         <br>
         <label><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
@@ -30,7 +24,7 @@
          <br>
 
         <label v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
-            <!-- NEED TO UPDATE THE MODEL IF WE WANT TO KEEP CURRENCY -->
+
                     <select v-model="currency">
                         <option value="" selected>Currency</option>
                         <option value="dollar">$ USD</option>

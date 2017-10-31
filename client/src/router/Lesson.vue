@@ -2,10 +2,8 @@
   <div>
     <h1>Let's start your lesson!</h1>
     <!-- <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a> -->
-    <!-- <a href="javascript:tagoveApp.max()"></a> -->
-
     <br>
-    <h2>Select a language below to use our code editor</h2>
+    <h3>Select a language below to use our code editor</h3>
 
     <!-- <select v-model="lang">
       <option disabled value="">Please select one</option>
