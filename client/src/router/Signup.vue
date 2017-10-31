@@ -7,7 +7,6 @@
     <input type="radio" id="teacher" value="Teacher" v-model="role">
     <label for="two">Teacher</label>
     <br>
-    <span>Role: {{ role }}</span>
       </label><br/>
       <label>Username
         <input type="text" required v-model="username">
