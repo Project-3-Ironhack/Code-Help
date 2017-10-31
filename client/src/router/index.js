@@ -64,19 +64,12 @@ const router = new Router({
       }
     },
     {
-      path:'/admin',
+      path:'/teach',
       component: TeacherAdmin,
       meta: {
         requiresAuth: true
       }
     },
-    // {
-    //   path:'/checkout',
-    //   component: Payment,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
     {
       path:'/lesson-summary/*',
       component: LessonSummary,
@@ -84,7 +77,10 @@ const router = new Router({
         requiresAuth: true
       }
     },
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 });
 
 router.beforeEach((to, from, next) => {
