@@ -21,12 +21,13 @@
         <p>Student's comment</p>
         <br>
         <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
-
-        <span @click="startLesson(result._id)">this teacher is ONLINE, start call</span>
+        <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
+          <button class="button is-success" @click="startLesson(result._id)">start call</button>
+        </div>
+        <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
       </div>
     </div>
   </div>
-
 </div>
 </template>
 
@@ -48,14 +49,15 @@ export default {
     const userId = this.$root.user._id;
   },
   methods: {
-    startLesson(teacherId, studentId) {
+    startLesson(result, teacherId, studentId) {
+
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
           this.$router.push("/account");
         } else {
           apiSessions
-            .createSession(result)
+            .createSession(result, userId)
             .then(session => {
               this.session = session.data.session;
             })
