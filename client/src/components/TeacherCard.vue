@@ -32,6 +32,7 @@
 
 <script>
 import apiSessions from "@/api/sessions";
+import apiUsers from "@/api/users";
 
 export default {
   data() {
@@ -49,14 +50,20 @@ export default {
   methods: {
     startLesson(result) {
       const userId = this.$root.user._id;
-      apiSessions
-        .createSession(result)
-        .then(session => {
-          this.session = session.data.session;
-        })
-        .then(() => {
-          this.$router.push("/lesson/" + this.session._id);
-        });
+      apiUsers.getStudentById(userId).then(user => {
+        if (!user.nameOnCard) {
+          this.$router.push("/account");
+        } else {
+          apiSessions
+            .createSession(result)
+            .then(session => {
+              this.session = session.data.session;
+            })
+            .then(() => {
+              this.$router.push("/lesson/" + this.session._id);
+            });
+        }
+      });
     }
   }
 };
