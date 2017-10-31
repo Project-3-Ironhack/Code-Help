@@ -6,9 +6,9 @@ const session = axios.create({
 });
 
 const apiSessions = {
-  createSession: teacherId => {
+  createSession: (teacherId, studentId) => {
     return session
-      .post("/session", { teacherId })
+      .post("/session", { teacherId, studentId })
       .then(response => {
         console.log(response)
         return response;
@@ -20,9 +20,9 @@ const apiSessions = {
 
   // WIP under this line
 
-  updateSession: (teacherId, rating, duration) => {
+  updateSession: (rating, duration) => {
     return session
-      .patch("/session", { teacherId, rating, duration })
+      .patch("/session", { rating, duration })
       .then(response => {
         return response.data;
       })

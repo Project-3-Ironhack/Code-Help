@@ -48,7 +48,7 @@ export default {
     const userId = this.$root.user._id;
   },
   methods: {
-    startLesson(result) {
+    startLesson(teacherId, studentId) {
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
