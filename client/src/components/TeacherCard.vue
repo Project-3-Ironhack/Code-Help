@@ -21,17 +21,19 @@
         <p>Student's comment</p>
         <br>
         <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
-
-        <span @click="startLesson(result._id)">this teacher is ONLINE, start call</span>
+        <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
+          <button class="button is-success" @click="startLesson(result._id)">start call</button>
+        </div>
+        <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
       </div>
     </div>
   </div>
-
 </div>
 </template>
 
 <script>
 import apiSessions from "@/api/sessions";
+import apiUsers from "@/api/users";
 
 export default {
   data() {
@@ -47,17 +49,23 @@ export default {
     const userId = this.$root.user._id;
   },
   methods: {
-    startLesson(result) {
-      const userId = this.$root.user._id;
+    startLesson(result, teacherId, studentId) {
 
-      apiSessions
-        .createSession(result)
-        .then(session => {
-          this.session = session.data.session;
-        })
-        .then(() => {
-          this.$router.push("/lesson/" + this.session._id);
-        });
+      const userId = this.$root.user._id;
+      apiUsers.getStudentById(userId).then(user => {
+        if (!user.nameOnCard) {
+          this.$router.push("/account");
+        } else {
+          apiSessions
+            .createSession(result, userId)
+            .then(session => {
+              this.session = session.data.session;
+            })
+            .then(() => {
+              this.$router.push("/lesson/" + this.session._id);
+            });
+        }
+      });
     }
   }
 };

@@ -51,7 +51,6 @@ const router = new Router({
     },
     {
       path: '/lesson/*',
-      name: "Lesson",
       component: Lesson,
       meta: {
         requiresAuth: true
