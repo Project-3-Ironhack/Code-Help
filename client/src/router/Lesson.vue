@@ -100,15 +100,9 @@ export default {
   //   }
   // }
 
-  beforeRouteEnter(){
-    window.tagoveWatcher.callWhenLoaded(() => {
-      tagoveApp.max()
-    })
-  },
-  beforeRouteLeave(){
-    tagoveApp.min()
-  }
 }
+
+
 </script>
 
 <style>

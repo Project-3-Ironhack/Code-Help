@@ -1,0 +1,35 @@
+ // to load tagove on entering the lesson page
+
+ beforeRouteEnter(){
+    window.tagoveWatcher.callWhenLoaded(() => {
+      tagoveApp.max()
+    })
+  },
+  beforeRouteLeave(){
+    tagoveApp.min()
+  }
+
+  // from index.html
+
+  <script>
+  var tagoveWatcher = {
+    callback: null,
+    loaded: false,
+    onLoad() {
+      tagoveWatcher.loaded = true
+      if(tagoveWatcher.callback) {
+        tagoveWatcher.callback()
+      }
+    },
+    callWhenLoaded(cb) {
+      if(tagoveWatcher.loaded) {
+        cb()
+      }
+      tagoveWatcher.callback = cb
+    }
+  }
+</script>
+
+// from the first tagove script 
+
+onload="tagoveWatcher.onLoad()" 
