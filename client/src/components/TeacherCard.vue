@@ -25,7 +25,7 @@
           <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ result.name }}</span></button>
         </div>
         <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
-        <div>{{currency}}{{ result.price }} / min</div>
+        <div><span v-if="currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else >Call <span class="capitalise">{{result.name}}</span> free of charge</span></div>
       </div>
     </div>
   </div>

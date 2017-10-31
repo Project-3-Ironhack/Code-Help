@@ -49,21 +49,22 @@ export default {
     const userId = this.$root.user._id;
     this.status = 'online';
 
-    apiUsers.getTeacherById(userId).then(user => {
-        this.user = user;
-        this.name = user.name;
-        this.description = user.description;
-        this.role = user.role;
-    }).
-    then(apiUsers.updateOnlineStatus(userId, this.status))
-    .then(user => {
-      console.log('we made it to here', user);
-      if(this.description !== '' && this.role === 'Teacher'){
-      console.log('empty description, i think not!')
-        this.$router.push('/teach');
-      }
-    })
-    .catch(err => {
+  apiUsers.updateOnlineStatus(userId, this.status)
+  .then(
+    apiUsers.getTeacherById(userId)
+      .then(user => {
+        console.log('testing the user', user)
+          this.user = user;
+          this.name = user.name;
+          this.description = user.description;
+          this.role = user.role;
+
+          if(this.description !== undefined && this.role === 'Teacher'){
+            console.log('empty description, i think not!', this.description)
+             this.$router.push('/teach');
+          }
+      })
+  ).catch(err => {
       this.error = error.response;
     });
 

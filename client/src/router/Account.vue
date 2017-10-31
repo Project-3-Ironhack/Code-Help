@@ -12,6 +12,7 @@
 import TeacherInfo from '@/components/TeacherInfo'
 import Payment from '@/components/Payment'
 import LessonHistory from '@/components/LessonHistory'
+import apiUsers from '@/api/users'
 
 export default {
     data() {
@@ -30,6 +31,7 @@ export default {
 
         apiUsers.getTeacherById(userId).then(user => {
             this.role = user.role;
+            console.log('this role is...', this.role)
         })
         .catch(err => {
         this.error = error.response;

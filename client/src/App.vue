@@ -94,6 +94,7 @@ export default {
 .main-inner {
   padding-top: 3%;
   box-sizing: border-box;
+  min-height: 800px;
 }
 
 .footer {

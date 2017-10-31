@@ -1,13 +1,9 @@
 <template>
   <div>
     <h1>Let's start your lesson!</h1>
-    <!-- <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a> -->
-    <!-- <a href="javascript:tagoveApp.max()"></a> -->
-    <span @click="endLesson">End lesson</span>
-    <br>
     <h3>Select a language below to use our code editor</h3>
 
-    <!-- <select v-model="lang">
+    <select v-model="lang">
       <option disabled value="">Please select one</option>
       <option>JavaScript</option>
       <option>HTML</option>
@@ -18,100 +14,29 @@
     <br>
 
     <AceEditor :lang="lang.toLowerCase()"></AceEditor>
-      <br> -->
-
-    <codemirror v-model="code" :options="editorOptions"></codemirror>
       <br>
 
     <textarea class="own-text-editor" rows="40" cols="90"></textarea>
-    
   </div>
 </template>
 
 <script>
 
 import AceEditor from '@/components/Editor'
-import { codemirror, CodeMirror } from 'vue-codemirror'
-import 'codemirror/keymap/sublime';
-import apiSessions from '@/api/sessions';
 
 export default {
-
-  // start of code mirror
   data () {
     return {
-      session: '',
-      code: 'const a = 10',
-      editorOptions: {
-        // codemirror options
-        tabSize: 4,
-        mode: 'text/javascript',
-        theme: 'cobalt',
-        lineNumbers: true,
-        line: true,
-
-        // lang: '',
-
-        // sublime、emacs、vim
-        keyMap: "sublime",
-        extraKeys: { "Ctrl": "autocomplete" },
-        foldGutter: true,
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-        styleSelectedText: true,
-        highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
-        // more codemirror options...
-      }
+        lang: '',
     }
-  },
-  methods: {
-    onEditorReady(editor) {
-      console.log('the editor is readied!', editor)
-    },
-    onEditorFocus(editor) {
-      console.log('the editor is focus!', editor)
-    },
-    onEditorCodeChange(newCode) {
-      console.log('this is new code', newCode)
-      this.code = newCode
-    },
-    endLesson() {
-      const id = this.$route.params[0]
-      apiSessions.endSession(id).then(session => {
-        console.log("session from view:", session.data.response)
-        this.session = session.data.response;
-        console.log("this.session:", this.session._id)
-      }).then(() => {
-        this.$router.push('/lesson-summary/' + this.session._id)
-      })
-    }
-  },
-  computed: {
-    editor() {
-      return this.$refs.myEditor.editor
-    }
-  },
-  mounted() {
-    console.log('this is current editor object', this.editor)
-    // you can use this.editor to do something...
   },
   components: {
-    codemirror, CodeMirror,
-    // AceEditor,
+    AceEditor,
   },
-  // end of code mirror
-
-//Ace Editor
-  // components: { AceEditor },
-  // data () {
-  //   return {
-  //     lang: '',
-  //   }
-  // }
-created(){
-  tagoveApp.max();
+  created(){
+    tagoveApp.max();
+  },
 }
-}
-
 
 </script>
 
