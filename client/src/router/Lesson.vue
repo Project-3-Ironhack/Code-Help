@@ -99,7 +99,9 @@ export default {
   //     lang: '',
   //   }
   // }
-
+created(){
+  tagoveApp.max();
+}
 }
 
 

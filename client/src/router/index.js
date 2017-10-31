@@ -50,7 +50,7 @@ const router = new Router({
       }
     },
     {
-      path: '/lesson',
+      path: '/lesson/*',
       name: "Lesson",
       component: Lesson,
       meta: {
