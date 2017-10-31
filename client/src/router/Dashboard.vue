@@ -30,6 +30,11 @@ export default {
     TeacherInfo,
     SearchResults
   },
+  metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Find a teacher',
+
+    },
   data() {
     return {
       users: [],

@@ -49,6 +49,7 @@ export default {
   methods: {
     startLesson(result) {
       const userId = this.$root.user._id;
+
       apiSessions
         .createSession(result)
         .then(session => {

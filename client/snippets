@@ -33,3 +33,9 @@
 // from the first tagove script 
 
 onload="tagoveWatcher.onLoad()" 
+
+
+// vue-meta example
+
+    //   { innerHTML: '{ "@context": "http://schema.org" }', type: 'application/ld+json' },
+    // <script type="application/ld+json">{ "@context": "http://schema.org" }</script> 

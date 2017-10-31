@@ -29,15 +29,16 @@
         </label><br/>
          <br>
 
-        <label v-if="$root.user.role==='Teacher'">Your price per minute
+        <label v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
             <!-- NEED TO UPDATE THE MODEL IF WE WANT TO KEEP CURRENCY -->
                     <select v-model="currency">
-                        <option value="" selected>Select your currency</option>
+                        <option value="" selected>Currency</option>
                         <option value="dollar">$ USD</option>
                         <option value="euro">€ EUR</option>
                         <option value="sterling">£ GBP</option>
                     </select>
             <input type="number" min="0" max="10" step=".01" required v-model="price">
+            per minute
         </label><br/>
 
 
@@ -66,7 +67,7 @@ export default {
             description: '',
             skills: '',
             image: '',
-            price: '',
+            price: 0,
             currency: '',
             error: null,
             user: '',

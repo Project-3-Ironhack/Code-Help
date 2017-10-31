@@ -15,6 +15,10 @@ Vue.use(VueCodeMirror)
 Vue.use(Buefy)
 Vue.component('icon', Icon)
 
+import Meta from 'vue-meta'
+Vue.use(Meta)
+
+
 Vue.config.productionTip = false;
 
 
