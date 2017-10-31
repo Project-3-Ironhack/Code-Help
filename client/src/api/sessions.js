@@ -30,10 +30,12 @@ const apiSessions = {
 
   // WIP under this line
 
-  updateSession: (rating, duration) => {
+  updateSession: (id, rating) => {
+    console.log("hi from API:", rating)
     return session
-      .patch("/session", { rating, duration })
+      .patch("/session/" + id, {rating})
       .then(response => {
+        console.log(response)
         return response.data;
       })
       .catch(err => {

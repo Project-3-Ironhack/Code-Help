@@ -2,11 +2,8 @@
   <div>
     <h1>Let's start your lesson!</h1>
     <!-- <a href="javascript:tagoveApp.max()">Click here to chat with your teacher</a> -->
-<<<<<<< HEAD
     <!-- <a href="javascript:tagoveApp.max()"></a> -->
     <span @click="endLesson">End lesson</span>
-=======
->>>>>>> ad85e4bec0986260da09ac7212fca50dd22320b5
     <br>
     <h3>Select a language below to use our code editor</h3>
 

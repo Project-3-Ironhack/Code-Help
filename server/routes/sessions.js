@@ -10,7 +10,8 @@ router.post("/session", (req, res, next) => {
     teacher: teacherId,
     student: studentId,
     startDate: startDate,
-    endDate: ''
+    endDate: '',
+    rating: '',
   });
 
   session.save().then(session => {

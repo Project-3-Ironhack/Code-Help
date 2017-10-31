@@ -3,7 +3,7 @@
     <form @submit.prevent="rating">
       <label>Rate the teacher:
         <input type="number" min="0" max="5" step="1" v-model="rating">
-        <button @submit="saveSession" type="button" name="button">Rate</button>
+        <button @click="rateLesson" type="button" name="button">Rate</button>
       </label>
       </form>
   </section>
@@ -19,13 +19,20 @@ export default {
   data() {
     return {
       rating: "",
+      session: ""
     }
   },
   props: ['teacher'],
   methods: {
-    updateSession() {
-      const userId = this.$root.user._id
-      apiSessions.saveSession(teacherId, rating)
+    rateLesson(){
+      const id = this.$route.params[0]
+      console.log("ID:", id)
+      console.log("rating:", this.rating)
+      const rating = this.rating
+      apiSessions.updateSession(id, rating).then(session => {
+        console.log(session)
+        this.session = session
+      })
     }
   }
 
