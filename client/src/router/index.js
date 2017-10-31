@@ -64,7 +64,7 @@ const router = new Router({
       }
     },
     {
-      path:'/admin',
+      path:'/teach',
       component: TeacherAdmin,
       meta: {
         requiresAuth: true

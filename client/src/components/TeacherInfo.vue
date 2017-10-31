@@ -89,7 +89,7 @@ export default {
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency)
         .then(data => {
-            this.$router.push('/account');
+            this.$router.push('/teach');
             this.okMessage = true;
             setTimeout(() => this.okMessage = false, 5000);
         }).catch(err => {

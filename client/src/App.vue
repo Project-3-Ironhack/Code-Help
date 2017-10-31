@@ -11,9 +11,9 @@
         {{userName}}'s Account
       </router-link>
 
-      <!-- <router-link class="navbar-item" to="/lesson">
-        Lesson
-      </router-link> -->
+      <router-link v-if="role==='Teacher'" class="navbar-item" to="/teach">
+        Teach
+      </router-link>
 
       <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
         Logout
@@ -49,6 +49,7 @@ export default {
   data(){
     return {
       name: '',
+      role: '',
     };
   },
   name: 'app',
@@ -64,6 +65,7 @@ export default {
       apiUsers.getTeacherById(userId)
       .then(user => {
         this.name = user.name;
+        this.role = user.role;
       });
       return this.name.charAt(0).toUpperCase()+this.name.slice(1);
     }
