@@ -23,6 +23,9 @@
         <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
 
         <span @click="startLesson(result)">this teacher is ONLINE, start call</span>
+        
+        <!-- for testing tagove open-->
+        <router-link to='/lesson'>click here</router-link>
       </div>
     </div>
   </div>
