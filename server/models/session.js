@@ -17,7 +17,12 @@ const sessionSchema = new Schema({
   endDate: Date,
   // time: Number,
   // feedback: {
-  rating: Number,
+  rating: {
+    type: Number,
+    validator(rating) {
+      return [1, 2, 3].includes(rating)
+    }
+  },
   comment: String,
   // min: 0,
   // max: 5,

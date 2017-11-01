@@ -6,27 +6,9 @@ const router = express.Router();
 // Route only displaying teachers, used in SearchBar
 
 router.get("/users", (req, res, next) => {
-  User.find({ role: "Teacher" }).then(users => {
-    const usersPromises = users.map(user => {
-      return Session.find({ teacher: user._id }).then(sessions => {
-        const avgRating = sessions.reduce((avg, session) => {
-          return avg + session.rating / sessions.length;
-        }, 0);
-        user = user.toObject();
-        user.rating = avgRating;
-        const topSessions = sessions
-          .filter(session => session.rating === 3 && session.comment !== "")
-          .sort((a, b) => {
-            return b.endDate - a.endDate;
-          });
-        user.sessions = topSessions[0];
-        return user;
-      });
-    });
-    Promise.all(usersPromises)
-      .then(users => res.json(users))
-      .catch(err => next(err));
-  });
+  User.find({ role: "Teacher" })
+    .addRatingAndComment()
+    .then(users => res.json(users))
 });
 
 // GET TEACHER INFO
