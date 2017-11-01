@@ -24,12 +24,6 @@ const userSchema = new Schema({
   postalCode: String,
   country: String,
   // cardNumber: Number,
-  sessions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Session"
-    }
-  ]
 });
 
 userSchema.plugin(passportLocalMongoose);
