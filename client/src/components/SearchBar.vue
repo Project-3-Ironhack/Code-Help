@@ -2,7 +2,7 @@
   <div class="container">
     <div class="field">
       <label class="label">
-        <h2>Let's find you a teacher!</h2>
+
         <div class="control">
           <input class="input" type="text" placeholder="ask us anything: language, teacher..." :value="value" @input="$emit('input', $event.target.value)">
         </div>

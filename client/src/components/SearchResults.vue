@@ -1,7 +1,7 @@
 <template>
   <div class="container">
   <div>
-    <h1>Start a call with one of our teachers</h1>
+    <h1>Start a call with one of our awesome teachers</h1>
     <h4>Click on a profile below to get started</h4>
   </div>
   <br>
