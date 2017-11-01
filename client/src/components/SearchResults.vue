@@ -6,7 +6,7 @@
   </div>
   <br>
       <div class="columns is-multiline is-8">
-        <teacher-card :result="result" :sessions="teacherSessions" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
+        <teacher-card :result="result" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
         <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in orderedUsers" class="column is-one-quarter"/>
       </div>
       <div >
@@ -47,7 +47,7 @@ export default {
       return new Fuse(this.teachers, options);
     },
     queryResults() {
-      return this.fuse.search(this.query);
+      return _.orderBy(this.fuse.search(this.query), ['status'], ['desc']);
     },
     }
 };
