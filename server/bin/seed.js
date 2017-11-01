@@ -136,7 +136,7 @@ function seedSessions(data) {
       startDate: Date.now() - 30,
       endDate: Date.now(),
       rating: 3,
-      comment: "Very helpful, thanks for everything!"
+      comment: "Amazing help, very efficient session!"
     },
     {
       teacher: getObjectIdFromProperty(teachers, "username", "mlande"),
@@ -144,7 +144,23 @@ function seedSessions(data) {
       startDate: Date.now() - 60,
       endDate: Date.now() - 5,
       rating: 2,
-      comment: "Helped a lot!"
+      comment: "I understood all the explanations... Great!"
+    },
+    {
+    teacher: getObjectIdFromProperty(teachers, "username", "posva"),
+    student: getObjectIdFromProperty(students, "name", "Thibaut Davoult"),
+    startDate: Date.now() - 30,
+    endDate: Date.now() - 10,
+    rating: 3,
+    comment: "Great knowledge of Vue.js. Thanks!"
+    },
+    {
+    teacher: getObjectIdFromProperty(teachers, "username", "yacinehmito"),
+    student: getObjectIdFromProperty(students, "name", "Thibaut Davoult"),
+    startDate: Date.now() - 60,
+    endDate: Date.now() - 5,
+    rating: 3,
+    comment: "Solved my issue in 5 minutes!"
     }
   ];
   return Session.create(sessionsData).then(sessions => {
