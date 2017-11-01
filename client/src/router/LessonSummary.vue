@@ -21,7 +21,13 @@
     </div>
 
 <br>
-  <social-sharing url="https://code-help.herokuapp.com" inline-template>
+  <social-sharing url="https://code-help.herokuapp.com" 
+                  title="Learn to code with experts around the world"
+                  description="I'm winning with Code Help"
+                  quote="I'm winning with Code Help"
+                  hashtags="vuejs,javascript, coder4life"
+                  twitter-user="code-help"
+                  inline-template>
   <div>
     <h4>Help us educate the next generation of coders</h4>
     <p>Share your experience on social</p>
