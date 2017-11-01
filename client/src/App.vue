@@ -61,20 +61,24 @@ export default {
   name: 'app',
   methods: {
     logout() {
+      console.log('test 1')
       api.logout(this.$root);
       this.$router.push('/');
     },
   },
   computed: {
     userName: function () {
-      const userId = this.$root.user._id;
-      this.id = userId;
-      apiUsers.getTeacherById(userId)
-      .then(user => {
-        this.name = user.name;
-        this.role = user.role;
-      });
-      return this.name.charAt(0).toUpperCase()+this.name.slice(1);
+      if(this.$root.user){
+        console.log('debugging', this.$root.user);
+        const userId = this.$root.user._id;
+        this.id = userId;
+        apiUsers.getTeacherById(userId)
+        .then(user => {
+          this.name = user.name;
+          this.role = user.role;
+        });
+        return this.name.charAt(0).toUpperCase()+this.name.slice(1);
+      }
     },
   },
   beforeUpdate: function() {

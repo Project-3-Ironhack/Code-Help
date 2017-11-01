@@ -1,15 +1,23 @@
 <template>
   <div>
   <div class="card">
-    <div class="card-image">
+
+    <div @click="viewTeacherInfo()" class="card-image hovering">
+      <!-- @click="viewTeacherInfo()" -->
       <figure class="image is-4by3">
         <img :src="result.image" alt="Placeholder image">
       </figure>
+      <div class="overlay">
+        <p class="title is-4 capitalise"><span id="teacherName">{{result.name}}</span></p>
+        <p class="overlay-description">Click to find out more</p>
+      </div>      
+
     </div>
+
     <div class="card-content">
       <div class="media-right">
         <div class="media-content">
-          <p class="title is-4 capitalise">{{result.name}}</p>
+          <!-- <p class="title is-4 capitalise">{{result.name}}</p> -->
           <p class="subtitle is-6 capitalise">{{result.rating}}</p>
         </div>
       </div>
@@ -20,19 +28,24 @@
         </div>
         <p>Student's comment</p>
         <br>
-        <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
-        <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
+          <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
           <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ result.name }}</span></button>
         </div>
         <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
-        <div><span v-if="currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else >Call <span class="capitalise">{{result.name}}</span> free of charge</span></div>
+        
+        <div><span v-if="currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
       </div>
     </div>
   </div>
-
-        <b-modal :active.sync="isModalActive" has-modal-card>
-          <modal-form></modal-form>
+      <!-- BILLING MODAL -->
+        <b-modal :active.sync="isBillingModalActive" has-modal-card>
+          <modal-billing-details-form></modal-billing-details-form>
             <!-- <modal-form v-bind="formProps"></modal-form> -->
+        </b-modal>
+        
+      <!-- TEACHER INFO MODAL -->
+        <b-modal :active.sync="isTeacherInfoModalActive" has-modal-card>
+          <modal-teacher-info :result="result"></modal-teacher-info>
         </b-modal>
 
 </div>
@@ -41,17 +54,20 @@
 <script>
 import apiSessions from "@/api/sessions";
 import apiUsers from "@/api/users";
-import ModalForm from '@/components/ModalForm'
+import ModalBillingDetailsForm from '@/components/ModalBillingDetailsForm'
+import ModalTeacherInfo from '@/components/ModalTeacherInfo'
 
 export default {
   components: {
-    ModalForm
+    ModalBillingDetailsForm,
+    ModalTeacherInfo
   },
   data() {
     return {
       userId: "",
       session: "",
-      isModalActive: false,
+      isBillingModalActive: false,
+      isTeacherInfoModalActive: false,
     };
   },
 
@@ -66,7 +82,7 @@ export default {
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
-          this.isModalActive = true;
+          this.isBillingModalActive = true;
         } else {
           apiSessions
             .createSession(result, userId)
@@ -78,7 +94,10 @@ export default {
             });
         }
       });
-    }
+    },
+    viewTeacherInfo(){
+      this.isTeacherInfoModalActive = true;
+    },
   },
   computed: {
     currency: function() {
@@ -105,5 +124,33 @@ img{
 
 .capitalise{
   text-transform: capitalize;
+}
+
+.hovering {
+  overflow: hidden;
+  position: relative;
+  color: white;
+
+}
+
+.overlay{
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  z-index: 1;
+  top: 185px;
+  padding: 15px 20px;
+  transition: 0.5s;
+  background: rgba(149,149,149,0.9);
+
+}
+
+.hovering:hover .overlay{
+  top: 40%;
+}
+
+#teacherName{
+  color: white;
 }
 </style>
