@@ -40,8 +40,10 @@ const api = {
   },
 
   logout: vm => {
+    console.log('test 2')
+    
     localStorage.removeItem("token");
-    console.log('vmuser', vm.user)
+    console.log('vmuser check', vm.user)
     console.log('changing online status', vm.user._id, 'offline')
     apiUsers.updateOnlineStatus(vm.user._id, 'offline');
 

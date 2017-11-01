@@ -61,6 +61,7 @@ export default {
   name: 'app',
   methods: {
     logout() {
+      console.log('test 1')
       api.logout(this.$root);
       this.$router.push('/');
     },
