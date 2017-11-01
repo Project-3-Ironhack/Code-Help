@@ -67,7 +67,6 @@ export default {
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
           this.isModalActive = true;
-          // this.$router.push("/account");
         } else {
           apiSessions
             .createSession(result, userId)

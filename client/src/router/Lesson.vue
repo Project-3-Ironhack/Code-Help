@@ -45,13 +45,14 @@ export default {
         console.log("session from view:", session.data.response)
         this.session = session.data.response;
         console.log("this.session:", this.session._id)
+        tagoveApp.remove();
       }).then(() => {
         this.$router.push('/lesson-summary/' + this.session._id)
       })
     }
   },
   created(){
-    tagoveApp.max();
+    tagoveApp.startChat();
   },
 }
 
