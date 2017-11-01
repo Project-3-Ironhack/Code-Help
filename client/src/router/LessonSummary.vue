@@ -1,6 +1,6 @@
 <template>
   <section class="content">
-    <h1>HOW DID YOUR LESSON GO?</h1>
+    <h1>How was your lesson?</h1>
     <div class="radios">
     <form @submit.prevent="rating">
           <input id="radio1" class="radio" type="radio" value="1" v-model="rating">
@@ -16,9 +16,10 @@
             <img class="rating-icon" src="/static/super-happy-3.svg">
           </label>
           <br />
-          <textarea v-model="comment" placeholder="Give feedback to your teacher"/>
+          <br>
+          <textarea v-model="comment" rows="6" cols="60" style="padding: 15px" placeholder="Help your fellow coders by leaving some feedback :)"/>
           <br />
-        <button @click="rateLesson" type="button" name="button">Rate</button>
+        <button @click="rateLesson" type="button" name="button">Submit feedback</button>
       </form>
     </div>
 
@@ -114,6 +115,16 @@ input:checked + img {
 
 .rating-icon {
     height: 60px;
+    filter: grayscale(100%);
+}
+
+.rating-icon:hover {
+  filter: grayscale(0%);
+}
+
+input[type="radio"]:checked + label >
+  .rating-icon {
+  filter: grayscale(0%);
 }
 
 </style>
