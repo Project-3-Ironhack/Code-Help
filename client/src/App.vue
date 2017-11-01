@@ -15,7 +15,7 @@
         {{userName}}'s Account
       </router-link>
 
-      <router-link v-show="role==='Teacher'" class="navbar-item" to="/teach">
+      <router-link v-if="role==='Teacher'" class="navbar-item" to="/teach" v-show="$root.user">
         Teach
       </router-link>
 
