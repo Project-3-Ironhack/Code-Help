@@ -3,27 +3,27 @@
     <h1>HOW DID YOUR LESSON GO?</h1>
     <div class="radios">
     <form @submit.prevent="rating">
-          <input id="radio1" type="radio" value="1" v-model="rating">
+          <input id="radio1" class="radio" type="radio" value="1" v-model="rating">
           <label for="radio1">
             <img class="rating-icon" src="/static/confused-1.svg">
           </label>
-          <input id="radio2" type="radio" value="2" v-model="rating">
+          <input id="radio2" class="radio" type="radio" value="2" v-model="rating">
           <label for="radio2">
             <img class="rating-icon" src="/static/happy-2.svg">
           </label>
-          <input id="radio3" type="radio" value="3" v-model="rating">
+          <input id="radio3" class="radio" type="radio" value="3" v-model="rating">
           <label for="radio3">
             <img class="rating-icon" src="/static/super-happy-3.svg">
           </label>
           <br />
-          <input v-model="comment" placeholder="edit me">
+          <textarea v-model="comment" placeholder="Give feedback to your teacher"/>
           <br />
         <button @click="rateLesson" type="button" name="button">Rate</button>
       </form>
     </div>
 
 <br>
-  <social-sharing url="https://code-help.herokuapp.com" 
+  <social-sharing url="https://code-help.herokuapp.com"
                   title="Learn to code with experts around the world"
                   description="I'm winning with Code Help"
                   quote="I'm winning with Code Help"
@@ -51,7 +51,7 @@
         <i class="fa fa-fw fa-twitter"></i> Twitter
       </network>
     </button>
-    
+
   </div>
 </social-sharing>
 
@@ -99,7 +99,7 @@ li {
     margin-right: 15px;
 }
 
-input {
+.radio {
  visibility:hidden;
 }
 

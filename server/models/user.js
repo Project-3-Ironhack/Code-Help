@@ -30,6 +30,8 @@ const userSchema = new Schema({
       ref: "Session"
     }
   ],
+  rating: Number,
+  comment: String,
 
   gitHubUrl: String,
   linkedInUrl: String,
