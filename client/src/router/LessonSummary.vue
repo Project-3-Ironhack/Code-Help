@@ -1,25 +1,21 @@
 <template>
   <section class="content">
-    <h1>HOW DID</h1>
+    <h1>HOW DID YOUR LESSON GO?</h1>
     <div class="radios">
     <form @submit.prevent="rating">
-      <ul>
-        <li>
           <input id="radio1" type="radio" value="1" v-model="rating">
-          <label for="radio1"><img class="rating-icon" src="/static/confused-1.svg">
+          <label for="radio1">
+            <img class="rating-icon" src="/static/confused-1.svg">
           </label>
-        </li>
-        <li>
           <input id="radio2" type="radio" value="2" v-model="rating">
-          <label for="radio2"><img class="rating-icon" src="/static/happy-2.svg">
+          <label for="radio2">
+            <img class="rating-icon" src="/static/happy-2.svg">
           </label>
-        </li>
-        <li>
           <input id="radio3" type="radio" value="3" v-model="rating">
-          <label for="radio3"><img class="rating-icon" src="/static/super-happy-3.svg">
+          <label for="radio3">
+            <img class="rating-icon" src="/static/super-happy-3.svg">
           </label>
-        </li>
-      </ul>
+          <br />
         <button @click="rateLesson" type="button" name="button">Rate</button>
       </form>
     </div>

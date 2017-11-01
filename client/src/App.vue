@@ -67,14 +67,16 @@ export default {
   },
   computed: {
     userName: function () {
-      const userId = this.$root.user._id;
-      this.id = userId;
+      if (this.$root.user) {
+      const userId = this.$root.user._id
+      this.id = userId
       apiUsers.getTeacherById(userId)
       .then(user => {
         this.name = user.name;
         this.role = user.role;
       });
       return this.name.charAt(0).toUpperCase()+this.name.slice(1);
+      }
     },
   },
   beforeUpdate: function() {
@@ -112,7 +114,7 @@ export default {
   height: 140px;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .footer-container {

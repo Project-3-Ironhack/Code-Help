@@ -10,7 +10,7 @@
       <div class="media-right">
         <div class="media-content">
           <p class="title is-4 capitalise">{{result.name}}</p>
-          <p class="subtitle is-6 capitalise">{{result.rating}}</p>
+          <p class="subtitle is-6 capitalise">{{sessions}}</p>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ export default {
     };
   },
 
-  props: ["result"],
+  props: ["result", "sessions"],
 
   created() {
     const userId = this.$root.user._id;

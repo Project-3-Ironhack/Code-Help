@@ -6,6 +6,17 @@ const session = axios.create({
 });
 
 const apiSessions = {
+  getAll: () => {
+    return session
+      .get("/sessions")
+      .then(response => {
+        return response;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
+
   createSession: (teacherId, studentId) => {
     return session
       .post("/session", { teacherId, studentId })
