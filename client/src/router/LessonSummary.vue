@@ -19,7 +19,7 @@
           <br>
           <textarea v-model="comment" rows="6" cols="60" style="padding: 15px" placeholder="Help your fellow coders by leaving some feedback :)"/>
           <br />
-        <button @click="rateLesson" type="button" name="button">Rate</button>
+        <button @click="rateLesson" type="button" name="button">Submit feedback</button>
       </form>
     </div>
 
