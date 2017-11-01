@@ -22,8 +22,8 @@ router.get('/teacher/:id', (req, res, next) => {
 router.patch('/teacher/:id', (req, res, next) => {
   console.log('and testing the name again', req.body);
 
-  const {id, name, description, skills, price, currency} = req.body;
-  const infoToUpdate = {id, name, description, skills, price, currency}
+  const {id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl} = req.body;
+  const infoToUpdate = {id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl}
 
   User.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(updatedUser => {
     res.json(updatedUser);

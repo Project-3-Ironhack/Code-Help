@@ -29,7 +29,13 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Session"
     }
-  ]
+  ],
+
+  gitHubUrl: String,
+  linkedInUrl: String,
+  personalWebsiteUrl: String,
+  twitterUrl: String,
+
 });
 
 userSchema.plugin(passportLocalMongoose);
