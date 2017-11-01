@@ -26,6 +26,19 @@ import VueLodash from 'vue-lodash'
 
 Vue.use(VueLodash, lodash)
 
+import VueStripeCheckout from 'vue-stripe-checkout';
+
+const options = {
+  key: 'pk_test_kZddkuEWh3ys5BWHKhM1fEtc',
+  image: 'https://cdn.meme.am/images/100x100/15882140.jpg',
+  locale: 'auto',
+  currency: '$',
+  billingAddress: true,
+  panelLabel: 'Subscribe {{amount}}'
+}
+ 
+Vue.use(VueStripeCheckout, options);
+
 
 Vue.config.productionTip = false;
 

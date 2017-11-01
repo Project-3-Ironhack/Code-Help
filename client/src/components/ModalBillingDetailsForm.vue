@@ -66,6 +66,17 @@ export default {
         };
     },
     methods: {
+    checkout() {
+      // this.$checkout.close() is also available.
+      this.$checkout.open({
+        name: 'Shut up and take my money!',
+        currency: 'USD',
+        amount: 99999,
+        token(token) {
+          console.log(token)
+        } 
+      });
+    },
         paymentUpdate(){
             this.error = null
             const userId = this.$root.user._id;
