@@ -17,7 +17,8 @@ const sessionSchema = new Schema({
   endDate: Date,
   // time: Number,
   // feedback: {
-  rating: Number
+  rating: Number,
+  comment: String,
   // min: 0,
   // max: 5,
   // comment: String,

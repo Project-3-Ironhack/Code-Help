@@ -40,10 +40,13 @@ const apiSessions = {
       });
   },
 
-  updateSession: (id, rating) => {
-    console.log("hi from API:", rating);
+  updateSession: (id, rating, comment) => {
+    console.log("hi from API:", rating, comment);
     return session
-      .patch(`/session/${id}`, { rating })
+      .patch(`/session/${id}`, {
+        rating,
+        comment
+      })
       .then(response => {
         console.log(response);
         return response.data;

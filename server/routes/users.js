@@ -12,7 +12,7 @@ router.get("/users", (req, res, next) => {
         const avgRating = sessions.reduce((avg, session) => {
           return avg + session.rating / sessions.length;
         }, 0);
-        user = user.toObject();
+        user = user.toObject()
         user.rating = avgRating;
         return user;
       });

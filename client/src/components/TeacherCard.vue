@@ -32,7 +32,7 @@
         </div>
         <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
 
-        <div><span v-if="currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
+        <div><span v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@ export default {
     },
     viewTeacherInfo() {
       this.isTeacherInfoModalActive = true;
-    }
+    },
   },
   computed: {
     currency: function() {

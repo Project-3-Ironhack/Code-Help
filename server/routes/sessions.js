@@ -34,8 +34,9 @@ router.patch("/session/:id/endDate", (req, res, next) => {
 router.patch("/session/:id", (req, res, next) => {
   const id = req.params.id;
   const rating = req.body.rating;
-  console.log("HI FROM SERVER:", rating);
-  Session.findByIdAndUpdate(id, { rating }, { new: true }).then(response => {
+  const comment = req.body.comment
+  console.log("HI FROM SERVER:", rating, comment);
+  Session.findByIdAndUpdate(id, { rating, comment }, { new: true }).then(response => {
     res.json({ response });
   });
 });
