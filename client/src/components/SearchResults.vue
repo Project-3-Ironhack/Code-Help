@@ -3,8 +3,6 @@
   <div>
     <h1>Start a call with one of our teachers</h1>
     <h4>Click on a profile below to get started</h4>
-
-      {{ teacherSessions }}
   </div>
   <br>
       <div class="columns is-multiline is-8">
@@ -27,7 +25,6 @@ export default {
   data() {
     return {
       teachers: [],
-      sessions: []
     };
   },
   components: {
@@ -37,9 +34,6 @@ export default {
   created() {
     apiUsers.getAll().then(teachers => {
       this.teachers = teachers;
-    });
-    apiSessions.getAll().then(sessions => {
-      this.sessions = sessions.data.sessions;
     });
   },
   computed: {
@@ -55,15 +49,6 @@ export default {
     queryResults() {
       return this.fuse.search(this.query);
     },
-    teacherSessions() {
-        return this.queryResults.forEach(teacher => {
-          console.log("teacher in loop:", teacher.name, teacher._id)
-          return this.sessions.filter(session => {
-            console.log("teacher and session in filter:", teacher._id, session.teacher)
-            return session.teacher = teacher._id
-          })
-        })
-      }
     }
 };
 </script>

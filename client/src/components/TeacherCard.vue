@@ -17,9 +17,8 @@
     <div class="card-content">
       <div class="media-right">
         <div class="media-content">
-          <!-- <p class="title is-4 capitalise">{{result.name}}</p> -->
-          <p class="subtitle is-6 capitalise">{{sessions}}</p>
-        </div>
+          <p><img class="tiny-img" :src="rating"></p>
+       </div>
       </div>
 
       <div class="content">
@@ -54,8 +53,8 @@
 <script>
 import apiSessions from "@/api/sessions";
 import apiUsers from "@/api/users";
-import ModalBillingDetailsForm from '@/components/ModalBillingDetailsForm'
-import ModalTeacherInfo from '@/components/ModalTeacherInfo'
+import ModalBillingDetailsForm from "@/components/ModalBillingDetailsForm";
+import ModalTeacherInfo from "@/components/ModalTeacherInfo";
 
 export default {
   components: {
@@ -65,9 +64,9 @@ export default {
   data() {
     return {
       userId: "",
-      session: "",
+      session: null,
       isBillingModalActive: false,
-      isTeacherInfoModalActive: false,
+      isTeacherInfoModalActive: false
     };
   },
 
@@ -78,7 +77,6 @@ export default {
   },
   methods: {
     startLesson(result, teacherId, studentId) {
-
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
         if (!user.nameOnCard) {
@@ -95,9 +93,9 @@ export default {
         }
       });
     },
-    viewTeacherInfo(){
+    viewTeacherInfo() {
       this.isTeacherInfoModalActive = true;
-    },
+    }
   },
   computed: {
     currency: function() {
@@ -109,7 +107,22 @@ export default {
           return "€";
           break;
         case "sterling":
-          return "£"
+          return "£";
+          break;
+      }
+    },
+    rating: function() {
+      const rates = Math.round(this.result.rating);
+      console.log(rates);
+      switch (rates) {
+        case 1:
+          return "/static/confused-1.svg";
+          break;
+        case 2:
+          return "/static/happy-2.svg";
+          break;
+        case 3:
+          return "/static/super-happy-3.svg";
           break;
       }
     }
@@ -151,6 +164,10 @@ img{
 .hovering:hover .overlay{
   /* controls how hight the overlay rises */
   top: 40%;
+}
+
+.tiny-img {
+  height: 20px
 }
 
 #teacherName{

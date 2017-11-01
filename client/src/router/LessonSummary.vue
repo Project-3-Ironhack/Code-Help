@@ -16,6 +16,8 @@
             <img class="rating-icon" src="/static/super-happy-3.svg">
           </label>
           <br />
+          <input v-model="comment" placeholder="edit me">
+          <br />
         <button @click="rateLesson" type="button" name="button">Rate</button>
       </form>
     </div>
@@ -66,17 +68,17 @@ export default {
   data() {
     return {
       rating: "",
-      session: ""
+      session: "",
+      comment: "",
     }
   },
   props: ['teacher'],
   methods: {
     rateLesson(){
       const id = this.$route.params[0]
-      console.log("ID:", id)
-      console.log("rating:", this.rating)
       const rating = this.rating
-      apiSessions.updateSession(id, rating).then(session => {
+      const comment = this.comment
+      apiSessions.updateSession(id, rating, comment).then(session => {
         console.log(session)
         this.session = session
       })
