@@ -24,6 +24,21 @@ const userSchema = new Schema({
   postalCode: String,
   country: String,
   // cardNumber: Number,
+<<<<<<< HEAD
+  sessions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Session"
+    }
+  ],
+
+  gitHubUrl: String,
+  linkedInUrl: String,
+  personalWebsiteUrl: String,
+  twitterUrl: String,
+
+=======
+>>>>>>> db26ef2b5a88d04a0264107a60bc390a30f191bb
 });
 
 userSchema.plugin(passportLocalMongoose);
