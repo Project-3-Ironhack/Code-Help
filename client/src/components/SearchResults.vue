@@ -6,8 +6,8 @@
   </div>
   <br>
       <div class="columns is-multiline is-8">
-        <teacher-card :result="result" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
-        <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in teachers" class="column is-one-quarter"/>
+        <teacher-card :result="result" :sessions="teacherSessions" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
+        <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in orderedUsers" class="column is-one-quarter"/>
       </div>
       <div >
 
@@ -18,6 +18,8 @@
 <script>
 import TeacherCard from "@/components/TeacherCard";
 import apiUsers from "@/api/users";
+import apiSessions from "@/api/sessions";
+import _ from 'lodash'
 
 export default {
   data() {
@@ -35,6 +37,9 @@ export default {
     });
   },
   computed: {
+    orderedUsers: function () {
+      return _.orderBy(this.teachers, ['status'], ["desc"])
+    },
     fuse() {
       var options = {
         keys: ["name", "skills"]

@@ -17,8 +17,8 @@
     <div class="card-content">
       <div class="media-right">
         <div class="media-content">
-          <p class="title is-4 capitalise">{{result.name}} <img class="tiny-img" :src="rating"></p>
-        </div>
+          <p><img class="tiny-img" :src="rating"></p>
+       </div>
       </div>
 
       <div class="content">
@@ -152,7 +152,9 @@ img{
 
   position: absolute;
   z-index: 1;
-  top: 185px;
+  /* controls how high the overlay is before hover -- set to % rather than pixels to deal with different screen sizes */
+  top: 75%;
+  /* controls the padding on the teacher's name in the overlay */
   padding: 15px 20px;
   transition: 0.5s;
   background: rgba(149,149,149,0.9);
@@ -160,6 +162,7 @@ img{
 }
 
 .hovering:hover .overlay{
+  /* controls how hight the overlay rises */
   top: 40%;
 }
 
