@@ -27,10 +27,10 @@
         </div>
         <p>Student's comment</p>
         <br>
-          <div v-if="result.status === 'online'"><span class="capitalise">{{ result.name }} is online</span>
-          <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ result.name }}</span></button>
+          <div v-if="result.status === 'online'">
+            <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ firstName }}</span></button>
         </div>
-        <div class="tag is-medium" v-else><span class="capitalise">{{ result.name }} is offline</span></div>
+        <div class="tag is-medium" v-else><span class="capitalise">{{ firstName }} is offline</span></div>
 
         <div><span v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
       </div>
@@ -128,6 +128,9 @@ export default {
           return "/static/super-happy-3.svg";
           break;
       }
+    },
+    firstName: function() {
+      return this.result.name.split(" ")[0]
     }
   }
 };
@@ -160,7 +163,7 @@ img{
   /* controls the padding on the teacher's name in the overlay */
   padding: 15px 20px;
   transition: 0.5s;
-  background: rgba(149,149,149,0.9);
+  background: rgba(50, 115, 220, 0.65);
 
 }
 

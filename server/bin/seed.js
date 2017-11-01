@@ -15,6 +15,7 @@ const teachersData = [
     currency: 'dollar',
     comment: "Super helpful",
     gitHubUrl: "https://github.com/yacinehmito",
+    status: 'online'
   },
   {
     name: "Maxence Bouret",
@@ -27,6 +28,7 @@ const teachersData = [
     currency: 'euro',
     comment: "Great session with Maxence!",
     gitHubUrl: "https://github.com/mc100s",
+    status: 'online'
   },
   {
     name: "Eduardo San Martin",
@@ -39,6 +41,7 @@ const teachersData = [
     currency: 'euro',
     comment: "Eduardo was awesome during the session.",
     gitHubUrl: "https://github.com/posva",
+    status: 'offline'
   }
 ];
 
