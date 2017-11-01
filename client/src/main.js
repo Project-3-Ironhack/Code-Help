@@ -35,3 +35,8 @@ new Vue({
     api.checkUser(this.$root);
   }
 });
+
+// router.beforeEach((to, from, next) => {
+//   console.log("testing the router")
+//   next();
+// })

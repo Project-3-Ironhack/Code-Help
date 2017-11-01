@@ -3,19 +3,23 @@
   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
 
-      <router-link class="navbar-item" to="/">
+      <router-link v-if="page !== '/lesson/'" class="navbar-item" to="/">
         Code Help
       </router-link>
 
-      <router-link class="navbar-item account" v-if="$root.user" to="/account">
+      <p v-if="page == '/lesson/'" class="navbar-item" to="">
+        Code Help
+      </p>
+
+      <router-link v-if="page !== '/lesson/'" class="navbar-item account" v-show="$root.user" to="/account">
         {{userName}}'s Account
       </router-link>
 
-      <router-link v-if="role==='Teacher'" class="navbar-item" to="/teach">
+      <router-link v-show="role==='Teacher'" class="navbar-item" to="/teach">
         Teach
       </router-link>
 
-      <a class="navbar-item" v-if="$root.user" @click.prevent="logout" href="#">
+      <a v-if="page !== '/lesson/'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
         Logout
       </a>
 
@@ -50,6 +54,8 @@ export default {
     return {
       name: '',
       role: '',
+      id: '',
+      page: '',
     };
   },
   name: 'app',
@@ -62,13 +68,18 @@ export default {
   computed: {
     userName: function () {
       const userId = this.$root.user._id;
+      this.id = userId;
       apiUsers.getTeacherById(userId)
       .then(user => {
         this.name = user.name;
         this.role = user.role;
       });
       return this.name.charAt(0).toUpperCase()+this.name.slice(1);
-    }
+    },
+  },
+  beforeUpdate: function() {
+    console.log("App.vue beforeUpdate")
+    this.page = this.$route.path.split('',8).join('');
   },
 }
 </script>
