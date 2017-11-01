@@ -12,6 +12,16 @@
             <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
+        <label>Where you can be found online (optional)
+            <ul>
+                <li><icon name="github"></icon><input type="text" required v-model="gitHubUrl" placeholder="GitHub"></li>
+                <li><icon name="linkedin"></icon><input type="text" required v-model="linkedInUrl"placeholder="LinkedIn" ></li>
+                <li><icon name="home"></icon><input type="text" required v-model="personalWebsiteUrl" placeholder="Your personal website or blog"></li>
+                <li><icon name="twitter"></icon><input type="text" required v-model="twitterUrl" placeholder="Twitter"></li>
+            </ul>
+
+        </label><br/>
+
         <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
         <v-select multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
 
@@ -66,6 +76,10 @@ export default {
             error: null,
             user: '',
             okMessage: false,
+            gitHubUrl: '',
+            linkedInUrl: '',
+            personalWebsiteUrl: '',
+            twitterUrl: '',
         };
     },
     computed: {
@@ -81,7 +95,7 @@ export default {
 
         this.error = null
         const userId = this.$root.user._id;
-        apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency)
+        apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency, this.gitHubUrl, this.linkedInUrl, this.personalWebsiteUrl, this.twitterUrl)
         .then(data => {
             this.$router.push('/teach');
             this.okMessage = true;
@@ -118,6 +132,10 @@ export default {
             this.currency = user.currency;
             this.skills = user.skills;
             this.image = user.image;
+            this.gitHubUrl = user.gitHubUrl;
+            this.linkedInUrl = user.linkedInUrl;
+            this.personalWebsiteUrl = user.personalWebsiteUrl;
+            this.twitterUrl = user.twitterUrl;
         }
         // need to set student price to something, as otherwise need to create a new function without price as a parameter
         if(this.user.role === 'Student'){
@@ -135,8 +153,11 @@ label {
     /* display:block; */
 }
 
-/* textarea {
-    display:block;
-} */
+li {
+    list-style-type: none;
+}
+li > input {
+    margin-left: 10px;
+}
 
 </style>

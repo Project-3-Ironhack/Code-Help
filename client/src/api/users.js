@@ -23,10 +23,10 @@ const apiUsers = {
     });
   },
 
-  teacherUpdate: (id, name, description, skills, price, currency) => {
+  teacherUpdate: (id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl) => {
     console.log('name testing again,', name, 'desc', description, 'skills', skills, 'price',price, 'currency', currency)
     return users.patch('/teacher/:id', {
-    id, name, description, skills, price, currency
+    id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl
   }).then(response => {
     return response.data;
   }).catch(err => {
