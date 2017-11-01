@@ -42,6 +42,19 @@ const teachersData = [
     comment: "Eduardo was awesome during the session.",
     gitHubUrl: "https://github.com/posva",
     status: 'offline'
+  },
+  {
+    name: "Michael Lande",
+    image: "/static/michael.jpeg",
+    description: "Cool TA",
+    skills: ['HTML','CSS', 'Bootstrap','Bulma', 'Vue.js'],
+    rating: 3,
+    role: "Teacher",
+    price: 8,
+    currency: 'dollar',
+    comment: "Michael is an excellent TA, Ironhack is lucky to have him!",
+    gitHubUrl: "https://github.com/mlande",
+    status: 'offline'
   }
 ];
 

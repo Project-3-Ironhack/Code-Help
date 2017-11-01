@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-    <h1>Welcome to your Dashboard, <span id="capitalise">{{ userName }}</span>!</h1>
+    <h1>Hi <span id="capitalise">{{ userName }}</span>, let's find you a teacher!</h1>
 
     <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
     <teacher-info v-if="$root.user.role==='Teacher' && ( !user.description)"></teacher-info>
@@ -74,7 +74,7 @@ export default {
     //   console.log('we made it to here', user);
     // }).catch(err => {
     //     this.error = error.response;
-    // });  
+    // });
   },
   computed: {
     userName: function() {

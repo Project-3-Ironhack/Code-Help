@@ -1,17 +1,15 @@
 <template>
-  <div class="container">
+  <div class="container is-fluid">
   <div>
-    <h1>Start a call with one of our teachers</h1>
+    <h1>Start a call with one of our awesome teachers</h1>
     <h4>Click on a profile below to get started</h4>
   </div>
-  <br>
+  <br><div class="container">
       <div class="columns is-multiline is-8">
         <teacher-card :result="result" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
         <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in orderedUsers" class="column is-one-quarter"/>
       </div>
-      <div >
-
-      </div>
+    </div>
   </div>
 </template>
 

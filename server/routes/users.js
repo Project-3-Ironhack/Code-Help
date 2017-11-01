@@ -12,8 +12,14 @@ router.get("/users", (req, res, next) => {
         const avgRating = sessions.reduce((avg, session) => {
           return avg + session.rating / sessions.length;
         }, 0);
-        user = user.toObject()
+        user = user.toObject();
         user.rating = avgRating;
+        const topSessions = sessions
+          .filter(session => session.rating === 3 && session.comment !== "")
+          .sort((a, b) => {
+            return b.endDate - a.endDate;
+          });
+        user.sessions = topSessions[0];
         return user;
       });
     });
@@ -35,8 +41,30 @@ router.get("/teacher/:id", (req, res, next) => {
 router.patch("/teacher/:id", (req, res, next) => {
   console.log("and testing the name again", req.body);
 
-  const {id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl} = req.body;
-  const infoToUpdate = {id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl}
+  const {
+    id,
+    name,
+    description,
+    skills,
+    price,
+    currency,
+    gitHubUrl,
+    linkedInUrl,
+    personalWebsiteUrl,
+    twitterUrl
+  } = req.body;
+  const infoToUpdate = {
+    id,
+    name,
+    description,
+    skills,
+    price,
+    currency,
+    gitHubUrl,
+    linkedInUrl,
+    personalWebsiteUrl,
+    twitterUrl
+  };
 
   User.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(updatedUser => {
     res.json(updatedUser);
