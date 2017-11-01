@@ -16,14 +16,14 @@
             <img class="rating-icon" src="/static/super-happy-3.svg">
           </label>
           <br />
-          <input v-model="comment" placeholder="edit me">
+          <input type="text" v-model="comment" placeholder="edit me">
           <br />
         <button @click="rateLesson" type="button" name="button">Rate</button>
       </form>
     </div>
 
 <br>
-  <social-sharing url="https://code-help.herokuapp.com" 
+  <social-sharing url="https://code-help.herokuapp.com"
                   title="Learn to code with experts around the world"
                   description="I'm winning with Code Help"
                   quote="I'm winning with Code Help"
@@ -51,7 +51,7 @@
         <i class="fa fa-fw fa-twitter"></i> Twitter
       </network>
     </button>
-    
+
   </div>
 </social-sharing>
 
