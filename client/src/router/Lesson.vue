@@ -2,7 +2,7 @@
   <div>
     <h1>Let's start your lesson!</h1>
 
-    <button @click="endLesson">End lesson</button>
+    <p>And when you're done, just click here to end your lesson <span style="color: rgb(50, 115, 220) "> => </span> <button @click="endLesson">End lesson</button></p>
 
     <!-- <h3>Select a language below to use our code editor</h3>
 
