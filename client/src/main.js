@@ -18,6 +18,9 @@ Vue.component('icon', Icon)
 import Meta from 'vue-meta'
 Vue.use(Meta)
 
+var SocialSharing = require('vue-social-sharing');
+Vue.use(SocialSharing);
+
 
 Vue.config.productionTip = false;
 

@@ -19,6 +19,34 @@
         <button @click="rateLesson" type="button" name="button">Rate</button>
       </form>
     </div>
+
+<br>
+  <social-sharing url="https://code-help.herokuapp.com" inline-template>
+  <div>
+    <h4>Help us educate the next generation of coders</h4>
+    <p>Share your experience on social</p>
+
+    <button>
+        <network network="facebook">
+          <i class="fa fa-fw fa-facebook"></i> Facebook
+        </network>
+    </button>
+
+    <button>
+      <network network="linkedin">
+        <i class="fa fa-fw fa-linkedin"></i> LinkedIn
+      </network>
+    </button>
+
+    <button>
+      <network network="twitter">
+        <i class="fa fa-fw fa-twitter"></i> Twitter
+      </network>
+    </button>
+    
+  </div>
+</social-sharing>
+
   </section>
 </template>
 

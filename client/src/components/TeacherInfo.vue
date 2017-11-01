@@ -97,10 +97,12 @@ export default {
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency, this.gitHubUrl, this.linkedInUrl, this.personalWebsiteUrl, this.twitterUrl)
         .then(data => {
-            this.$router.push('/teach');
             this.okMessage = true;
-            setTimeout(() => this.okMessage = false, 5000);
-        }).catch(err => {
+            setTimeout(() => this.okMessage = false, 2000);
+        })
+        .then(() => { setTimeout(()=>this.$router.push('/teach'), 1500)
+        })
+        .catch(err => {
             this.error = error.response;
         })
     },
