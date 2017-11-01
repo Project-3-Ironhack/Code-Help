@@ -25,6 +25,7 @@
     "vue-router": "^3.0.1",
     "vue-select": "github:sagalbot/vue-select",
     "vue-social-sharing": "^2.2.10",
+    "vue-stripe-checkout": "0.0.4",
     "vue-stripe-elements": "^0.2.3"
   },
   "devDependencies": {
