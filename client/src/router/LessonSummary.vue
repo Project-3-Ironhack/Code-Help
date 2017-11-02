@@ -25,43 +25,16 @@
     </div>
 
 <br>
-  <social-sharing url="https://code-help.herokuapp.com"
-                  title="Learn to code with experts around the world"
-                  description="I'm winning with Code Help"
-                  quote="I'm winning with Code Help"
-                  hashtags="vuejs,javascript, coder4life"
-                  twitter-user="code-help"
-                  inline-template>
-  <div>
-    <h4>Help us educate the next generation of coders</h4>
-    <p>Share your experience with the world:</p>
-
-    <button class="button is-info social-button">
-        <network network="facebook">
-          <icon class="social-icon" name="facebook"></icon>
-        </network>
-    </button>
-
-    <button class="button is-info social-button">
-      <network network="linkedin">
-        <icon class="social-icon" name="linkedin"></icon>
-      </network>
-    </button>
-
-    <button class="button is-info social-button">
-      <network network="twitter">
-        <icon class="social-icon" name="twitter"></icon>
-      </network>
-    </button>
-
-  </div>
-</social-sharing>
+  <b-modal :active.sync="isSocialSharingModalActive" @close="close" has-modal-card>
+    <social-sharing/>
+  </b-modal>
 
   </section>
 </template>
 
 <script>
 import apiSessions from "@/api/sessions";
+import SocialSharing from "@/components/SocialSharing";
 
 export default {
   data() {
@@ -69,8 +42,12 @@ export default {
       rating: "",
       session: "",
       comment: "",
-      isActive: false
+      isActive: false,
+      isSocialSharingModalActive: false,
     };
+  },
+  components: {
+    SocialSharing,
   },
   props: ["teacher"],
   methods: {
@@ -90,7 +67,11 @@ export default {
         position: "is-top",
         type: "is-success",
         container: "section"
-      });
+      })
+      setTimeout(() => {
+        (this.isSocialSharingModalActive = !this.isSocialSharingModalActive)
+      },
+        1000)
     },
     danger() {
       this.$toast.open({
@@ -99,6 +80,10 @@ export default {
         position: "is-top",
         type: "is-danger"
       });
+    },
+    close() {
+      console.log("closing from parent")
+      this.$router.push('/')
     }
   }
 };
@@ -146,14 +131,6 @@ input[type="radio"]:checked + label >
   .rating-icon {
   filter: grayscale(0%);
 }
-.social-icon {
-  margin:3px;
-}
-
-.social-button {
-  padding: 10px;
-}
-
 
 
 </style>
