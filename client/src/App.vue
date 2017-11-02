@@ -3,15 +3,15 @@
   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
 
-      <router-link v-if="page !== '/lesson/'" class="navbar-item" to="/">
+      <router-link v-if="page !== '/lesson'" class="navbar-item" to="/">
         Code Help
       </router-link>
 
-      <p v-if="page == '/lesson/'" class="navbar-item" to="">
+      <p v-if="page == '/lesson'" class="navbar-item" to="">
         Code Help
       </p>
 
-      <router-link v-if="page !== '/lesson/'" class="navbar-item account" v-show="$root.user" to="/account">
+      <router-link v-if="page !== '/lesson'" class="navbar-item account" v-show="$root.user" to="/account">
         {{userName}}'s Account
       </router-link>
 
@@ -22,7 +22,7 @@
   </div>
 
       <div class="navbar-brand navbar-end">
-        <a v-if="page !== '/lesson/'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
+        <a v-if="page !== '/lesson'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
          Logout
         </a>
       </div>
@@ -87,7 +87,7 @@ export default {
   },
   beforeUpdate: function() {
     console.log("App.vue beforeUpdate")
-    this.page = this.$route.path.split('',8).join('');
+    this.page = this.$route.path.split('',7).join('');
   },
 }
 </script>

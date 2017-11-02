@@ -9,7 +9,7 @@
         </label><br/>
 
         <label>Introduce yourself
-            <textarea rows="6" cols="30" required v-model="description" placeholder="Tell us about yourself..."></textarea>
+            <textarea v-bind:required="$root.user.role==='Teacher'" rows="6" cols="30" v-model="description" placeholder="Tell us about yourself..."></textarea>
         </label><br/>
 
         <label>Where you can be found online (optional)
@@ -23,13 +23,13 @@
         </label><br/>
 
         <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
-        <v-select multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
+        <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
 
 
         <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
         <br>
         <label><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
-            <input type="file" name="image" :required="!user.image" @change="image = $event.target.files[0]">
+            <input type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]">
         </label><br/>
          <br>
 
@@ -141,6 +141,8 @@ export default {
             linkedInUrl: '',
             personalWebsiteUrl: '',
             twitterUrl: '',
+
+            role: this.$root.user.role,
         };
     },
     computed: {
@@ -161,7 +163,11 @@ export default {
             this.okMessage = true;
             setTimeout(() => this.okMessage = false, 2000);
         })
-        .then(() => { setTimeout(()=>this.$router.push('/teach'), 1500)
+        .then(() => {if(this.role==='Teacher') {
+            setTimeout(()=>this.$router.push('/teach'), 1500);
+            } else {
+            setTimeout(()=>this.$router.push('/dashboard'), 1500);
+            }
         })
         .catch(err => {
             this.error = error.response;
@@ -210,6 +216,22 @@ export default {
 }
 </script>
 
+<style>
+.vue-select-form {
+    width: 35%;
+    min-width: 380px;
+}
+
+.vue-select-form > div {
+    width: 100%;
+}
+
+  .v-select li {
+    margin: -4px 0;
+  }
+</style>
+
+
 <style scoped>
 label {
     vertical-align: top;
@@ -222,5 +244,4 @@ li {
 li > input {
     margin-left: 10px;
 }
-
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="visitor-list">
-      Let's teach some students!
+      Let's teach some students! Log in to Tagove to begin
   </div>
 </template>
 
