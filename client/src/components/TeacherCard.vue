@@ -1,7 +1,6 @@
 <template>
   <div>
   <div class="card">
-
     <div @click="viewTeacherInfo()" class="card-image hovering">
       <!-- @click="viewTeacherInfo()" -->
       <div class="image is-4by3" style="height: 200px">
@@ -11,28 +10,22 @@
         <p class="title is-4 capitalise"><span id="teacherName">{{result.name}}</span></p>
         <p class="overlay-description">Click to find out more</p>
       </div>
-
     </div>
-
     <div class="card-content">
-      <div class="media-right">
-        <div class="media-content">
-          <p><img class="tiny-img" :src="rating"></p>
-       </div>
-      </div>
-
       <div class="content">
         <div class="tags">
           <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
         </div>
-        <p v-if="result.topSession"><em>"{{result.topSession.comment}}"</em></p>
-        <br>
-          <div v-if="result.status === 'online'">
-            <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ firstName }}</span></button>
+        <div class="content feedbacks">
+          <img class="tiny-img" :src="rating">
+          <p v-if="result.topSession"><em>"{{result.topSession.comment}}"</em></p>
         </div>
-        <div class="tag is-medium" v-else><span class="capitalise">{{ firstName }} is offline</span></div>
+          <div v-if="result.status === 'online'">
+            <p class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ firstName }}</span></p>
+          </div>
+          <div class="tag is-medium" v-else><span class="capitalise">{{ firstName }} is offline</span></div>
 
-        <div><span v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
+        <div class="content is-small"><span class="is-small" v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
       </div>
     </div>
   </div>
@@ -150,6 +143,10 @@ img{
   position: relative;
   color: white;
 
+}
+
+.feedbacks {
+  min-height: 75px;
 }
 
 .overlay{
