@@ -18,14 +18,14 @@
       <router-link v-if="role==='Teacher'" class="navbar-item" to="/teach" v-show="$root.user">
         Teach
       </router-link>
-
   </div>
-
-      <div class="navbar-brand navbar-end">
-        <a v-if="page !== '/lesson'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
-         Logout
-        </a>
-      </div>
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <p class="navbar-item" v-if="page !== '/lesson'" v-show="$root.user" @click.prevent="logout" href="#">
+    Logout
+      </p>
+    </div>
+  </div>
 
 
 

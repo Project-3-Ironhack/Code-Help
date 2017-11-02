@@ -31,7 +31,7 @@
 
     <div class="column is-one-third">
       <icon name="graduation-cap" scale="3"></icon>
-      <h4>Learn by doing and asking question, instead of copy-pasting random snippets online</h4>
+      <h4>Learn by doing and asking questions, instead of copy-pasting random snippets online</h4>
     </div>
   </div>
   </div>
@@ -63,8 +63,8 @@
           </div>
           <div class="column is-one-third">
             <div>
-                <img class="img" src="/static/michael.jpeg">
-              <h4 class="separator subtitle"><icon name="child"></icon><b> Student:</b> René</h4>
+                <img class="img" src="/static/fred.png">
+              <h4 class="separator subtitle"><icon name="child"></icon><b> Student:</b> Fred</h4>
               <p>Code Help is a lifesaver!</p>
             </div>
           </div>
