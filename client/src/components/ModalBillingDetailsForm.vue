@@ -29,14 +29,14 @@ export default {
   created(){
     const userId = this.$root.user._id;
 
-      // this.$checkout.close() is also available.
-    this.$checkout.open({
+    setTimeout(()=>{
+
+ this.$checkout.open({
         name: 'Add your payment whoop details',
         currency: 'USD',
         amount: 99999,
         token(token) {
           console.log('this is the token',token);
-          this.token = token;
 
           apiUsers.paymentUpdate(userId, token)
             .then(data => {
@@ -46,8 +46,15 @@ export default {
             }).catch(err => {
                 this.error = error.response;
             })
+
+            this.$checkout.close();
         } 
       });
+
+    }, 2000);
+
+      // this.$checkout.close() is also available.
+   
   },
 }
 </script>

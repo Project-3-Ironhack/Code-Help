@@ -6,23 +6,9 @@
 
       <button type="button" class="button is-danger" @click="endLesson">End lesson</button></h1>
 
-    <!-- <h3>Select a language below to use our code editor</h3>
-
-    <select v-model="lang">
-      <option disabled value="">Please select one</option>
-      <option>JavaScript</option>
-      <option>HTML</option>
-      <option>CSS</option>
-    </select>
-    <span>Selected: {{ lang }}</span>
-    <br>
-    <br>
-
-    <AceEditor :lang="lang.toLowerCase()"></AceEditor>
-      <br> -->
 <br>
 <br>
-    <textarea class="own-text-editor" rows="20" cols="60"></textarea>
+    <textarea class="own-text-editor" rows="20" cols="80"></textarea>
   </div>
 </template>
 
@@ -82,7 +68,7 @@ export default {
 <style>
 .own-text-editor{
     background: url(http://i.imgur.com/2cOaJ.png);
-    background-size: 8.77%;
+    background-size: 6.75%;
     background-attachment: local;
     background-repeat: no-repeat;
     background-position-y: 0px;
@@ -98,6 +84,9 @@ export default {
 
     outline:0px !important;
     -webkit-appearance:none;
+
+    float: left;
+    margin-left: 80px;
 }
 
 .capitalise{
