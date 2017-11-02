@@ -13,20 +13,24 @@
     </div>
     <div class="card-content">
       <div class="content">
-        <div class="tags">
-          <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
-        </div>
+        <b-taglist>
+          <b-tag  class="tag is-rounded" type="is-primary" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i]}}</b-tag>
+        </b-taglist>
         <div class="content feedbacks">
+          <hr class="card-separator">
+          <p class="content is-size-7">Student feedback:</p>
           <img class="tiny-img" :src="rating">
           <p v-if="result.topSession"><em>"{{result.topSession.comment}}"</em></p>
         </div>
+        <div class="card-actions">
           <div v-if="result.status === 'online'">
             <p class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ firstName }}</span></p>
           </div>
-          <div class="tag is-medium" v-else><span class="capitalise">{{ firstName }} is offline</span></div>
+          <div class="button is-static" v-else><span class="capitalise">{{ firstName }} is offline</span></div>
 
         <div class="content is-small"><span class="is-small" v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
       </div>
+    </div>
     </div>
   </div>
       <!-- BILLING MODAL -->
@@ -145,8 +149,18 @@ img{
 
 }
 
+
 .feedbacks {
-  min-height: 75px;
+  min-height: 122px;
+}
+
+.card-separator {
+  width: 80%;
+  height: 1px;
+  margin: auto;
+  margin-bottom: 16px;
+  background-color: #EDEDED;
+
 }
 
 .overlay{
