@@ -3,7 +3,7 @@
   <h2 v-if="getURL === '/dashboard'">Hello {{userName}}, and welcome to Code Help!</h2>
     <p v-if="getURL === '/dashboard'">Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
     <form @submit.prevent="teacherUpdate(); saveImage();">
- 
+
          <label v-if="getURL !== '/dashboard'">Your name
             <input type="text" required v-model="name">
         </label><br/>
@@ -65,7 +65,68 @@ export default {
     data(){
         return{
             // start multi select
-            options: ['JavaScript','Vue.js','HTML','CSS','React','Angular','Git', "GitHub",'Bootstrap','Bulma','Heroku','Docker','AWS','Google Maps'],
+            options: [
+              'Amazon Web Services',
+              'Android',
+              'Angular.js',
+              'Apache',
+              'Babel',
+              'Backbone.js',
+              'Bootstrap',
+              'Bower',
+              'C',
+              'C++',
+              'Coffeescript',
+              'C#',
+              'CSS',
+              'd3.js',
+              'Django',
+              'Docker',
+              'Doctrine',
+              '.NET',
+              'Drupal',
+              'Ember JS',
+              'Express',
+              'Git',
+              'Github',
+              'Go',
+              'Grunt',
+              'Gulp',
+              'Handlebars',
+              'Heroku',
+              'HTML5',
+              'Jasmine',
+              'Java',
+              'Javascript',
+              'JQuery',
+              'Laravel',
+              'LESS',
+              'Mocha',
+              'MongoDB',
+              'Mysql',
+              'NGINX',
+              'Node.js',
+              'npm',
+              'PHP',
+              'PostgreSQL',
+              'Python',
+              'Rails',
+              'React',
+              'Redis',
+              'Ruby',
+              'SASS',
+              'Swift',
+              'Symfony',
+              'Travis',
+              'Typescript',
+              'Ubuntu',
+              'Vagrant',
+              'Vim',
+              'Vue.js',
+              'Webpack',
+              'Wordpress',
+              'Yarn',
+            ],
             //end multi select
             name: '',
             description: '',
@@ -122,11 +183,11 @@ export default {
     },
   },
   created(){
-      
+
     const userId = this.$root.user._id;
     apiUsers.getTeacherById(userId).then(user => {
         // update name to the name from the DB, so that when we patch, name isn't set to an empty string
-        this.name = user.name; 
+        this.name = user.name;
         this.user = user;
         if(this.$route.path === '/account'){
             this.description = user.description;
