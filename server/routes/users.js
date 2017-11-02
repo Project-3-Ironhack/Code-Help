@@ -63,21 +63,14 @@ router.get("/student/:id", (req, res, next) => {
 
 // UPDATE STUDENT PAYMENT INFO
 router.patch("/student/:id", (req, res, next) => {
+  console.log('and it goes to teh serverer')
   const id = req.body.id;
   const {
-    nameOnCard,
-    billingAddress,
-    city,
-    postalCode,
-    country
-  } = req.body.billingDetails;
+    token
+  } = req.body.token;
   const infoToUpdate = {
     id,
-    nameOnCard,
-    billingAddress,
-    city,
-    postalCode,
-    country
+    token
   };
 
   User.findByIdAndUpdate(id, infoToUpdate, { new: true }).then(updatedUser => {

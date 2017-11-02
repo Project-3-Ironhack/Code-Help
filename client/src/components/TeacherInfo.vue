@@ -23,7 +23,7 @@
         </label><br/>
 
         <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
-        <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select>
+        <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select><br>
 
 
         <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
@@ -33,17 +33,18 @@
         </label><br/>
          <br>
 
-        <label v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
+        <label required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
 
-                    <select v-model="currency">
+                    <select required v-model="currency">
                         <option value="" selected>Currency</option>
                         <option value="dollar">$ USD</option>
                         <option value="euro">€ EUR</option>
                         <option value="sterling">£ GBP</option>
                     </select>
-            <input type="number" min="0" max="10" step=".01" required v-model="price">
+            <input required type="number" min="0" max="10" step=".01" v-model="price">
             per minute
-        </label><br/>
+        </label><br>
+        <br>
 
 
         <button>Update your information</button>
