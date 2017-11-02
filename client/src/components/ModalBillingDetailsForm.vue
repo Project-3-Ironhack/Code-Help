@@ -4,7 +4,7 @@
             <h3>Before we get started...</h3>
             <p>We need you to enter your payment details</p>
 
-    <div>
+    <!-- <div>
     <form @submit.prevent="paymentUpdate">
       <label>Full name on card
         <input type="text" required v-model="nameOnCard">
@@ -33,22 +33,21 @@
     />
     <button class='pay-with-stripe'>Add payment details</button>
     <p v-if="okMessage">Thank you!</p>
-    <!-- <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Checkout</button> -->
 
     </form><br>
-    </div>
+    </div> -->
         </section>
     </div>
 </template>
 
 <script>
 import apiUsers from "@/api/users"
-import { Card, createToken } from 'vue-stripe-elements'
+// import { Card, createToken } from 'vue-stripe-elements'
 
 
 
 export default {
-    components: {Card},
+    // components: {Card},
 
     data() {
         return {
@@ -67,25 +66,25 @@ export default {
     },
     methods: {
 
-        paymentUpdate(){
-            this.error = null
-            const userId = this.$root.user._id;
-            const nameOnCard = this.nameOnCard;
-            const billingAddress = this.billingAddress;
-            const city = this.city;
-            const postalCode = this.postalCode;
-            const country = this.country;
+        // paymentUpdate(){
+        //     this.error = null
+        //     const userId = this.$root.user._id;
+        //     const nameOnCard = this.nameOnCard;
+        //     const billingAddress = this.billingAddress;
+        //     const city = this.city;
+        //     const postalCode = this.postalCode;
+        //     const country = this.country;
 
-            const billingDetails = { nameOnCard, billingAddress, city, postalCode, country };
-            apiUsers.paymentUpdate(userId, billingDetails)
-            .then(data => {
-                this.okMessage = true;
-                setTimeout(() => this.$parent.close(), 1000);
+        //     const billingDetails = { nameOnCard, billingAddress, city, postalCode, country };
+        //     apiUsers.paymentUpdate(userId, billingDetails)
+        //     .then(data => {
+        //         this.okMessage = true;
+        //         setTimeout(() => this.$parent.close(), 1000);
 
-            }).catch(err => {
-                this.error = error.response;
-            })
-        },
+        //     }).catch(err => {
+        //         this.error = error.response;
+        //     })
+        // },
 
 
     },

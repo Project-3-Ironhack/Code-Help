@@ -3,15 +3,15 @@
     <h2>Welcome to your account</h2>
     <h3>Feel free to update your information, below</h3>
     <teacher-info/>
-    <payment v-if="role==='Student'"></payment>
+    <!-- <payment v-if="role==='Student'"></payment> -->
     <!-- <lesson-history/> -->
     </div>
 </template>
 
 <script>
 import TeacherInfo from '@/components/TeacherInfo'
-import Payment from '@/components/Payment'
-import LessonHistory from '@/components/LessonHistory'
+// import Payment from '@/components/Payment'
+// import LessonHistory from '@/components/LessonHistory'
 import apiUsers from '@/api/users'
 
 export default {
@@ -22,8 +22,8 @@ export default {
     },
     components: {
         TeacherInfo,
-        Payment,
-        LessonHistory,
+        // Payment,
+        // LessonHistory,
     },
 
     created(){
