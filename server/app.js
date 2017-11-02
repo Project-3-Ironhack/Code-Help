@@ -14,6 +14,7 @@ const cors = require("cors");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 const multer = require("multer");
+const stripe = require('stripe')('sk_test_w95ATVfTkJnto4HfCw8tFls8');
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
@@ -72,6 +73,23 @@ const clientRoot = path.join(__dirname, "../client/dist");
 app.use("/", express.static(clientRoot));
 app.use(history("index.html", { root: clientRoot }));
 
+app.post('/api/pay', (req, res, next) => {
+    const { token } = req.body;
+    stripe.charges.create(
+      {
+        amount: 100, // 10€
+        currency: 'eur',
+        description: 'Example charge',
+        source: token.id,
+      },
+      function(err, charge) {
+        if (err) return next(err);
+        console.log(charge);
+        res.json({ charge });
+      }
+    );
+  });
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error("Not Found");
@@ -83,6 +101,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
+  console.log(err);
   res.json({
     error: req.app.get("env") === "development" ? err : {}
   });

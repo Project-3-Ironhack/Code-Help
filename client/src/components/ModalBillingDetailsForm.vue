@@ -29,25 +29,25 @@ export default {
   created(){
     const userId = this.$root.user._id;
 
-    setTimeout(()=>{
+  setTimeout(()=>{
 
- this.$checkout.open({
-        name: 'Add your payment whoop details',
+    this.$checkout.open({
+        name: 'Add your payment details',
         currency: 'USD',
         amount: 99999,
         token(token) {
           console.log('this is the token',token);
 
-          apiUsers.paymentUpdate(userId, token)
-            .then(data => {
-              console.log('testing token')
-                this.okMessage = true;
-                setTimeout(() => this.$parent.close(), 1000);
-            }).catch(err => {
-                this.error = error.response;
-            })
+          // apiUsers.paymentUpdate(userId, token)
+          //   .then(data => {
+          //     console.log('testing token')
+          //       this.okMessage = true;
+          //       setTimeout(() => this.$parent.close(), 1000);
+          //   }).catch(err => {
+          //       this.error = error.response;
+          //   })
 
-            this.$checkout.close();
+          //   this.$checkout.close();
         } 
       });
 
