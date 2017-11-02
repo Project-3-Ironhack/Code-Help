@@ -25,7 +25,7 @@
         <div class="tags">
           <a  class="tag is-primary is-rounded" v-show="i < 3" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
         </div>
-        <p>"{{result.sessions.comment}}"</p>
+        <p v-if="result.sessions">"{{result.sessions.comment}}"</p>
         <br>
           <div v-if="result.status === 'online'">
             <button class="button is-success" @click="startLesson(result._id)"><span class="capitalise">Call {{ firstName }}</span></button>
