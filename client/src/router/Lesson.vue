@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1>Let's start your lesson!</h1>
+    <h1>Your lesson with </span>
+      <span class="capitalise" v-if="this.teacher">{{firstName}}</span>
+      <span class="capitalise" v-else>your teacher</span>
 
-    <p>And when you're done, just click here to end your lesson <span style="color: rgb(50, 115, 220) "> => </span> <button @click="endLesson">End lesson</button></p>
+      <button type="button" class="button is-danger" @click="endLesson">End lesson</button></h1>
 
     <!-- <h3>Select a language below to use our code editor</h3>
 
@@ -28,17 +30,21 @@
 
 import AceEditor from '@/components/Editor'
 import apiSessions from '@/api/sessions'
+import apiUsers from '@/api/users'
 
 export default {
   data () {
     return {
         lang: '',
         session: '',
+        liveSession: '',
+        teacher: '',
     }
   },
   components: {
     AceEditor,
   },
+
   methods: {
     endLesson() {
       const id = this.$route.params[0]
@@ -53,8 +59,22 @@ export default {
     }
   },
   created(){
+    const id = this.$route.params[0]
     tagoveApp.startChat();
+    apiSessions.getSession(id).then(session => {
+      return this.liveSession = session;
+    }).then(() => {
+      const teacherId = this.liveSession.session.teacher
+      apiUsers.getTeacherById(teacherId).then(teacher => {
+        return this.teacher = teacher
+      })
+    })
   },
+  computed: {
+    firstName: function() {
+      return this.teacher.name.split(" ")[0]
+    }
+  }
 }
 
 </script>
@@ -79,4 +99,9 @@ export default {
     outline:0px !important;
     -webkit-appearance:none;
 }
+
+.capitalise{
+  text-transform: capitalize;
+}
+
 </style>

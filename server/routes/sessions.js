@@ -1,5 +1,4 @@
 const express = require("express");
-// const User = require("../models/user");
 const Session = require("../models/session");
 const router = express.Router();
 
@@ -34,10 +33,23 @@ router.patch("/session/:id/endDate", (req, res, next) => {
 router.patch("/session/:id", (req, res, next) => {
   const id = req.params.id;
   const rating = req.body.rating;
-  const comment = req.body.comment
+  const comment = req.body.comment;
   console.log("HI FROM SERVER:", rating, comment);
-  Session.findByIdAndUpdate(id, { rating, comment }, { new: true }).then(response => {
+  Session.findByIdAndUpdate(
+    id,
+    { rating, comment },
+    { new: true }
+  ).then(response => {
     res.json({ response });
+  });
+});
+
+router.get("/sessions/:id", (req, res, next) => {
+  console.log("we're here");
+  console.log(req.params.id);
+  const id = req.params.id;
+  Session.findById(id).then(session => {
+    res.json({session});
   });
 });
 
@@ -46,5 +58,6 @@ router.get("/sessions", (req, res, next) => {
     res.json({ sessions });
   });
 });
+
 
 module.exports = router;
