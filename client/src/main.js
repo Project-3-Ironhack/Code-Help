@@ -30,11 +30,11 @@ import VueStripeCheckout from 'vue-stripe-checkout';
 
 const options = {
   key: 'pk_test_kZddkuEWh3ys5BWHKhM1fEtc',
-  image: 'https://cdn.meme.am/images/100x100/15882140.jpg',
+  image: 'https://image.flaticon.com/icons/svg/62/62802.svg',
   locale: 'auto',
   currency: '$',
   billingAddress: true,
-  panelLabel: 'Subscribe {{amount}}'
+  panelLabel: 'Register your card details'
 }
  
 Vue.use(VueStripeCheckout, options);
@@ -56,8 +56,3 @@ new Vue({
     api.checkUser(this.$root);
   }
 });
-
-// router.beforeEach((to, from, next) => {
-//   console.log("testing the router")
-//   next();
-// })

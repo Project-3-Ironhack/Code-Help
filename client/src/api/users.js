@@ -34,9 +34,10 @@ const apiUsers = {
   });
   },
 
-  paymentUpdate: (id, billingDetails) => {
+  paymentUpdate: (id, token) => {
+    console.log('it entes the payment update')
     return users.patch('/student/:id', {
-    id, billingDetails
+    id, token
   }).then(response => {
     console.log('the response is...', response);
     return response.data;

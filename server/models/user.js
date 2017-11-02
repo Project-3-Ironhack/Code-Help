@@ -18,12 +18,8 @@ const userSchema = new Schema({
   currency: String,
   status: String,
 
-  nameOnCard: String,
-  billingAddress: String,
-  city: String,
-  postalCode: String,
-  country: String,
-  // cardNumber: Number,
+  token: String,
+  
   sessions: [
     {
       type: Schema.Types.ObjectId,
