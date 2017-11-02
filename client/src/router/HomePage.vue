@@ -6,18 +6,18 @@
         <h1 class="title">
           Code Help
         </h1>
-        <h3 class="subtitle">
+        <h3 class="subtitle" style="margin-top: 15px">
           Hop on a call with teachers from around the world
         </h3>
         <p class="button is-success is-medium" type="button" @click="viewSignupModal">Sign Up</p>
         <div>Already have an account?</div>
-        <p class="button is-light" type="button" @click="viewLoginModal">Log in</p>
+        <p style="margin-top: 10px" class="button is-light" type="button" @click="viewLoginModal">Log in</p>
       </div>
     </div>
   </section>
   <section class="hero">
   <section class="separator hero container">
-  <div class="hero-body">
+  <div class="hero-body three-icons">
   <div class="columns">
     <div class="column is-one-third">
       <icon name="globe" scale="3"></icon>
@@ -38,13 +38,13 @@
   </section>
   </section>
   <section class="hero separator is-medium is-primary">
-    <div class="hero-body">
+    <div class="hero-body testimonials-section">
       <div class="container">
         <h1 class="title testimonials">
           Our users say it best!
         </h1>
         <h3 class="subtitle testimonials">
-          Teachers and students love Code-Help!
+          Teachers and students love Code Help!
         </h3>
         <div class="columns separator">
           <div class="column is-one-third">
@@ -125,7 +125,7 @@ export default {
 }*/
 
 .separator {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .img {
@@ -136,6 +136,17 @@ export default {
 
 .testimonials {
   text-align: left !important;
+  margin-left: 7%;
+}
+
+.testimonials-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.three-icons{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 </style>

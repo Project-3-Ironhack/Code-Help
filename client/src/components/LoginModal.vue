@@ -3,6 +3,8 @@
 <div class="modal-card">
   <section class="modal-card-body">
 
+    <div class="field"> Enter your details to get started...</div>
+
     <div class="field">
         <form @submit.prevent="login">
               

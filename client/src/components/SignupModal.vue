@@ -49,7 +49,7 @@
                 </label>
               </div>
 
-                <button class="button is-success" type="submit"  name="button">Sign up</button>
+                <button class="button is-success" type="submit"  name="button" style="font-weight: bold">Sign up</button>
                 <!-- @click="$parent.close()" -->
               </form>
               <div class="error-message" v-if="error">

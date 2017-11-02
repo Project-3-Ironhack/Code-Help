@@ -117,7 +117,7 @@ export default {
 }
 
 .footer {
-  height: 140px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
