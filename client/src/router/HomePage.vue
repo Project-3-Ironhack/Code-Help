@@ -50,21 +50,21 @@
           <div class="column is-one-third">
             <div>
                 <img class="img" src="/static/yacine.jpeg">
-              <h4 class="separator subtitle"><b>Teacher:</b> Yacine</h4>
+              <h4 class="separator subtitle"><icon name="graduation-cap"></icon><b> Teacher:</b> Yacine</h4>
               <p>I love that sweet extra money!</p>
             </div>
           </div>
           <div class="column is-one-third">
             <div>
                 <img class="img" src="/static/posva.jpeg">
-              <h4 class="separator subtitle"><b>Teacher:</b> Eduardo</h4>
+              <h4 class="separator subtitle"><icon name="graduation-cap"></icon><b> Teacher:</b> Eduardo</h4>
               <p>I love that sweet extra money!</p>
             </div>
           </div>
           <div class="column is-one-third">
             <div>
                 <img class="img" src="/static/michael.jpeg">
-              <h4 class="separator subtitle"><b>Student:</b> René</h4>
+              <h4 class="separator subtitle"><icon name="child"></icon><b> Student:</b> René</h4>
               <p>Code Help is a lifesaver!</p>
             </div>
           </div>
