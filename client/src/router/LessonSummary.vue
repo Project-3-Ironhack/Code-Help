@@ -17,7 +17,7 @@
           </label>
           <br />
           <br>
-          <textarea class="textarea is-info is-medium" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
+          <textarea required class="textarea is-info is-medium" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           <br />
         <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>
         <button @click="danger" v-else type="button" class="button is-warning" name="button">Submit feedback</button>
