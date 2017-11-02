@@ -19,11 +19,16 @@
         Teach
       </router-link>
 
-      <a v-if="page !== '/lesson/'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
-        Logout
-      </a>
+  </div>
 
-    </div>
+      <div class="navbar-brand navbar-end">
+        <a v-if="page !== '/lesson/'" class="navbar-item" v-show="$root.user" @click.prevent="logout" href="#">
+         Logout
+        </a>
+      </div>
+
+
+
   </nav>
 
 <!-- how does router-view work? -->

@@ -4,7 +4,7 @@
     <h3>Feel free to update your information, below</h3>
     <teacher-info/>
     <payment v-if="role==='Student'"></payment>
-    <lesson-history/>
+    <!-- <lesson-history/> -->
     </div>
 </template>
 

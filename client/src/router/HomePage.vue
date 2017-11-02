@@ -42,12 +42,12 @@
 
         <!-- SIGN UP MODAL -->
         <b-modal :active.sync="isSignupModalActive" has-modal-card>
-          <signup-modal @loginModal.capture="viewLoginModal"></signup-modal>
+          <signup-modal @loginModal.capture="viewLoginModal($event)"></signup-modal>
         </b-modal>
 
         <!-- LOG IN MODAL -->
         <b-modal :active.sync="isLoginModalActive" has-modal-card>
-          <login-modal></login-modal>
+          <login-modal :payload="payload"></login-modal>
         </b-modal>
 <pre>{{test}}</pre>
 </div>
@@ -67,15 +67,18 @@ export default {
       test:'',
       isSignupModalActive: false,
       isLoginModalActive: false,
+      payload: '',
     }
   },
   methods: {
     viewSignupModal() {
       this.isSignupModalActive = true;
     },
-    viewLoginModal() {
+    viewLoginModal(payload) {
       this.isSignupModalActive = false;
-      console.log('eeeeeeee');
+      console.log('eeeeeeee', payload);
+      this.payload = typeof payload === "object" ? '' : payload;
+      console.log("did the payload transfer...?", this.payload)
       this.isLoginModalActive = true;
     },
   }

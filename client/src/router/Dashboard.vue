@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-    <h1>Hi <span id="capitalise">{{ userName }}</span>, let's find you a teacher!</h1>
+    <h1 v-if="$root.user.role!=='Teacher'">Hi <span id="capitalise">{{ userName }}</span>, let's find you a teacher!</h1>
 
     <!-- only shows the teacher info panel if the user is a teacher and they haven't filled in their data -->
     <teacher-info v-if="$root.user.role==='Teacher' && ( !user.description)"></teacher-info>
