@@ -47,7 +47,7 @@ const router = new Router({
       component: Dashboard,
       meta: {
         requiresAuth: true
-      }
+      },
     },
     {
       path: '/lesson/*',
@@ -84,6 +84,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  //console.log("CLASSLIST", document.getElementsByTagName("html").classList)
   if (to.meta.requiresAuth) {
     api.checkUser(router.app.$root);
     if (!router.app.$root.user) {

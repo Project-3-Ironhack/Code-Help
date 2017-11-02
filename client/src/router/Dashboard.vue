@@ -46,6 +46,7 @@ export default {
     };
   },
   created(){
+    document.getElementsByTagName("html")[0].classList.remove("is-clipped")
     const userId = this.$root.user._id;
     this.status = 'online';
 

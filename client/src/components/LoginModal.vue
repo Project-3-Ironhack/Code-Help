@@ -42,7 +42,11 @@ export default {
       api.login(this.username, this.password, this.$root)
       .then(data => {
         this.$router.push('/dashboard')
-      }).catch(err => {
+      })
+      .then(() => {
+        document.getElementsById("html").removeAttribute("is-clipped")
+      })
+      .catch(err => {
         this.error = err.response.data.error
       });
     },
