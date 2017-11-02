@@ -76,12 +76,12 @@ export default {
     startLesson(result, teacherId, studentId) {
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
-        if (!user.token && this.result.price >0) {
-          this.isBillingModalActive = true;
-          // setTimeout(()=>{
-          //   this.isBillingModalActive = false;
-          // },3000)
-        } else {
+        // if (!user.token && this.result.price >0) {
+        //   this.isBillingModalActive = true;
+        //   // setTimeout(()=>{
+        //   //   this.isBillingModalActive = false;
+        //   // },3000)
+        // } else {
           apiSessions
             .createSession(result, userId)
             .then(session => {
@@ -90,7 +90,7 @@ export default {
             .then(() => {
               this.$router.push("/lesson/" + this.session._id);
             });
-        }
+        // }
       });
     },
     viewTeacherInfo() {

@@ -27,6 +27,11 @@
         <button @click="danger" v-else type="button" class="button is-light" name="button">Submit feedback</button>
       </form>
     </div>
+<br>
+    <div>
+      Your lesson lasted {{Math.ceil(sessionLength)}} minute<span v-if="Math.ceil(sessionLength)!==1">s</span>. 
+      <span v-if="teacher.price>0">The price of your lesson was {{teacher.currency === 'dollar' ? '$' : teacher.currency === 'euro' ? '€' : teacher.currency === 'sterling' ? '£' :''  }}{{teacher.price * Math.ceil(sessionLength)}}.</span> Thank you for using Code-Help!
+    </div>
 
 <br>
   <b-modal :active.sync="isSocialSharingModalActive" @close="close" has-modal-card>
@@ -50,7 +55,8 @@ export default {
       isActive: false,
       isSocialSharingModalActive: false,
       teacher: "",
-      liveSession: ""
+      liveSession: "",
+      sessionLength:'',
     };
   },
   components: {
@@ -58,9 +64,12 @@ export default {
   },
   created() {
     const id = this.$route.params[0];
+    console.log('what is the id? ', id)
     apiSessions
       .getSession(id)
       .then(session => {
+        console.log('the session info we have is...', session);
+        this.sessionLength = (Date.parse(session.session.endDate)- Date.parse(session.session.startDate)) / 1000 / 60;;
         return (this.liveSession = session);
       })
       .then(() => {
