@@ -4,7 +4,7 @@
       <label class="label">
 
         <div class="control">
-          <input class="input" type="text" placeholder="ask us anything: language, teacher..." :value="value" @input="$emit('input', $event.target.value)">
+          <input class="input" type="text" placeholder="ask us anything: what language do you need help with, which teacher are you looking for..." :value="value" @input="$emit('input', $event.target.value)">
         </div>
       </label>
     </div>

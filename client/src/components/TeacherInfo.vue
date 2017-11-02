@@ -14,10 +14,10 @@
 
         <label>Where you can be found online (optional)
             <ul>
-                <li><icon name="github"></icon><input type="text" required v-model="gitHubUrl" placeholder="GitHub"></li>
-                <li><icon name="linkedin"></icon><input type="text" required v-model="linkedInUrl"placeholder="LinkedIn" ></li>
-                <li><icon name="home"></icon><input type="text" required v-model="personalWebsiteUrl" placeholder="Your personal website or blog"></li>
-                <li><icon name="twitter"></icon><input type="text" required v-model="twitterUrl" placeholder="Twitter"></li>
+                <li><icon name="github"></icon><input type="text"  v-model="gitHubUrl" placeholder="GitHub"></li>
+                <li><icon name="linkedin"></icon><input type="text"  v-model="linkedInUrl"placeholder="LinkedIn" ></li>
+                <li><icon name="home"></icon><input type="text"  v-model="personalWebsiteUrl" placeholder="Your personal website or blog"></li>
+                <li><icon name="twitter"></icon><input type="text"  v-model="twitterUrl" placeholder="Twitter"></li>
             </ul>
 
         </label><br/>

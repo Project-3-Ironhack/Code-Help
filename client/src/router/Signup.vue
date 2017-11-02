@@ -9,8 +9,8 @@
     <br>
 
       </label><br/>
-      <label>Username
-        <input type="text" required v-model="username">
+      <label>Email
+        <input type="email" required v-model="username">
       </label><br/>
       <label>Name
         <input type="text" required v-model="name">

@@ -14,8 +14,8 @@
     <br>
 
       </label><br/>
-      <label>Username
-        <input type="text" required v-model="username">
+      <label>Email address
+        <input type="email" required v-model="username">
       </label><br/>
       <label>Name
         <input type="text" required v-model="name">
@@ -61,8 +61,9 @@ export default {
         password: this.password
       })
       .then(r => {
-        this.$emit('loginModal',{});
-        console.log(this);
+        let payload = this.username;
+        this.$emit('loginModal', payload);
+        console.log('emiting the username...', payload);
       })
       .catch(err => {
         this.error = err.response.data.error.message

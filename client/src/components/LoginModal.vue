@@ -4,8 +4,8 @@
 
   <div>
     <form @submit.prevent="login">
-      <label>Username
-        <input type="text" required v-model="username">
+      <label>Email address
+        <input type="email" required v-model="username">
       </label><br/>
       <label>Password
         <input type="password" required v-model="password">
@@ -30,11 +30,12 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      username: '',
+      username: this.payload || '',
       password: '',
       error: null,
     }
   },
+  props: ['payload'],
   methods: {
     login() {
       this.error = null
