@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Your lesson with </span>
-      <span v-if="this.teacher">{{firstName}}</span>
-      <span v-else>your teacher</span>
+      <span class="capitalise" v-if="this.teacher">{{firstName}}</span>
+      <span class="capitalise" v-else>your teacher</span>
 
       <button type="button" class="button is-danger" @click="endLesson">End lesson</button></h1>
 
@@ -99,4 +99,9 @@ export default {
     outline:0px !important;
     -webkit-appearance:none;
 }
+
+.capitalise{
+  text-transform: capitalize;
+}
+
 </style>

@@ -1,6 +1,10 @@
 <template>
   <section class="container">
-    <h1>How was your lesson?</h1>
+    <h1>How was your lesson with
+      <span v-if="this.teacher" class="capitalise">{{firstName}}</span>
+      <span v-else>your teacher</span>?
+
+    </h1>
     <div class="radios">
     <form @submit.prevent="rating" class="form-container">
           <input id="radio1" class="radio" type="radio" value="1" v-model="rating">
@@ -20,7 +24,7 @@
           <textarea required class="textarea is-info is-medium" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           <br />
         <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>
-        <button @click="danger" v-else type="button" class="button is-warning" name="button">Submit feedback</button>
+        <button @click="danger" v-else type="button" class="button is-light" name="button">Submit feedback</button>
       </form>
     </div>
 
@@ -34,6 +38,7 @@
 
 <script>
 import apiSessions from "@/api/sessions";
+import apiUsers from "@/api/users";
 import SocialSharing from "@/components/SocialSharing";
 
 export default {
@@ -44,10 +49,31 @@ export default {
       comment: "",
       isActive: false,
       isSocialSharingModalActive: false,
+      teacher: "",
+      liveSession: ""
     };
   },
   components: {
-    SocialSharing,
+    SocialSharing
+  },
+  created() {
+    const id = this.$route.params[0];
+    apiSessions
+      .getSession(id)
+      .then(session => {
+        return (this.liveSession = session);
+      })
+      .then(() => {
+        const teacherId = this.liveSession.session.teacher;
+        apiUsers.getTeacherById(teacherId).then(teacher => {
+          return (this.teacher = teacher);
+        });
+      });
+  },
+  computed: {
+    firstName: function() {
+      return this.teacher.name.split(" ")[0];
+    }
   },
   methods: {
     rateLesson() {
@@ -66,23 +92,22 @@ export default {
         position: "is-top",
         type: "is-success",
         container: "section"
-      })
+      });
       setTimeout(() => {
-        (this.isSocialSharingModalActive = !this.isSocialSharingModalActive)
-      },
-        1000)
+        this.isSocialSharingModalActive = !this.isSocialSharingModalActive;
+      }, 1000);
     },
     danger() {
       this.$toast.open({
         duration: 4000,
-        message: `Please leave a rating and comment before submitting`,
+        message: `Please leave a rating and a comment before submitting`,
         position: "is-top",
         type: "is-danger"
       });
     },
     close() {
-      console.log("closing from parent")
-      this.$router.push('/')
+      console.log("closing from parent");
+      this.$router.push("/");
     }
   }
 };
@@ -129,6 +154,10 @@ input:checked + img {
 input[type="radio"]:checked + label >
   .rating-icon {
   filter: grayscale(0%);
+}
+
+.capitalise {
+  text-transform: capitalize;
 }
 
 
