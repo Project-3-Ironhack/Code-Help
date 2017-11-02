@@ -1,44 +1,78 @@
 <template>
-<div>
-
-  <div>
-    <h1>Welcome to Code Help</h1>
-    <h2>Learn to code with experts from around the world</h2>
-  </div>
-
-    <!-- <div>
-    TESTING // Ready to get started? Click here to <button @click="!isShow = isShow">Sign Up</button><br>
-    <signup v-show="isShow"></signup>
-    </div> -->
-
-  <div>
-    Ready to get started? Click here to <span @click="viewSignupModal">Sign Up</span><br>
-    <!-- Ready to get started? Click here to <router-link to="/signup">Sign Up</router-link><br> -->
-    Already have an account? Click here to <span @click="viewLoginModal">Log In</span>
-    <!-- Already have an account? Click here to <router-link to="/login">Log In</router-link> -->
-
-  </div>
-<br>
+<div class="content">
+  <section class="hero is-medium is-info">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Code Help
+        </h1>
+        <h3 class="subtitle">
+          Hop on a call with teachers from around the world
+        </h3>
+        <p class="button is-success is-medium" type="button" @click="viewSignupModal">Sign Up</p>
+        <div>Already have an account?</div>
+        <p class="button is-light" type="button" @click="viewLoginModal">Log in</p>
+      </div>
+    </div>
+  </section>
+  <section class="hero">
+  <section class="separator hero container">
+  <div class="hero-body">
   <div class="columns">
     <div class="column is-one-third">
-      <icon name="code" scale="3"></icon>
-      <h4>Learn to code with experts from all over the world</h4>
+      <icon name="globe" scale="3"></icon>
+      <h4>Search for teachers of any skills around the world</h4>
     </div>
 
     <div class="column is-one-third">
-      <icon width="100">
-        <icon name="bug" scale="2"></icon>
-        <icon name="ban" scale="3.5"></icon>
-
-      </icon>
-      <h4>Learn to code with experts from all over the world</h4>
+        <icon name="user-circle" scale="3"></icon>
+      <h4>Hop on a direct call, share your code and fix things live</h4>
     </div>
 
     <div class="column is-one-third">
       <icon name="graduation-cap" scale="3"></icon>
-      <h4>Learn to code with experts from all over the world</h4>
+      <h4>Learn by doing and asking question, instead of copy-pasting random snippets online</h4>
     </div>
   </div>
+  </div>
+  </section>
+  </section>
+  <section class="hero separator is-medium is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title testimonials">
+          Our users say it best!
+        </h1>
+        <h3 class="subtitle testimonials">
+          Teachers and students love Code-Help!
+        </h3>
+        <div class="columns separator">
+          <div class="column is-one-third">
+            <div>
+                <img class="img" src="/static/yacine.jpeg">
+              <h4 class="separator subtitle"><b>Teacher:</b> Yacine</h4>
+              <p>I love that sweet extra money!</p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div>
+                <img class="img" src="/static/posva.jpeg">
+              <h4 class="separator subtitle"><b>Teacher:</b> Eduardo</h4>
+              <p>I love that sweet extra money!</p>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div>
+                <img class="img" src="/static/michael.jpeg">
+              <h4 class="separator subtitle"><b>Student:</b> René</h4>
+              <p>Code Help is a lifesaver!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
 
         <!-- SIGN UP MODAL -->
         <b-modal :active.sync="isSignupModalActive" has-modal-card>
@@ -49,9 +83,7 @@
         <b-modal :active.sync="isLoginModalActive" has-modal-card>
           <login-modal :payload="payload"></login-modal>
         </b-modal>
-<pre>{{test}}</pre>
-</div>
-
+      </div>
 </template>
 
 <script>
@@ -86,10 +118,24 @@ export default {
 </script>
 
 <style lang="css">
-.column{
+/*.column{
   border: 1px solid lightgrey;
   max-width: 30%;
   margin: auto;
+}*/
+
+.separator {
+  margin-top: 40px;
+}
+
+.img {
+  width: 200px;
+  border: 0px solid;
+  border-radius: 50%;
+}
+
+.testimonials {
+  text-align: left !important;
 }
 
 </style>
