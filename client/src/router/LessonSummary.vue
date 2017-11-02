@@ -49,7 +49,6 @@ export default {
   components: {
     SocialSharing,
   },
-  props: ["teacher"],
   methods: {
     rateLesson() {
       const id = this.$route.params[0];

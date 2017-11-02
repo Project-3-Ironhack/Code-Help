@@ -17,6 +17,14 @@ const apiSessions = {
       });
   },
 
+  getSession: id => {
+    return session.get(`/sessions/${id}`).then(response => {
+      return response.data;
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
   createSession: (teacherId, studentId) => {
     return session
       .post("/session", { teacherId, studentId })
