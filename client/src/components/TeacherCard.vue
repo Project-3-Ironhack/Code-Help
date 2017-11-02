@@ -207,4 +207,14 @@ img{
 #teacherName{
   color: white;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .overlay {
+    top: 72%;
+  }
+  #teacherName {
+    font-size: 18px;
+  }
+}
+
 </style>
