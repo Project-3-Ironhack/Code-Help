@@ -1,8 +1,8 @@
 <template>
-  <section class="content">
+  <section class="container">
     <h1>How was your lesson?</h1>
     <div class="radios">
-    <form @submit.prevent="rating">
+    <form @submit.prevent="rating" class="form-container">
           <input id="radio1" class="radio" type="radio" value="1" v-model="rating">
           <label for="radio1">
             <img class="rating-icon" src="/static/confused-1.svg">
@@ -17,9 +17,10 @@
           </label>
           <br />
           <br>
-          <textarea v-model="comment" rows="6" cols="60" style="padding: 15px" placeholder="Help your fellow coders by leaving some feedback :)"/>
+          <textarea class="textarea is-info is-medium" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           <br />
-        <button @click="rateLesson" type="button" name="button">Submit feedback</button>
+        <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>
+        <button @click="danger" v-else type="button" class="button is-warning" name="button">Submit feedback</button>
       </form>
     </div>
 
@@ -33,23 +34,23 @@
                   inline-template>
   <div>
     <h4>Help us educate the next generation of coders</h4>
-    <p>Share your experience on social</p>
+    <p>Share your experience with the world:</p>
 
-    <button>
+    <button class="button is-info social-button">
         <network network="facebook">
-          <i class="fa fa-fw fa-facebook"></i> Facebook
+          <icon class="social-icon" name="facebook"></icon>
         </network>
     </button>
 
-    <button>
+    <button class="button is-info social-button">
       <network network="linkedin">
-        <i class="fa fa-fw fa-linkedin"></i> LinkedIn
+        <icon class="social-icon" name="linkedin"></icon>
       </network>
     </button>
 
-    <button>
+    <button class="button is-info social-button">
       <network network="twitter">
-        <i class="fa fa-fw fa-twitter"></i> Twitter
+        <icon class="social-icon" name="twitter"></icon>
       </network>
     </button>
 
@@ -60,33 +61,47 @@
 </template>
 
 <script>
-import apiSessions from "@/api/sessions"
+import apiSessions from "@/api/sessions";
 
 export default {
-
-
-
   data() {
     return {
       rating: "",
       session: "",
       comment: "",
-    }
+      isActive: false
+    };
   },
-  props: ['teacher'],
+  props: ["teacher"],
   methods: {
-    rateLesson(){
-      const id = this.$route.params[0]
-      const rating = this.rating
-      const comment = this.comment
+    rateLesson() {
+      const id = this.$route.params[0];
+      const rating = this.rating;
+      const comment = this.comment;
       apiSessions.updateSession(id, rating, comment).then(session => {
-        console.log(session)
-        this.session = session
-      })
+        console.log(session);
+        this.session = session;
+      });
+    },
+    success() {
+      this.$toast.open({
+        duration: 5000,
+        message: "Thanks for your feedback!",
+        position: "is-top",
+        type: "is-success",
+        container: "section"
+      });
+    },
+    danger() {
+      this.$toast.open({
+        duration: 4000,
+        message: `Please leave a rating and comment before submitting`,
+        position: "is-top",
+        type: "is-danger"
+      });
     }
   }
-
-}
+};
 </script>
 
 <style lang="css">
@@ -102,6 +117,11 @@ li {
 
 .radio {
  visibility:hidden;
+}
+
+.form-container {
+  max-width:500px;
+  margin: auto;
 }
 
 label {
@@ -126,5 +146,14 @@ input[type="radio"]:checked + label >
   .rating-icon {
   filter: grayscale(0%);
 }
+.social-icon {
+  margin:3px;
+}
+
+.social-button {
+  padding: 10px;
+}
+
+
 
 </style>
