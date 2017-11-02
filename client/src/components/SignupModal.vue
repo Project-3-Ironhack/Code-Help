@@ -4,11 +4,13 @@
 
 <div>
     <form @submit.prevent="signup">
+    <label for="student">
     <input type="radio" id="student" value="Student" v-model="role">
-    <label for="one">Student</label>
+    Student</label>
     <br>
+    <label for="teacher">
     <input type="radio" id="teacher" value="Teacher" v-model="role">
-    <label for="two">Teacher</label>
+    Teacher</label>
     <br>
 
       </label><br/>

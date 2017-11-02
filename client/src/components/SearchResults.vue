@@ -52,4 +52,10 @@ export default {
 </script>
 
 <style lang="css">
+
+
+.column {
+  border: none !important;
+}
+
 </style>
