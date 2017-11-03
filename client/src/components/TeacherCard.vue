@@ -135,7 +135,6 @@ export default {
     },
     rating: function() {
       const rates = Math.round(this.result.rating);
-      console.log(rates);
       switch (rates) {
         case 0:
           return "/static/super-happy-3.svg";
@@ -220,12 +219,15 @@ img{
   color: white;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .overlay {
     top: 72%;
   }
   #teacherName {
     font-size: 18px;
+  }
+  .feedbacks {
+    min-height: 170px;
   }
 }
 

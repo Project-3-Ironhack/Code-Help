@@ -3,8 +3,6 @@
         <section class="modal-card-body">
           <h1>{{result.name}}</h1>
           <h3 class="title is-4 capitalise">Rating: <img class="rating-image" :src="rating"></h3>
-          <h3>{{result.description}}</h3>
-
         <div class="card">
 
           <div class="card-image">
@@ -19,16 +17,27 @@
           <div class="tags">
             <a  class="tag is-primary is-rounded" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
           </div>
-          <a :href="result.gitHubUrl" target="_blank"><icon name="github" scale="2"></icon></a>
-          <p class="subtitle is-6 capitalise"></p>
+          <div class="subtitle is-6">
+          <p><strong>Teacher's description:</strong> {{result.description}}</p>
+          </div>
+          <div class="subtitle is-6" v-if="result.topSession">
+            <p><strong>Students say it best:</strong> "{{result.topSession.comment}}"</p>
+          </div>
+          <div class="subtitle is-6" v-else="result.topSession">
+            <p class="has-text-grey-light"><em>This teacher doesn't have a comment yet. Be the first one to call him!</em></p>
+          </div>
+            <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
         </div>
       </div>
 
-      <div class="content">
-        <p><strong>Student's comment</strong>: {{result.topSession.comment}}</p>
-        <br>
-        <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
-         <div><span v-if="result.currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else >Call <span class="capitalise">{{result.name}}</span> free of charge</span></div>
+    </div>
+    <div class="card-footer">
+      <div class="card-footer-item">
+        <div class="button is-static">
+        <span v-if="result.currency>'0'">{{currency}}{{ result.price }} / minute</span><span v-else >Call <span class="capitalise">{{result.name}}</span> free of charge</span></div>
+      </div>
+      <div class="card-footer-item">
+        <a :href="result.gitHubUrl" target="_blank"><icon name="github" scale="2"></icon></a>
       </div>
     </div>
   </div>
