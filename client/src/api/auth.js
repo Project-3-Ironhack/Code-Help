@@ -19,7 +19,9 @@ const api = {
   },
 
   login: (username, password, vm) => {
+    console.log('it enters the login route')
     return auth.post("/login", { username, password }).then(response => {
+      console.log('it enters the next one, too...')
       saveUserInfo(response.data);
       vm.user = response.data.user;
       return response.data;

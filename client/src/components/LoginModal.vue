@@ -3,7 +3,7 @@
 <div class="modal-card">
   <section class="modal-card-body">
 
-    <div class="field"> Enter your details to get started...</div>
+    <div class="field" style="color: black"> Log in to get started...</div>
 
     <div class="field">
         <form @submit.prevent="login">
@@ -11,7 +11,7 @@
             <div class="field">
               <label class="label">Email address
                 <div class="control has-icons-left">
-                  <input class="input" type="email" required v-model="username">
+                  <input class="input" type="email" required v-model="username" placeholder="The address you signed up with">
                     <span class="icon is-small is-left">
                       <icon name="envelope"></icon>
                     </span>
@@ -22,7 +22,7 @@
             <div class="field">
               <label class="label">Password
                 <div class="control has-icons-left">
-                  <input class="input" type="password" required v-model="password">
+                  <input class="input" type="password" required v-model="password" placeholder="8 characters, please!">
                     <span class="icon is-small is-left">
                       <icon name="lock"></icon>
                     </span>
@@ -50,17 +50,39 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      username: this.payload || '',
-      password: '',
+      username: this.payload.payload1 || '',
+      password: this.payload.payload2 || '',
       error: null,
     }
   },
   props: ['payload'],
+  created(){
+    console.log('payloaaad details', this.payload);
+    console.log('payloaaad details', this.username);
+    console.log('payloaaad details', this.password);
+
+    // this.error = null
+    //   api.login(this.username, this.password, this.$root)
+    //   .then(data => {
+    //     console.log('this', this, 'this.parent', this.$parent)
+    //     this.$parent.close();
+    //     this.$router.push('/dashboard')
+    //   })
+    //   .then(() => {
+    //     document.getElementsById("html").removeAttribute("is-clipped")
+    //   })
+    //   .catch(err => {
+    //     this.error = err.response.data.error
+    //   });
+
+  },
   methods: {
     login() {
       this.error = null
       api.login(this.username, this.password, this.$root)
       .then(data => {
+        console.log('this', this, 'this.parent', this.$parent)
+        this.$parent.close();
         this.$router.push('/dashboard')
       })
       .then(() => {
@@ -90,4 +112,22 @@ export default {
   .field {
     text-align: left;
   }
+
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    lightgrey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    lightgrey;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    lightgrey;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    lightgrey;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    lightgrey;
+}
 </style>

@@ -11,8 +11,7 @@
           Code with experts from around the world
         </h3>
         <p class="button is-success is-medium" type="button" @click="viewSignupModal">Sign Up</p>
-        <div>Already have an account?</div>
-        <p style="margin-top: 10px" class="button is-light" type="button" @click="viewLoginModal">Log in</p>
+        <!-- <p style="margin-top: 10px" class="is-light" @click="viewLoginModal"> Already have an account? Click to log in</p> -->
       </div>
     </div>
   </section>
@@ -53,8 +52,8 @@
         <div class="columns separator">
           <div class="column is-one-third">
             <div>
-                <img class="img" src="/static/yacine.jpeg">
-              <h4 class="separator subtitle"><icon name="graduation-cap"></icon><b> Teacher:</b> Yacine</h4>
+                <img class="img" src="/static/alexandra.jpg">
+              <h4 class="separator subtitle"><icon name="graduation-cap"></icon><b> Teacher:</b> Alexandra</h4>
               <p>I love to teach, and Code Help connects me with students all over the world. Plus it's a nice way to make some extra pocket money!</p>
             </div>
           </div>
@@ -65,7 +64,7 @@
               <p>I remember how difficult it was to code when I was learning. I wish Code Help had existed then. It's a brilliant idea!</p>
             </div>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-one-third"> 
             <div>
                 <img class="img" src="/static/fred.png">
               <h4 class="separator subtitle"><icon name="child"></icon><b> Student:</b> Fred</h4>
@@ -113,7 +112,8 @@ export default {
     viewLoginModal(payload) {
       this.isSignupModalActive = false;
       console.log('eeeeeeee', payload);
-      this.payload = typeof payload === "object" ? '' : payload;
+      // this.payload = typeof payload === "object" ? '' : payload;
+      this.payload = payload;
       console.log("did the payload transfer...?", this.payload)
       this.isLoginModalActive = true;
     },

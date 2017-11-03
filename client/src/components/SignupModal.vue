@@ -19,7 +19,7 @@
               <div class="field">
                 <label class="label">Email address
                   <div class="control has-icons-left">
-                    <input class="input" type="email" required v-model="username">
+                    <input class="input" type="email" required v-model="username" placeholder="How do we get hold of you?">
                       <span class="icon is-small is-left">
                         <icon name="envelope"></icon>
                       </span>
@@ -30,7 +30,7 @@
               <div class="field">
                 <label class="label">Name
                   <div class="control has-icons-left">
-                    <input class="input" type="text" required v-model="name">
+                    <input class="input" type="text" required v-model="name" placeholder="What people call you">
                       <span class="icon is-small is-left">
                       <icon name="user"></icon>
                       </span>
@@ -41,7 +41,7 @@
               <div class="field">
                 <label class="label">Password
                   <div class="control has-icons-left">
-                    <input class="input" type="password" minlength="8" required v-model="password">
+                    <input class="input" type="password" minlength="8" required v-model="password" placeholder="8 characters or more, please!">
                       <span class="icon is-small is-left">
                         <icon name="lock"></icon>
                       </span>
@@ -87,7 +87,9 @@ export default {
         password: this.password
       })
       .then(r => {
-        let payload = this.username;
+        let payload1 = this.username;
+        let payload2 = this.password;
+        let payload = {payload1, payload2};
         this.$emit('loginModal', payload);
         console.log('emiting the username...', payload);
       })
@@ -114,5 +116,23 @@ export default {
 <style scoped>
 .field {
   text-align: left;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    lightgrey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    lightgrey;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    lightgrey;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    lightgrey;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    lightgrey;
 }
 </style>

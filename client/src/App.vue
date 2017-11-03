@@ -19,14 +19,21 @@
         Teach
       </router-link>
   </div>
+  
   <div class="navbar-menu">
     <div class="navbar-end">
       <p style="cursor: pointer;" class="navbar-item" v-if="page !== '/lesson'" v-show="$root.user" @click.prevent="logout" href="#">
-    Logout
+        Logout
+      </p>
+      <p style="cursor: pointer;" class="navbar-item" v-if="page === '/'" @click.prevent="viewLoginModal">
+        Login
       </p>
     </div>
   </div>
-
+        <!-- LOG IN MODAL -->
+        <b-modal :active.sync="isLoginModalActive" has-modal-card>
+          <login-modal></login-modal>
+        </b-modal>
 
 
   </nav>
@@ -53,14 +60,18 @@
 <script>
 import api from "@/api/auth"
 import apiUsers from "@/api/users"
+import LoginModal from "@/components/LoginModal";
+
 
 export default {
+  components: {LoginModal},
   data(){
     return {
       name: '',
       role: '',
       id: '',
       page: '',
+      isLoginModalActive: false,
     };
   },
   name: 'app',
@@ -74,6 +85,9 @@ export default {
       elem[0].remove();
       elem[1].remove();
       elem2[0].remove();
+    },
+    viewLoginModal() {
+      this.isLoginModalActive = true;
     },
   },
   computed: {
@@ -93,6 +107,12 @@ export default {
   beforeUpdate: function() {
     console.log("App.vue beforeUpdate")
     this.page = this.$route.path.split('',7).join('');
+    console.log('this page is...')
+  },
+  created(){
+    this.page = this.$route.path.split('',7).join('');
+    console.log('this page is...', this.page)
+
   },
 }
 </script>
@@ -133,3 +153,5 @@ export default {
 }
 
 </style>
+
+
