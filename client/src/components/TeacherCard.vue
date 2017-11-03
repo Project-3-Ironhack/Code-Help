@@ -20,7 +20,7 @@
           <hr class="card-separator">
           <p class="content is-size-7">Student feedback:</p>
           <img class="tiny-img" :src="rating">
-          <p v-if="result.topSession"><em>"{{result.topSession.comment}}"</em></p>
+          <p v-if="result.topSession"><em>{{slicedComment}}</em></p>
         </div>
         <div class="card-actions">
           <div v-if="result.status === 'online'">
@@ -107,7 +107,7 @@ export default {
       //   token(token) {
       //     console.log('this is the token',token);
       //     //   this.$checkout.close();
-      //   } 
+      //   }
       // })
       // .then(()=>{
     // *********************************
@@ -153,6 +153,10 @@ export default {
     },
     firstName: function() {
       return this.result.name.split(" ")[0]
+    },
+    slicedComment: function() {
+      const comment = this.result.topSession.comment
+      return comment.length <= 50 ? comment : comment.substring(0, 50) + "..."
     }
   }
 };

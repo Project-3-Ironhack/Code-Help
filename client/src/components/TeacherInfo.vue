@@ -12,7 +12,7 @@
             </label><br/>
         </div>
 
-        <div class="field"> 
+        <div class="field">
             <label class="label" >Introduce yourself
                 <b-input maxlength="600" type="textarea" v-bind:required="$root.user.role==='Teacher'" rows="6" cols="30" v-model="description" placeholder="Tell us about yourself..."></b-input>
             </label><br/>
@@ -85,7 +85,7 @@
             </b-select>
             <b-input required type="number" min="0" max="10" step=".01" v-model="price" placeholder="0,00" style="width: 90px"></b-input>
             <span style="font-weight: normal; margin-left: 10px; padding-top: 5px;">per minute</span>
-        </b-field> 
+        </b-field>
     </label>
 
 <br>
@@ -217,8 +217,10 @@ export default {
         })
     },
     saveImage(){
+        console.log('testing', typeof this.image)
         // if you don't upload an image on the account page, it doesn't change the image to an empty string
         if(this.$route.path === '/dashboard' || (this.$route.path === '/account' && typeof this.image !=='string')){
+
             console.log('testing', typeof this.image)
             const userId = this.$root.user._id;
             apiUsers.saveImage(userId, this.image)
