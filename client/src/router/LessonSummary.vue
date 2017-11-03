@@ -21,9 +21,8 @@
           </label>
           <br />
           <br />
-
-          <b-field type="is-info no-icon">
-            <b-input maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
+            <b-field type="is-info no-icon" >
+            <b-input pack="fa" maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           </b-field>
 
         <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>

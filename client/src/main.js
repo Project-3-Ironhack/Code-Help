@@ -8,7 +8,6 @@ import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
-
 import VueCodeMirror from 'vue-codemirror'
 Vue.use(VueCodeMirror)
 
@@ -36,7 +35,7 @@ const options = {
   billingAddress: true,
   panelLabel: 'Register your card details'
 }
- 
+
 Vue.use(VueStripeCheckout, options);
 
 
