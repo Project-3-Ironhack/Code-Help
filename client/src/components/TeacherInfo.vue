@@ -53,37 +53,35 @@
             <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select><br>
         </div>
 
-        <div class="field">
-            <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
-            <br>
-            <label class="label" ><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
-                <input class="input" type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]">
-            </label><br/>
+
+<br>
+        <div class="field" @change="image = $event.target.files[0]">
+                <p v-if="user.image !== undefined" style="font-weight: bold">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" style="width:100px !important; height: 100px !important; object-fit: cover !important">
+                <br><br>
+                <span style="font-weight: bold;" v-if="user.image === undefined">Upload your photo</span><span v-else>Click here to change your photo</span>
+            <b-field style="margin-top: 10px;">
+                <b-upload v-model="files" style="width: 210px;" >
+                    <a class="button is-info input" type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]">
+                        <icon style="margin-left: 8px;" class="icon is-small is-left" name="upload"></icon>
+                        <span style="padding-left: 15px;">Click to upload</span>
+                    </a>
+                </b-upload>
+                <div v-if="files && files.length" >
+                    <span class="file-name">
+                        {{ files[0].name }}
+                    </span>
+                </div>
+            </b-field>
         </div>
-
-        <!-- <div class="field"> -->
-            <!-- <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br> -->
-
-                        <!-- <select required v-model="currency">
-                            <option value="" selected>Currency</option>
-                            <option value="dollar">$ USD</option>
-                            <option value="euro">€ EUR</option>
-                            <option value="sterling">£ GBP</option>
-                        </select> -->
-                <!-- <input required type="number" min="0" max="10" step=".01" v-model="price"> -->
-                <!-- <span style="font-weight: normal">per minute</span> -->
-            <!-- </label><br>
-            <br>
-        </div> -->
-
-    <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
-        <b-field>
-            <b-select required v-model="currency" placeholder="Currency">
+<br>
+    <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>    </label>
+        <b-field type="no-icon">
+            <b-select placeholder="Currency" required v-model="currency">
                 <option value="dollar">$</option>
                 <option value="sterling">£</option>
                 <option value="euro">€</option>
             </b-select>
-            <b-input required type="number" min="0" max="10" step=".01" v-model="price" placeholder="0,00" style="width: 90px"></b-input>
+            <b-input required type="number" min="0" max="10" step="1" v-model="price" placeholder="0" style="width: 90px"></b-input>
             <span style="font-weight: normal; margin-left: 10px; padding-top: 5px;">per minute</span>
         </b-field>
     </label>
@@ -176,7 +174,7 @@ export default {
             skills: '',
             image: '',
             price: 0,
-            currency: '',
+            currency: null,
             error: null,
             user: '',
             okMessage: false,
@@ -186,6 +184,8 @@ export default {
             twitterUrl: '',
 
             role: this.$root.user.role,
+
+            files: [],
         };
     },
     computed: {
@@ -198,7 +198,7 @@ export default {
   },
   methods: {
     teacherUpdate(){
-
+        console.log('this teacher update triggers')
         this.error = null
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency, this.gitHubUrl, this.linkedInUrl, this.personalWebsiteUrl, this.twitterUrl)

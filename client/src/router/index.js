@@ -26,22 +26,22 @@ const router = new Router({
         else next();
       },
     },
-    {
-      path: "/signup",
-      component: Signup,
-      beforeEnter: (to, from, next) => {
-      if (localStorage.token) next("/dashboard");
-      else next();
-      },
-    },
-    {
-      path: "/login",
-      component: Login,
-      beforeEnter: (to, from, next) => {
-      if (localStorage.token) next("/dashboard");
-      else next();
-      },
-    },
+    // {
+    //   path: "/signup",
+    //   component: Signup,
+    //   beforeEnter: (to, from, next) => {
+    //   if (localStorage.token) next("/dashboard");
+    //   else next();
+    //   },
+    // },
+    // {
+    //   path: "/login",
+    //   component: Login,
+    //   beforeEnter: (to, from, next) => {
+    //   if (localStorage.token) next("/dashboard");
+    //   else next();
+    //   },
+    // },
     {
       path: "/dashboard",
       component: Dashboard,
@@ -89,7 +89,7 @@ router.beforeEach((to, from, next) => {
     api.checkUser(router.app.$root);
     if (!router.app.$root.user) {
       return next({
-        path: "/login",
+        path: "/",
         query: {
           redirect: encodeURIComponent(to.fullPath)
         }

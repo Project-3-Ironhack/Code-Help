@@ -39,3 +39,29 @@ onload="tagoveWatcher.onLoad()"
 
     //   { innerHTML: '{ "@context": "http://schema.org" }', type: 'application/ld+json' },
     // <script type="application/ld+json">{ "@context": "http://schema.org" }</script> 
+
+    // TEACHER INFO PRE BUEFY
+
+    ]        <!-- <div class="field"> -->
+            <!-- <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br> -->
+
+                        <!-- <select required v-model="currency">
+                            <option value="" selected>Currency</option>
+                            <option value="dollar">$ USD</option>
+                            <option value="euro">€ EUR</option>
+                            <option value="sterling">£ GBP</option>
+                        </select> -->
+                <!-- <input required type="number" min="0" max="10" step=".01" v-model="price"> -->
+                <!-- <span style="font-weight: normal">per minute</span> -->
+            <!-- </label><br>
+            <br>
+        </div> -->
+
+
+                <!-- <div class="field"> -->
+            <!-- <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100"> -->
+            <!-- <br> -->
+            <!-- <label class="label" ><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span> -->
+                <!-- <input class="input" type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]"> -->
+            <!-- </label><br/> -->
+        <!-- </div> -->
