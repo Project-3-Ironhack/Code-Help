@@ -1,56 +1,98 @@
 <template>
-<div>
+<div class="page-body">
   <h2 v-if="getURL === '/dashboard'">Hello {{userName}}, and welcome to Code Help!</h2>
-    <p v-if="getURL === '/dashboard'">Before we unleash your talents on our students, we need to get to know you a little better.<br>Please fill out the questions, below.</p>
-    <form @submit.prevent="teacherUpdate(); saveImage();">
+    <p style="text-align: left" v-if="getURL === '/dashboard'">Before we unleash your talents on our students, we need to get to know you a little better.</p>
+    <p v-if="getURL === '/dashboard'" style="margin-bottom: -20px">Please fill out the questions, below.</p>
+   <div class="field">
+        <form @submit.prevent="teacherUpdate(); saveImage();">
 
-         <label v-if="getURL !== '/dashboard'">Your name
-            <input type="text" required v-model="name">
-        </label><br/>
+        <div class="field">
+            <label class="label" v-if="getURL !== '/dashboard'">Your name
+                <input class="input" type="text" required v-model="name">
+            </label><br/>
+        </div>
 
-        <label>Introduce yourself
-            <textarea v-bind:required="$root.user.role==='Teacher'" rows="6" cols="30" v-model="description" placeholder="Tell us about yourself..."></textarea>
-        </label><br/>
+        <div class="field"> 
+            <label class="label" >Introduce yourself
+                <b-input maxlength="600" type="textarea" v-bind:required="$root.user.role==='Teacher'" rows="6" cols="30" v-model="description" placeholder="Tell us about yourself..."></b-input>
+            </label><br/>
+        </div>
 
-        <label>Where you can be found online (optional)
-            <ul>
-                <li><icon name="github"></icon><input type="text"  v-model="gitHubUrl" placeholder="GitHub"></li>
-                <li><icon name="linkedin"></icon><input type="text"  v-model="linkedInUrl"placeholder="LinkedIn" ></li>
-                <li><icon name="home"></icon><input type="text"  v-model="personalWebsiteUrl" placeholder="Your personal website or blog"></li>
-                <li><icon name="twitter"></icon><input type="text"  v-model="twitterUrl" placeholder="Twitter"></li>
-            </ul>
+        <div class="field">
+            <label class="label" >Where can we find you online <span style="font-weight: normal">(optional)</span>
+                    <label class="control has-icons-left">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="gitHubUrl" placeholder="GitHub">
+                        <span class="icon is-small is-left">
+                        <icon name="github"></icon>
+                        </span>
+                    </label>
+                    <label class="control has-icons-left">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="linkedInUrl"placeholder="LinkedIn" >
+                        <span class="icon is-small is-left">
+                        <icon name="linkedin"></icon>
+                        </span>
+                    </label>
+                    <label class="control has-icons-left">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="personalWebsiteUrl" placeholder="Your personal website or blog">
+                        <span class="icon is-small is-left">
+                        <icon name="home"></icon>
+                        </span>
+                    </label>
+                    <label class="control has-icons-left">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="twitterUrl" placeholder="Twitter">
+                        <span class="icon is-small is-left">
+                        <icon name="twitter"></icon>
+                        </span>
+                    </label>
 
-        </label><br/>
+            </label><br/>
+        </div>
 
-        <span v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
-        <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select><br>
+        <div class="field">
+            <span style="font-weight: bold" v-if="$root.user.role==='Teacher'">Areas of expertise</span><span v-if="$root.user.role==='Student'">What are you studying?</span>
+            <v-select required class="vue-select-form" multiple :closeOnSelect='false' v-model="skills" :options="options"></v-select><br>
+        </div>
 
+        <div class="field">
+            <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
+            <br>
+            <label class="label" ><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
+                <input class="input" type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]">
+            </label><br/>
+        </div>
 
-        <p v-if="user.image !== undefined">Your current photo</p><img :src="user.image" v-if="user.image && getURL === '/account'" width="100">
-        <br>
-        <label><span v-if="user.image === undefined">Upload your photo</span><span v-else>Change your photo</span>
-            <input type="file" name="image" :required="!user.image && $root.user.role==='Teacher'" @change="image = $event.target.files[0]">
-        </label><br/>
-         <br>
+        <!-- <div class="field"> -->
+            <!-- <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br> -->
 
-        <label required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
+                        <!-- <select required v-model="currency">
+                            <option value="" selected>Currency</option>
+                            <option value="dollar">$ USD</option>
+                            <option value="euro">€ EUR</option>
+                            <option value="sterling">£ GBP</option>
+                        </select> -->
+                <!-- <input required type="number" min="0" max="10" step=".01" v-model="price"> -->
+                <!-- <span style="font-weight: normal">per minute</span> -->
+            <!-- </label><br>
+            <br>
+        </div> -->
 
-                    <select required v-model="currency">
-                        <option value="" selected>Currency</option>
-                        <option value="dollar">$ USD</option>
-                        <option value="euro">€ EUR</option>
-                        <option value="sterling">£ GBP</option>
-                    </select>
-            <input required type="number" min="0" max="10" step=".01" v-model="price">
-            per minute
-        </label><br>
-        <br>
+    <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>
+        <b-field>
+            <b-select required v-model="currency" placeholder="Currency">
+                <option value="dollar">$</option>
+                <option value="sterling">£</option>
+                <option value="euro">€</option>
+            </b-select>
+            <b-input required type="number" min="0" max="10" step=".01" v-model="price" placeholder="0,00" style="width: 90px"></b-input>
+            <span style="font-weight: normal; margin-left: 10px; padding-top: 5px;">per minute</span>
+        </b-field> 
+    </label>
 
-
-        <button>Update your information</button>
-        <p v-if="okMessage"> Update successful</p>
-    </form>
-
+<br>
+            <button class="button is-success">Update your information</button>
+            <p v-if="okMessage"> Update successful</p>
+        </form>
+    </div>
 </div>
 </template>
 
@@ -98,7 +140,7 @@ export default {
               'HTML5',
               'Jasmine',
               'Java',
-              'Javascript',
+              'JavaScript',
               'JQuery',
               'Laravel',
               'LESS',
@@ -219,7 +261,7 @@ export default {
 
 <style>
 .vue-select-form {
-    width: 35%;
+    width: 500px;
     min-width: 380px;
 }
 
@@ -234,6 +276,11 @@ export default {
 
 
 <style scoped>
+.page-body {
+    width: 500px;
+    margin: 0 auto;
+}
+
 label {
     vertical-align: top;
     /* display:block; */
@@ -245,4 +292,9 @@ li {
 li > input {
     margin-left: 10px;
 }
+
+  .field {
+    text-align: left;
+  }
+
 </style>

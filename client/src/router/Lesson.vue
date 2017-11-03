@@ -45,8 +45,11 @@ export default {
     }
   },
   created(){
+    console.log('this is created')
     const id = this.$route.params[0]
     tagoveApp.startChat();
+    tagoveApp.max();
+     console.log('chat should have started')
     apiSessions.getSession(id).then(session => {
       return this.liveSession = session;
     }).then(() => {

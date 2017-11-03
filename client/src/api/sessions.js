@@ -26,10 +26,12 @@ const apiSessions = {
   },
 
   createSession: (teacherId, studentId) => {
+    console.log('the ids are: teacher', teacherId, 'student', studentId )
+    console.log('SESSION', session)
     return session
       .post("/session", { teacherId, studentId })
       .then(response => {
-        console.log(response);
+        console.log('the response is',response);
         return response;
       })
       .catch(err => {
