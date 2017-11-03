@@ -71,23 +71,46 @@ export default {
   created() {
     const userId = this.$root.user._id;
   },
+
+
   methods: {
     startLesson(result, teacherId, studentId) {
       const userId = this.$root.user._id;
-
-      this.$checkout.open({
-        name: 'Add your payment details',
-        currency: 'USD',
-        amount: 99999,
-        token(token) {
-          console.log('this is the token',token);
-          //   this.$checkout.close();
-        } 
-      })
-      .then(()=>{
-
       apiUsers.getStudentById(userId).then(user => {
+        // if (!user.token && this.result.price >0) {
+        //   this.isBillingModalActive = true;
+        //   // setTimeout(()=>{
+        //   //   this.isBillingModalActive = false;
+        //   // },3000)
+        // } else {
+          apiSessions
+            .createSession(result, userId)
+            .then(session => {
+              console.log('the session data is...', session)
+              this.session = session.data.session;
+            })
+            .then(() => {
+              this.$router.push("/lesson/" + this.session._id);
+            });
+        // }
+      });
+    },
+    viewTeacherInfo() {
+      this.isTeacherInfoModalActive = true;
+    },
+  },
 
+      // this.$checkout.open({
+      //   name: 'Add your payment details',
+      //   currency: 'USD',
+      //   amount: 99999,
+      //   token(token) {
+      //     console.log('this is the token',token);
+      //     //   this.$checkout.close();
+      //   } 
+      // })
+      // .then(()=>{
+    // *********************************
 
         // if (!user.token && this.result.price >0) {
         //   this.isBillingModalActive = true;
@@ -96,21 +119,6 @@ export default {
         //   // },3000)
         // } else {
 
-      apiSessions.createSession(result, userId)
-      })
-      .then(session => {
-        this.session = session.data.session;
-      })
-      .then(() => {
-        this.$router.push("/lesson/" + this.session._id);
-      });
-        // }
-      });
-    },
-    viewTeacherInfo() {
-      this.isTeacherInfoModalActive = true;
-    },
-  },
   computed: {
     currency: function() {
       switch (this.result.currency) {
