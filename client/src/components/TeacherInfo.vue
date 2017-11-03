@@ -20,25 +20,25 @@
 
         <div class="field">
             <label class="label" >Where can we find you online <span style="font-weight: normal">(optional)</span>
-                    <label class="control has-icons-left">
+                    <label class="control has-icons-left label">
                         <input style="margin-bottom: 10px" class="input" type="text"  v-model="gitHubUrl" placeholder="GitHub">
                         <span class="icon is-small is-left">
                         <icon name="github"></icon>
                         </span>
                     </label>
-                    <label class="control has-icons-left">
+                    <label class="control has-icons-left label">
                         <input style="margin-bottom: 10px" class="input" type="text"  v-model="linkedInUrl"placeholder="LinkedIn" >
                         <span class="icon is-small is-left">
                         <icon name="linkedin"></icon>
                         </span>
                     </label>
-                    <label class="control has-icons-left">
+                    <label class="control has-icons-left label">
                         <input style="margin-bottom: 10px" class="input" type="text"  v-model="personalWebsiteUrl" placeholder="Your personal website or blog">
                         <span class="icon is-small is-left">
                         <icon name="home"></icon>
                         </span>
                     </label>
-                    <label class="control has-icons-left">
+                    <label class="control has-icons-left label">
                         <input style="margin-bottom: 10px" class="input" type="text"  v-model="twitterUrl" placeholder="Twitter">
                         <span class="icon is-small is-left">
                         <icon name="twitter"></icon>
@@ -74,7 +74,8 @@
             </b-field>
         </div>
 <br>
-    <label class="label" required v-if="$root.user.role==='Teacher'">Help students for free, or name your price<br>    </label>
+    <div v-if="$root.user.role==='Teacher'">
+    <label class="label" required>Help students for free, or name your price<br></label>
         <b-field type="no-icon">
             <b-select placeholder="Currency" required v-model="currency">
                 <option value="dollar">$</option>
@@ -84,7 +85,7 @@
             <b-input required type="number" min="0" max="10" step="1" v-model="price" placeholder="0" style="width: 90px"></b-input>
             <span style="font-weight: normal; margin-left: 10px; padding-top: 5px;">per minute</span>
         </b-field>
-    </label>
+    </div>
 
 <br>
             <button class="button is-success">Update your information</button>
@@ -283,17 +284,17 @@ export default {
     margin: 0 auto;
 }
 
-label {
+.label {
     vertical-align: top;
     /* display:block; */
 }
 
-li {
+/* li {
     list-style-type: none;
 }
 li > input {
     margin-left: 10px;
-}
+} */
 
   .field {
     text-align: left;

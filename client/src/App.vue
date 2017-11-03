@@ -11,8 +11,8 @@
         Code Help
       </p>
 
-      <router-link v-if="page !== '/lesson'" class="navbar-item account" v-show="$root.user" to="/account">
-        {{userName}}'s Account
+      <router-link v-if="page !== '/lesson'" class="navbar-item" v-show="$root.user" to="/account">
+        <span id="account">{{userName}}</span>'s Account
       </router-link>
 
       <router-link v-if="role==='Teacher'" class="navbar-item" to="/teach" v-show="$root.user">
@@ -111,7 +111,7 @@ export default {
   position: fixed !important; top: 0; left: 0; right: 0; z-index: 10;
 }
 
-.account{
+#account{
   text-transform: capitalize;
 }
 
