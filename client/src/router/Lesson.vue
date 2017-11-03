@@ -71,7 +71,7 @@ export default {
 <style>
 .own-text-editor{
     background: url(http://i.imgur.com/2cOaJ.png);
-    background-size: 6.75%;
+    background-size: 48.5px;
     background-attachment: local;
     background-repeat: no-repeat;
     background-position-y: 0px;
@@ -89,7 +89,11 @@ export default {
     -webkit-appearance:none;
 
     float: left;
-    margin-left: 80px;
+    margin-left: 5%;
+
+    width: 66%;
+    min-width: 350px;
+    
 }
 
 .capitalise{
