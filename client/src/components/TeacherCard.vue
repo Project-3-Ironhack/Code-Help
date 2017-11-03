@@ -8,7 +8,7 @@
       </div>
       <div class="overlay">
         <p class="title is-4 capitalise"><span id="teacherName">{{result.name}}</span></p>
-        <p class="overlay-description">Click to find out more</p>
+        <p style="font-weight: bold" class="overlay-description">Click to read more</p>
       </div>
     </div>
     <div class="card-content">
@@ -77,12 +77,6 @@ export default {
     startLesson(result, teacherId, studentId) {
       const userId = this.$root.user._id;
       apiUsers.getStudentById(userId).then(user => {
-        // if (!user.token && this.result.price >0) {
-        //   this.isBillingModalActive = true;
-        //   // setTimeout(()=>{
-        //   //   this.isBillingModalActive = false;
-        //   // },3000)
-        // } else {
           apiSessions
             .createSession(result, userId)
             .then(session => {

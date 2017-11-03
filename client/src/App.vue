@@ -21,7 +21,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
-      <p class="navbar-item" v-if="page !== '/lesson'" v-show="$root.user" @click.prevent="logout" href="#">
+      <p style="cursor: pointer;" class="navbar-item" v-if="page !== '/lesson'" v-show="$root.user" @click.prevent="logout" href="#">
     Logout
       </p>
     </div>

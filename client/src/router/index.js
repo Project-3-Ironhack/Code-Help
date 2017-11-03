@@ -77,6 +77,10 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+        path: '*',
+        redirect: '/'
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
