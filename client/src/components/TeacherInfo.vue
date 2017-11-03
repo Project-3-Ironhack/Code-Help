@@ -274,6 +274,7 @@ export default {
 
   .v-select li {
     margin: -4px 0;
+    display: inline;
   }
 </style>
 

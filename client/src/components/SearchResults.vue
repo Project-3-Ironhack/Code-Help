@@ -44,6 +44,8 @@ export default {
     },
     fuse() {
       var options = {
+        shouldSort: true,
+        threshold: 0.5,
         keys: ["name", "skills"]
       };
       return new Fuse(this.teachers, options);
