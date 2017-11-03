@@ -1,6 +1,8 @@
 <template>
   <div id="visitor-list">
-      Let's teach some students! Log in to Tagove to begin
+      <p>Thanks for signing up to be a teacher at Code Help :) </p>
+      <p>One of our team will review your information and send you an email with further instructions. </p>
+      <p>We look forward to having you on board!</p>
   </div>
 </template>
 

@@ -21,9 +21,11 @@
           </label>
           <br />
           <br />
+
           <b-field type="is-info no-icon">
-            <b-input maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"></b-input>
+            <b-input maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           </b-field>
+
         <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>
         <button @click="danger" v-else type="button" class="button is-light" name="button">Submit feedback</button>
       </form>
@@ -31,7 +33,7 @@
 <br>
     <div>
       Your lesson lasted {{Math.ceil(sessionLength)}} minute<span v-if="Math.ceil(sessionLength)!==1">s</span>.
-      <span v-if="teacher.price>0">The price of your lesson was {{teacher.currency === 'dollar' ? '$' : teacher.currency === 'euro' ? '€' : teacher.currency === 'sterling' ? '£' :''  }}{{teacher.price * Math.ceil(sessionLength)}}.</span> Thank you for using Code-Help!
+      <span v-if="teacher.price>0">The price of your lesson was {{teacher.currency === 'dollar' ? '$' : teacher.currency === 'euro' ? '€' : teacher.currency === 'sterling' ? '£' :''  }}{{teacher.price * Math.ceil(sessionLength)}}.</span> Thank you for using Code Help!
     </div>
 
 <br>

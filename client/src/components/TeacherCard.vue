@@ -34,10 +34,9 @@
     </div>
   </div>
       <!-- BILLING MODAL -->
-        <b-modal :active.sync="isBillingModalActive" has-modal-card>
+        <!-- <b-modal :active.sync="isBillingModalActive" has-modal-card>
           <modal-billing-details-form></modal-billing-details-form>
-            <!-- <modal-form v-bind="formProps"></modal-form> -->
-        </b-modal>
+        </b-modal> -->
 
       <!-- TEACHER INFO MODAL -->
         <b-modal :active.sync="isTeacherInfoModalActive" has-modal-card>
@@ -50,19 +49,19 @@
 <script>
 import apiSessions from "@/api/sessions";
 import apiUsers from "@/api/users";
-import ModalBillingDetailsForm from "@/components/ModalBillingDetailsForm";
+// import ModalBillingDetailsForm from "@/components/ModalBillingDetailsForm";
 import ModalTeacherInfo from "@/components/ModalTeacherInfo";
 
 export default {
   components: {
-    ModalBillingDetailsForm,
+    // ModalBillingDetailsForm,
     ModalTeacherInfo
   },
   data() {
     return {
       userId: "",
       session: null,
-      isBillingModalActive: false,
+      // isBillingModalActive: false,
       isTeacherInfoModalActive: false
     };
   },
@@ -75,21 +74,36 @@ export default {
   methods: {
     startLesson(result, teacherId, studentId) {
       const userId = this.$root.user._id;
+
+      this.$checkout.open({
+        name: 'Add your payment details',
+        currency: 'USD',
+        amount: 99999,
+        token(token) {
+          console.log('this is the token',token);
+          //   this.$checkout.close();
+        } 
+      })
+      .then(()=>{
+
       apiUsers.getStudentById(userId).then(user => {
+
+
         // if (!user.token && this.result.price >0) {
         //   this.isBillingModalActive = true;
         //   // setTimeout(()=>{
         //   //   this.isBillingModalActive = false;
         //   // },3000)
         // } else {
-          apiSessions
-            .createSession(result, userId)
-            .then(session => {
-              this.session = session.data.session;
-            })
-            .then(() => {
-              this.$router.push("/lesson/" + this.session._id);
-            });
+
+      apiSessions.createSession(result, userId)
+      })
+      .then(session => {
+        this.session = session.data.session;
+      })
+      .then(() => {
+        this.$router.push("/lesson/" + this.session._id);
+      });
         // }
       });
     },

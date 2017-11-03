@@ -2,35 +2,61 @@
     <div class="modal-card">
         <section class="modal-card-body">
 
-<div>
-    <form @submit.prevent="signup">
-    <label for="student">
-    <input type="radio" id="student" value="Student" v-model="role">
-    Student</label>
-    <br>
-    <label for="teacher">
-    <input type="radio" id="teacher" value="Teacher" v-model="role">
-    Teacher</label>
-    <br>
+          <div class="field">
+           <form @submit.prevent="signup">
+            <div class="field">
 
-      </label><br/>
-      <label>Email address
-        <input type="email" required v-model="username">
-      </label><br/>
-      <label>Name
-        <input type="text" required v-model="name">
-      </label><br/>
-      <label>Password
-        <input type="password" required v-model="password">
-      </label><br/>
-      <button type="submit"  name="button">Sign up</button>
-      <!-- @click="$parent.close()" -->
-    </form>
-    <div class="error-message" v-if="error">
-      {{ error }}
-    </div>
-    <!-- Already have an account? <router-link to="/login">Click here to log in.</router-link> -->
-  </div>
+                <div>
+                  <span>I'm here to...&nbsp &nbsp &nbsp</span>
+                    <input type="radio" id="student" value="Student" v-model="role">
+                    <label for="student">Study</label>
+                    &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" id="teacher" value="Teacher" v-model="role">
+                    <label for="teacher">Teach</label>
+                </div>
+              </div>
+              
+              <div class="field">
+                <label class="label">Email address
+                  <div class="control has-icons-left">
+                    <input class="input" type="email" required v-model="username">
+                      <span class="icon is-small is-left">
+                        <icon name="envelope"></icon>
+                      </span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="field">
+                <label class="label">Name
+                  <div class="control has-icons-left">
+                    <input class="input" type="text" required v-model="name">
+                      <span class="icon is-small is-left">
+                      <icon name="user"></icon>
+                      </span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="field">
+                <label class="label">Password
+                  <div class="control has-icons-left">
+                    <input class="input" type="password" minlength="8" required v-model="password">
+                      <span class="icon is-small is-left">
+                        <icon name="lock"></icon>
+                      </span>
+                  </div>
+                </label>
+              </div>
+
+                <button class="button is-success" type="submit"  name="button" style="font-weight: bold">Sign up</button>
+                <!-- @click="$parent.close()" -->
+              </form>
+              <div class="error-message" v-if="error">
+                {{ error }}
+              </div>
+              <!-- Already have an account? <router-link to="/login">Click here to log in.</router-link> -->
+            </div>
 
         </section>
     </div>
@@ -77,9 +103,16 @@ export default {
 <style>
     .modal-card{
         border-radius: 8px;
+        width: 500px;
     }
 
     .error-message {
      color: salmon;
     }
+</style>
+
+<style scoped>
+  .field {
+    text-align: left;
+  }
 </style>

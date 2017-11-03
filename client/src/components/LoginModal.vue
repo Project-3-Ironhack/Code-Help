@@ -1,25 +1,45 @@
 <template>
-    <div class="modal-card">
-        <section class="modal-card-body">
 
-  <div>
-    <form @submit.prevent="login">
-      <label>Email address
-        <input type="email" required v-model="username">
-      </label><br/>
-      <label>Password
-        <input type="password" required v-model="password">
-      </label><br/>
-      <button type="submit" name="button">Log in</button>
-    </form>
-    <div class="error-message" v-if="error">
-      {{ error }}
-    </div>
-    <!-- Don't have an account? <router-link to="/signup">Click here to sign up.</router-link> -->
-  </div>
+<div class="modal-card">
+  <section class="modal-card-body">
 
-        </section>
-    </div>
+    <div class="field"> Enter your details to get started...</div>
+
+    <div class="field">
+        <form @submit.prevent="login">
+              
+            <div class="field">
+              <label class="label">Email address
+                <div class="control has-icons-left">
+                  <input class="input" type="email" required v-model="username">
+                    <span class="icon is-small is-left">
+                      <icon name="envelope"></icon>
+                    </span>
+                </div>
+              </label>
+            </div>
+
+            <div class="field">
+              <label class="label">Password
+                <div class="control has-icons-left">
+                  <input class="input" type="password" required v-model="password">
+                    <span class="icon is-small is-left">
+                      <icon name="lock"></icon>
+                    </span>
+                </div>
+              </label>
+            </div>
+
+          <button class="button is-success" type="submit"  name="button">Log in</button>
+        </form>
+      <div class="error-message" v-if="error">
+        {{ error }}
+      </div>
+     </div>
+
+  </section>
+</div>
+
 </template>
 
 <script>
@@ -58,9 +78,16 @@ export default {
 <style>
     .modal-card{
         border-radius: 8px;
+        width: 500px;
     }
 
     .error-message {
      color: salmon;
     }
+</style>
+
+<style scoped>
+  .field {
+    text-align: left;
+  }
 </style>
