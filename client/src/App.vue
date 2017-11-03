@@ -70,8 +70,10 @@ export default {
       api.logout(this.$root);
       this.$router.push('/');
       var elem = document.querySelectorAll('[id=tagove-update-api-auth]');
+      var elem2 = document.querySelectorAll('[class=activity_list_widget]');
       elem[0].remove();
       elem[1].remove();
+      elem2[0].remove();
     },
   },
   computed: {
