@@ -1,10 +1,14 @@
 <template>
   <div class="container is-fluid">
-  <div>
+  <div v-show="queryResults.length !== 0 || query=== ''">
     <h1>Start a call with one of our awesome teachers</h1>
     <h4>Click on a profile below to get started</h4>
   </div>
-  <br><div class="container">
+  <div v-show="queryResults.length === 0 && query !== ''">
+    <h1>Whoops! No search result match your query!</h1>
+    <figure><img class="empty-state" src="/static/searching.svg"></figure>
+  </div>
+  <div class="container">
       <div class="columns is-multiline is-8">
         <teacher-card :result="result" v-if="query" v-for="(result, i) in queryResults" class="column is-one-quarter"/>
         <teacher-card :result="teacher" v-if="query === ''" v-for="teacher in orderedUsers" class="column is-one-quarter"/>
@@ -53,6 +57,9 @@ export default {
 
 <style lang="css">
 
+.empty-state {
+  width: 15%;
+}
 
 .column {
   border: none !important;
