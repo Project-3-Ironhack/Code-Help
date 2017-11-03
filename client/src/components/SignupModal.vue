@@ -9,13 +9,13 @@
                 <div>
                   <span>I'm here to...&nbsp &nbsp &nbsp</span>
                     <input type="radio" id="student" value="Student" v-model="role">
-                    <label for="student">Study</label>
+                    <label class="is-size-6" for="student">Study</label>
                     &nbsp &nbsp &nbsp &nbsp
                     <input type="radio" id="teacher" value="Teacher" v-model="role">
-                    <label for="teacher">Teach</label>
+                    <label class="is-size-6" for="teacher">Teach</label>
                 </div>
               </div>
-              
+
               <div class="field">
                 <label class="label">Email address
                   <div class="control has-icons-left">
@@ -101,18 +101,18 @@ export default {
 </script>
 
 <style>
-    .modal-card{
-        border-radius: 8px;
-        width: 500px;
-    }
+.modal-card{
+  border-radius: 8px;
+  width: 500px;
+}
 
-    .error-message {
-     color: salmon;
-    }
+.error-message {
+  color: salmon;
+}
 </style>
 
 <style scoped>
-  .field {
-    text-align: left;
-  }
+.field {
+  text-align: left;
+}
 </style>
