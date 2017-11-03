@@ -21,7 +21,7 @@
           </label>
           <br />
           <br />
-            <b-field type="is-info no-icon" >
+            <b-field type="is-info no-icons" >
             <b-input pack="fa" maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
           </b-field>
 
