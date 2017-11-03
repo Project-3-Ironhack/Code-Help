@@ -69,6 +69,9 @@ export default {
       console.log('test 1')
       api.logout(this.$root);
       this.$router.push('/');
+      var elem = document.querySelectorAll('[id=tagove-update-api-auth]');
+      elem[0].remove();
+      elem[1]/remove();
     },
   },
   computed: {
