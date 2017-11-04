@@ -1,13 +1,16 @@
 <template>
   <div>
-    <h1>Your lesson with </span>
+    <h1>Your session with </span>
       <span class="capitalise" v-if="this.teacher">{{firstName}}</span>
       <span class="capitalise" v-else>your teacher</span>
-
-      <button type="button" class="button is-danger" @click="endLesson">End lesson</button></h1>
-
+    </h1>
 <br>
+      <div style="text-align:left; margin-left: 5%">
+        <label style="display: inline-block; vertical-align: middle"> Click here once your session has ended &nbsp => &nbsp</label>
+        <input style=" display: inline-block; vertical-align: middle"type="button" class="button is-warning" @click="endLesson" value="I've finished"></input>
+      </div>
 <br>
+
     <textarea class="own-text-editor" rows="20" cols="80"></textarea>
   </div>
 </template>
@@ -26,9 +29,6 @@ export default {
         liveSession: '',
         teacher: '',
     }
-  },
-  components: {
-    AceEditor,
   },
 
   methods: {
@@ -91,7 +91,8 @@ export default {
     float: left;
     margin-left: 5%;
 
-    width: 66%;
+    width: calc(100% - 500px);
+    
     min-width: 350px;
     
 }

@@ -34,8 +34,8 @@
     </div>
 <br>
     <div>
-      Your lesson lasted {{Math.ceil(sessionLength)}} minute<span v-if="Math.ceil(sessionLength)!==1">s</span>.
-      <span v-if="teacher.price>0">The price of your lesson was {{teacher.currency === 'dollar' ? '$' : teacher.currency === 'euro' ? '€' : teacher.currency === 'sterling' ? '£' :''  }}{{teacher.price * Math.ceil(sessionLength)}}.</span> Thank you for using Code Help!
+      Your lesson lasted <span style="font-weight: bold">{{Math.ceil(sessionLength)}} minute<span v-if="Math.ceil(sessionLength)!==1">s</span></span>.
+      <span v-if="teacher.price>0">The price of your lesson was <span style="font-weight: bold">{{teacher.currency === 'dollar' ? '$' : teacher.currency === 'euro' ? '€' : teacher.currency === 'sterling' ? '£' :''  }}{{teacher.price * Math.ceil(sessionLength)}}</span>.</span> Thank you for using Code Help!
     </div>
 
 <br>

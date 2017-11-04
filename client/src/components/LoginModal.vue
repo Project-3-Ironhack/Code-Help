@@ -33,7 +33,7 @@
           <button class="button is-success" type="submit"  name="button">Log in</button>
         </form>
       <div class="error-message" v-if="error">
-        {{ error }}
+        {{error}}
       </div>
      </div>
 
@@ -50,16 +50,16 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      username: this.payload.payload1 || '',
-      password: this.payload.payload2 || '',
+      username: this.payload ? this.payload.payload1 : '',
+      password: this.payload ? this.payload.payload2 : '',
       error: null,
     }
   },
-  props: ['payload'],
+  props: {
+    payload: {type: Object,
+          default: null}
+  },
   created(){
-    console.log('payloaaad details', this.payload);
-    console.log('payloaaad details', this.username);
-    console.log('payloaaad details', this.password);
 
     // this.error = null
     //   api.login(this.username, this.password, this.$root)
@@ -78,10 +78,8 @@ export default {
   },
   methods: {
     login() {
-      this.error = null
       api.login(this.username, this.password, this.$root)
       .then(data => {
-        console.log('this', this, 'this.parent', this.$parent)
         this.$parent.close();
         this.$router.push('/dashboard')
       })
@@ -89,7 +87,8 @@ export default {
         document.getElementsById("html").removeAttribute("is-clipped")
       })
       .catch(err => {
-        this.error = err.response.data.error
+        this.error = err.response.data.error;
+        console.log('the login error is...', this.error)
       });
     },
   },

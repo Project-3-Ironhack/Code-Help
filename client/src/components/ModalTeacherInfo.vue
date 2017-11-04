@@ -1,8 +1,8 @@
 <template>
     <div class="modal-card">
         <section class="modal-card-body">
-          <h1>{{result.name}}</h1>
-          <h3 class="title is-4 capitalise">Rating: <img class="rating-image" :src="rating"></h3>
+          <h1><span class="capitalise">{{result.name}}</span></h1>
+          <h3 class="title is-4"><span class="capitalise">{{result.name}}</span>'s rating: &nbsp <img class="rating-image" :src="rating"></h3>
         <div class="card">
 
           <div class="card-image">
@@ -18,13 +18,13 @@
             <a  class="tag is-primary is-rounded" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
           </div>
           <div class="subtitle is-6">
-          <p><strong>Teacher's description:</strong> {{result.description}}</p>
+          <p><strong>Student feedback:</strong> {{result.description}}</p>
           </div>
           <div class="subtitle is-6" v-if="result.topSession">
             <p><strong>Students say it best:</strong> "{{result.topSession.comment}}"</p>
           </div>
           <div class="subtitle is-6" v-else="result.topSession">
-            <p class="has-text-grey-light"><em>This teacher doesn't have a comment yet. Be the first one to call him!</em></p>
+            <p class="has-text-grey-light"><em><span class="capitalise">{{result.name}}</span> doesn't have any comments yet. Be their first student!</em></p>
           </div>
             <!-- <router-link to="/lesson" v-if="result.status === 'online'">this teacher is ONLINE, start call</router-link> -->
         </div>

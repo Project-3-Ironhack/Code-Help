@@ -53,7 +53,7 @@
                 <!-- @click="$parent.close()" -->
               </form>
               <div class="error-message" v-if="error">
-                {{ error }}
+                <span v-if="error === 'User validation failed: role: Path `role` is required.'">You need to tell us if you're to study or to teach</span><span v-else>{{error}}</span>
               </div>
               <!-- Already have an account? <router-link to="/login">Click here to log in.</router-link> -->
             </div>
@@ -94,7 +94,9 @@ export default {
         console.log('emiting the username...', payload);
       })
       .catch(err => {
+        
         this.error = err.response.data.error.message
+        console.log('the error is', this.error )
       })
     }
   }
