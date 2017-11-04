@@ -52,7 +52,7 @@
         <div class="columns separator">
           <div class="column is-one-third">
             <div>
-                <img class="img" src="/static/alexandra.jpg">
+                <img class="img" src="/static/alexandra.jpeg">
               <h4 class="separator subtitle"><icon name="graduation-cap"></icon><b> Teacher:</b> Alexandra</h4>
               <p>I love to teach, and Code Help connects me with students all over the world. Plus it's a nice way to make some extra pocket money!</p>
             </div>
