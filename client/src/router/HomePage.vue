@@ -13,7 +13,7 @@
         <p class="button is-success is-medium" type="button" @click="viewSignupModal">Sign Up</p>
         <!-- <p style="margin-top: 10px" class="is-light" @click="viewLoginModal"> Already have an account? Click to log in</p> -->
       </div>
-      <br><br><br>
+      <br><br>
       <div>
         <i class=" dev-icon devicon-android-plain"></i>  &nbsp &nbsp
         <i class=" dev-icon devicon-angularjs-plain"></i> &nbsp &nbsp
