@@ -8,8 +8,8 @@
                     hashtags="vuejs, javascript, coder4life"
                     inline-template>
       <div>
-        <h4>Help us educate the next generation of coders</h4>
-        <p>Share your experience with the world:</p>
+        <h4>Help us tell the world about Code Help!</h4>
+        <p>Every little helps :)</p>
 
         <button class="button is-info social-button">
             <network network="facebook">

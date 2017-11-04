@@ -21,9 +21,12 @@
           </label>
           <br />
           <br />
-            <b-field type="is-info no-icons" >
-            <b-input pack="fa" maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="Help your fellow coders by leaving some feedback :)"/>
+            
+          <label class="label" style="text-align: left">Help your fellow coders by leaving some feedback <span style="font-weight: normal">(required)</span>
+          <b-field type="is-info no-icons" >
+            <b-input pack="fa" maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="So...tell us how it went!"/>
           </b-field>
+          </label>
 
         <button @click="() => { rateLesson(); success(); }" v-if="rating && comment" type="button" class="button is-success" name="button">Submit feedback</button>
         <button @click="danger" v-else type="button" class="button is-light" name="button">Submit feedback</button>
@@ -173,3 +176,31 @@ input[type="radio"]:checked + label >
 
 
 </style>
+
+<style>
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    lightgrey !important;
+    font-size: 0.8em;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    lightgrey !important;
+   font-size: 1em;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    lightgrey !important;
+   font-size: 1em;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    lightgrey !important;
+   font-size: 1em;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    lightgrey !important;
+   font-size: 1em;
+}
+
+</style>
+

@@ -21,13 +21,13 @@
         <div class="field">
             <label class="label" >Where can we find you online <span style="font-weight: normal">(optional)</span>
                     <label class="control has-icons-left label">
-                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="gitHubUrl" placeholder="GitHub">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="gitHubUrl" placeholder="GitHub : e.g. https://github.com/stuartogardner/">
                         <span class="icon is-small is-left">
                         <icon name="github"></icon>
                         </span>
                     </label>
                     <label class="control has-icons-left label">
-                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="linkedInUrl"placeholder="LinkedIn" >
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="linkedInUrl"placeholder="LinkedIn : e.g. https://www.linkedin.com/in/thibautdavoult" >
                         <span class="icon is-small is-left">
                         <icon name="linkedin"></icon>
                         </span>
@@ -39,7 +39,7 @@
                         </span>
                     </label>
                     <label class="control has-icons-left label">
-                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="twitterUrl" placeholder="Twitter">
+                        <input style="margin-bottom: 10px" class="input" type="text"  v-model="twitterUrl" placeholder="Twitter : e.g. https://twitter.com/thibautdavoult/">
                         <span class="icon is-small is-left">
                         <icon name="twitter"></icon>
                         </span>
@@ -300,5 +300,24 @@ li > input {
   .field {
     text-align: left;
   }
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    lightgrey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    lightgrey;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    lightgrey;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    lightgrey;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    lightgrey;
+}
 
 </style>
