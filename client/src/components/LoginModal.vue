@@ -32,6 +32,7 @@
 
           <button class="button is-success" type="submit"  name="button">Log in</button>
         </form>
+        <br>
       <div class="error-message" v-if="error">
         {{error}}
       </div>

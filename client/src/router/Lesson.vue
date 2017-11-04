@@ -6,7 +6,7 @@
     </h1>
 <br>
       <div style="text-align:left; margin-left: 5%">
-        <label style="display: inline-block; vertical-align: middle"> Click here once your session has ended &nbsp => &nbsp</label>
+        <label class="lesson-end" style="display: inline-block; vertical-align: middle"> Click here once your session has ended &nbsp => &nbsp</label>
         <input style=" display: inline-block; vertical-align: middle"type="button" class="button is-warning" @click="endLesson" value="I've finished"></input>
       </div>
 <br>
@@ -69,6 +69,9 @@ export default {
 </script>
 
 <style>
+.lesson-end{
+  font-size: 1.1rem !important;
+}
 .own-text-editor{
     background: url(http://i.imgur.com/2cOaJ.png);
     background-size: 48.5px;

@@ -52,8 +52,9 @@
                 <button class="button is-success" type="submit"  name="button" style="font-weight: bold">Sign up</button>
                 <!-- @click="$parent.close()" -->
               </form>
+              <br>
               <div class="error-message" v-if="error">
-                <span v-if="error === 'User validation failed: role: Path `role` is required.'">You need to tell us if you're to study or to teach</span><span v-else>{{error}}</span>
+                <span v-if="error === 'User validation failed: role: Path `role` is required.'">Please tell us if you're here to study or to teach</span><span v-else>{{error}}</span>
               </div>
               <!-- Already have an account? <router-link to="/login">Click here to log in.</router-link> -->
             </div>

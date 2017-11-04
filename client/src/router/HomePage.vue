@@ -13,6 +13,24 @@
         <p class="button is-success is-medium" type="button" @click="viewSignupModal">Sign Up</p>
         <!-- <p style="margin-top: 10px" class="is-light" @click="viewLoginModal"> Already have an account? Click to log in</p> -->
       </div>
+      <br><br><br>
+      <div>
+        <i class=" dev-icon devicon-android-plain"></i>  &nbsp &nbsp
+        <i class=" dev-icon devicon-angularjs-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-cplusplus-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-css3-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-docker-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-go-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-html5-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-javascript-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-nodejs-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-php-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-react-original"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-ruby-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-swift-plain"></i> &nbsp &nbsp
+        <i class=" dev-icon devicon-vuejs-plain"></i> &nbsp &nbsp
+      </div>
+
     </div>
   </section>
 
@@ -162,4 +180,7 @@ export default {
   padding-bottom: 2rem;
 }
 
+.dev-icon{
+  font-size: 2rem;
+}
 </style>
