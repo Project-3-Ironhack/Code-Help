@@ -20,7 +20,7 @@
           <hr class="card-separator">
           <p class="content is-size-7">Student feedback:</p>
           <img class="tiny-img" :src="rating">
-          <p v-if="result.topSession"><em>{{slicedComment}}</em></p>
+          <p v-if="result.topSession"><em>"{{slicedComment}}"</em></p>
         </div>
         <div class="card-actions">
           <div v-if="result.status === 'online'">
