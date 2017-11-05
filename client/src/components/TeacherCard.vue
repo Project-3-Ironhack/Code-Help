@@ -28,7 +28,7 @@
           </div>
           <div class="button is-static" v-else><span class="capitalise">{{ firstName }}</span><span>&nbsp</span><span>is offline</span></div>
 
-        <div class="content" style="padding-top: 10px;"><span class="is-small" v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{result.name}}</span> doesn't charge for their help</span></div>
+        <div class="content" style="padding-top: 10px;"><span class="is-small" v-if="result.price>'0'">{{currency}}{{ result.price }} / minute</span><span v-else ><span class="capitalise">{{firstName}}</span> doesn't charge for their help</span></div>
       </div>
     </div>
     </div>
