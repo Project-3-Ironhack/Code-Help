@@ -1,6 +1,6 @@
 <template>
   <div class="container is-fluid">
-
+<br>
   <div v-show="queryResults.length === 0 && query !== ''">
     <h1>Whoops! No search result match your query!</h1>
     <figure><img class="empty-state" src="/static/searching.svg"></figure>
