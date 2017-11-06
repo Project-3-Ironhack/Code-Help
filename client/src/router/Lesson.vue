@@ -34,6 +34,7 @@ export default {
   methods: {
     endLesson() {
       tagoveApp.remove();
+      console.log('removing tagove app')
       const id = this.$route.params[0]
       apiSessions.endSession(id).then(session => {
         this.session = session.data.response;
