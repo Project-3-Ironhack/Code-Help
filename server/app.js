@@ -5,7 +5,7 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
-const sslRedirect = require("heroku-ssl-redirect")
+const sslRedirect = require("heroku-ssl-redirect");
 const mongoose = require("mongoose");
 const User = require("./models/user");
 const config = require("./config");
@@ -15,10 +15,9 @@ const cors = require("cors");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 const multer = require("multer");
-const stripe = require('stripe')('sk_test_w95ATVfTkJnto4HfCw8tFls8');
+const stripe = require("stripe")("sk_test_w95ATVfTkJnto4HfCw8tFls8");
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
-
 
 const authRoutes = require("./routes/auth");
 const users = require("./routes/users");
@@ -26,7 +25,6 @@ const imagesRoutes = require("./routes/images");
 const sessionsRoutes = require("./routes/sessions");
 
 const app = express();
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -72,27 +70,26 @@ app.use("/api", users);
 app.use("/api/images", imagesRoutes);
 app.use("/api", sessionsRoutes);
 
-
 const clientRoot = path.join(__dirname, "../client/dist");
 app.use("/", express.static(clientRoot));
 app.use(history("index.html", { root: clientRoot }));
 
-app.post('/api/pay', (req, res, next) => {
-    const { token } = req.body;
-    stripe.charges.create(
-      {
-        amount: 100, // 10€
-        currency: 'eur',
-        description: 'Example charge',
-        source: token.id,
-      },
-      function(err, charge) {
-        if (err) return next(err);
-        console.log(charge);
-        res.json({ charge });
-      }
-    );
-  });
+app.post("/api/pay", (req, res, next) => {
+  const { token } = req.body;
+  stripe.charges.create(
+    {
+      amount: 100, // 10€
+      currency: "eur",
+      description: "Example charge",
+      source: token.id
+    },
+    function(err, charge) {
+      if (err) return next(err);
+      console.log(charge);
+      res.json({ charge });
+    }
+  );
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
