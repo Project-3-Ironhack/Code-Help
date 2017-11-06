@@ -18,7 +18,7 @@
             <a  class="tag is-primary is-rounded" v-for="(skill, i) in result.skills">{{result.skills[i]}}</a>
           </div>
           <div class="subtitle is-6">
-          <p><strong>Student feedback:</strong> {{result.description}}</p>
+          <p><strong>Teacher description:</strong> {{result.description}}</p>
           </div>
           <div class="subtitle is-6" v-if="result.topSession">
             <p><strong>Students say it best:</strong> "{{result.topSession.comment}}"</p>
