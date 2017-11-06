@@ -50,13 +50,13 @@ function seedTeachers(data) {
       username: "yacinehmito",
       image: "/static/yacine.jpeg",
       description: "I love helping people solve their coding challenges. I also try my best to explain the thought process behind my solution. I'll take the time to make sure you understood it all by the time we end the session.",
-      skills: ["JavaScript", "AWS", "C++", "Typescript", "Java"],
+      skills: ["AWS", "C++", "Typescript", "Java"],
       role: "Teacher",
       price: 10,
       currency: "dollar",
       comment: "Very helpful!",
       gitHubUrl: "https://github.com/yacinehmito",
-      status: "online"
+      status: "offline"
     },
     {
       name: "Maxence Bouret",
@@ -146,17 +146,17 @@ function seedTeachers(data) {
       status: "offline",
     },
     {
-      name: "Frederic Magnin",
-      username: "frederic",
-      image: "/static/fred.png",
-      description: "I started my own business by coding an MVP with my co-founder. I can help you especially with real-world coding examples. Making it work is all that matters :)",
-      skills: ["MongoDB", "JQuery", "Bulma", "Vue.js", "Node.js", "npm", "Jasmine"],
+      name: "Stuart Gardner",
+      username: "stuart",
+      image: "/static/stuart.png",
+      description: "I've worked closely with startups in London for over 5 years and gained deep knowledge of the industry in Europe. Now after Ironhack I'm confident I can help any budding developer. I especially love algorithms so shoot away!",
+      skills: ["MongoDB", "JavaScript", "Bulma", "Vue.js", "Node.js", "npm", "Jasmine"],
       role: "Teacher",
       price: 0,
       currency: "",
       comment: "",
-      gitHubUrl: "https://github.com/frederic117",
-      status: "offline",
+      gitHubUrl: "https://github.com/stuartogardner",
+      status: "online",
     },
     {
       name: "Jad Challita",
@@ -216,12 +216,12 @@ function seedSessions(data) {
       comment: "Solved my issue in 5 minutes!"
     },
     {
-      teacher: getObjectIdFromProperty(teachers, "username", "frederic"),
+      teacher: getObjectIdFromProperty(teachers, "username", "stuart"),
       student: getObjectIdFromProperty(students, "name", "Thibaut Davoult"),
       startDate: Date.now() - 40,
-      endDate: Date.now() - 15,
+      endDate: Date.now(),
       rating: 3,
-      comment: "Aside from solving my coding issues, Fred gave me great entrepreneurial advice for my project. I'll call him again with no hesitation."
+      comment: "Aside from solving my coding issues, Stuart gave me great entrepreneurial advice for my project. I'll call him again with no hesitation."
     },
     {
     teacher: getObjectIdFromProperty(teachers, "username", "jad"),

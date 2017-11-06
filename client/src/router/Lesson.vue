@@ -33,7 +33,7 @@ export default {
 
   methods: {
     endLesson() {
-      tagoveApp.remove();
+      //tagoveApp.remove();
       const id = this.$route.params[0]
       apiSessions.endSession(id).then(session => {
         this.session = session.data.response;
@@ -90,7 +90,7 @@ export default {
     float: left;
     margin-left: 5%;
 
-    width: calc(100% - 500px);
+    width: calc(100% - 700px);
 
     min-width: 350px;
 
