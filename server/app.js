@@ -5,6 +5,7 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
+const sslRedirect = require("heroku-ssl-redirect")
 const mongoose = require("mongoose");
 const User = require("./models/user");
 const config = require("./config");
@@ -17,6 +18,8 @@ const multer = require("multer");
 const stripe = require('stripe')('sk_test_w95ATVfTkJnto4HfCw8tFls8');
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+
+app.use(sslRedirect());
 
 const authRoutes = require("./routes/auth");
 const users = require("./routes/users");

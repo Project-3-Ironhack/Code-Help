@@ -36,7 +36,7 @@ function seedStudents(data) {
     status: "online"
   };
   return new Promise((resolve, reject) => {
-    User.register(studentData, "o", (err, user) => {
+    User.register(studentData, "12345678", (err, user) => {
       if (err) reject(err);
       else resolve(Object.assign({ students: [user] }, data));
     });
