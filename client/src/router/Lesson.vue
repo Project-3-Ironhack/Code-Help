@@ -91,9 +91,9 @@ export default {
     margin-left: 5%;
 
     width: calc(100% - 500px);
-    
+
     min-width: 350px;
-    
+
 }
 
 .capitalise{
