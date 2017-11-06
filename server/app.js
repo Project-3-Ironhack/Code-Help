@@ -19,7 +19,6 @@ const stripe = require('stripe')('sk_test_w95ATVfTkJnto4HfCw8tFls8');
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
-app.use(sslRedirect());
 
 const authRoutes = require("./routes/auth");
 const users = require("./routes/users");
@@ -27,6 +26,7 @@ const imagesRoutes = require("./routes/images");
 const sessionsRoutes = require("./routes/sessions");
 
 const app = express();
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,6 +65,7 @@ const strategy = new Strategy(
 );
 passport.use(strategy);
 
+app.use(sslRedirect());
 
 app.use("/api", authRoutes);
 app.use("/api", users);
