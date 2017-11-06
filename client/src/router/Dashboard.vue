@@ -54,14 +54,12 @@ export default {
   .then(
     apiUsers.getTeacherById(userId)
       .then(user => {
-        console.log('testing the user', user)
           this.user = user;
           this.name = user.name;
           this.description = user.description;
           this.role = user.role;
 
           if(this.description !== undefined && this.role === 'Teacher'){
-            console.log('empty description, i think not!', this.description)
              this.$router.push('/teach');
           }
       })
@@ -69,13 +67,6 @@ export default {
       this.error = error.response;
     });
 
-     console.log('the online status is now', this.status);
-
-    // apiUsers.updateOnlineStatus(userId, this.status).then(user => {
-    //   console.log('we made it to here', user);
-    // }).catch(err => {
-    //     this.error = error.response;
-    // });
   },
   computed: {
     userName: function() {

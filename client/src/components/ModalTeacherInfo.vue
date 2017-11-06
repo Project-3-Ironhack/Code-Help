@@ -66,7 +66,6 @@ export default {
   computed: {
     rating: function() {
       const rates = Math.round(this.result.rating);
-      console.log(rates);
       switch (rates) {
         case 0:
           return "/static/super-happy-3.svg";

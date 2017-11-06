@@ -92,12 +92,10 @@ export default {
         let payload2 = this.password;
         let payload = {payload1, payload2};
         this.$emit('loginModal', payload);
-        console.log('emiting the username...', payload);
       })
       .catch(err => {
         
         this.error = err.response.data.error.message
-        console.log('the error is', this.error )
       })
     }
   }

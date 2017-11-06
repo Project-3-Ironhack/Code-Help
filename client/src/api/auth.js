@@ -19,9 +19,7 @@ const api = {
   },
 
   login: (username, password, vm) => {
-    console.log('it enters the login route')
     return auth.post("/login", { username, password }).then(response => {
-      console.log('it enters the next one, too...')
       saveUserInfo(response.data);
       vm.user = response.data.user;
       return response.data;
@@ -42,11 +40,8 @@ const api = {
   },
 
   logout: vm => {
-    console.log('test 2')
     
     localStorage.removeItem("token");
-    console.log('vmuser check', vm.user)
-    console.log('changing online status', vm.user._id, 'offline')
     apiUsers.updateOnlineStatus(vm.user._id, 'offline');
 
     vm.user = null;

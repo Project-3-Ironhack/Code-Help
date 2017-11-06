@@ -36,20 +36,16 @@ export default {
       tagoveApp.remove();
       const id = this.$route.params[0]
       apiSessions.endSession(id).then(session => {
-        console.log("session from view:", session.data.response)
         this.session = session.data.response;
-        console.log("this.session:", this.session._id)
       }).then(() => {
         this.$router.push('/lesson-summary/' + this.session._id)
       })
     }
   },
   created(){
-    console.log('this is created')
     const id = this.$route.params[0]
     tagoveApp.startChat();
     tagoveApp.max();
-     console.log('chat should have started')
     apiSessions.getSession(id).then(session => {
       return this.liveSession = session;
     }).then(() => {

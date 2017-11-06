@@ -24,7 +24,6 @@ const apiUsers = {
   },
 
   teacherUpdate: (id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl) => {
-    console.log('name testing again,', name, 'desc', description, 'skills', skills, 'price',price, 'currency', currency)
     return users.patch('/teacher/:id', {
     id, name, description, skills, price, currency, gitHubUrl, linkedInUrl, personalWebsiteUrl, twitterUrl
   }).then(response => {
@@ -35,11 +34,9 @@ const apiUsers = {
   },
 
   paymentUpdate: (id, token) => {
-    console.log('it entes the payment update')
     return users.patch('/student/:id', {
     id, token
   }).then(response => {
-    console.log('the response is...', response);
     return response.data;
   }).catch(err => {
     console.error(err);
@@ -61,7 +58,6 @@ const apiUsers = {
   },
 
   updateOnlineStatus: (id, status) => {
-    console.log('and we made it here', status)
     return users.post('/status/:id', {
       id, status
     }).then(response => {

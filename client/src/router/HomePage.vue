@@ -129,10 +129,7 @@ export default {
     },
     viewLoginModal(payload) {
       this.isSignupModalActive = false;
-      console.log('eeeeeeee', payload);
-      // this.payload = typeof payload === "object" ? '' : payload;
       this.payload = payload;
-      console.log("did the payload transfer...?", this.payload)
       this.isLoginModalActive = true;
     },
   }

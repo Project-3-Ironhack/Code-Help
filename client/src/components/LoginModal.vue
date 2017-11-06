@@ -22,7 +22,7 @@
             <div class="field">
               <label class="label">Password
                 <div class="control has-icons-left">
-                  <input class="input" type="password" required v-model="password" placeholder="8 characters, please!">
+                  <input class="input" type="password" required v-model="password" placeholder="8 characters or more, please!">
                     <span class="icon is-small is-left">
                       <icon name="lock"></icon>
                     </span>
@@ -89,7 +89,6 @@ export default {
       })
       .catch(err => {
         this.error = err.response.data.error;
-        console.log('the login error is...', this.error)
       });
     },
   },

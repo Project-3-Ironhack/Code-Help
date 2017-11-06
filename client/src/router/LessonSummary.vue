@@ -69,11 +69,9 @@ export default {
   },
   created() {
     const id = this.$route.params[0];
-    console.log('what is the id? ', id)
     apiSessions
       .getSession(id)
       .then(session => {
-        console.log('the session info we have is...', session);
         this.sessionLength = (Date.parse(session.session.endDate)- Date.parse(session.session.startDate)) / 1000 / 60;;
         return (this.liveSession = session);
       })
@@ -95,7 +93,6 @@ export default {
       const rating = this.rating;
       const comment = this.comment;
       apiSessions.updateSession(id, rating, comment).then(session => {
-        console.log(session);
         this.session = session;
       });
     },
@@ -120,7 +117,6 @@ export default {
       });
     },
     close() {
-      console.log("closing from parent");
       this.$router.push("/");
     }
   }

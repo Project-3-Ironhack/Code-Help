@@ -80,7 +80,6 @@ export default {
           apiSessions
             .createSession(result, userId)
             .then(session => {
-              console.log('the session data is...', session)
               this.session = session.data.session;
             })
             .then(() => {

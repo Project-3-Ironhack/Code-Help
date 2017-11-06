@@ -43,9 +43,7 @@ export default {
     const userId = this.$root.user._id;
 
         apiUsers.getTeacherById(userId).then(user => {
-            console.log('the use is...', user)
             this.description = user.description;
-            console.log('this role is...', this.description)
         })
         .catch(err => {
         this.error = error.response;

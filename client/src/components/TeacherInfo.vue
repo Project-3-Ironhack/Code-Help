@@ -199,7 +199,6 @@ export default {
   },
   methods: {
     teacherUpdate(){
-        console.log('this teacher update triggers')
         this.error = null
         const userId = this.$root.user._id;
         apiUsers.teacherUpdate(userId, this.name, this.description, this.skills, this.price, this.currency, this.gitHubUrl, this.linkedInUrl, this.personalWebsiteUrl, this.twitterUrl)
@@ -218,11 +217,9 @@ export default {
         })
     },
     saveImage(){
-        console.log('testing', typeof this.image)
         // if you don't upload an image on the account page, it doesn't change the image to an empty string
         if(this.$route.path === '/dashboard' || (this.$route.path === '/account' && typeof this.image !=='string')){
 
-            console.log('testing', typeof this.image)
             const userId = this.$root.user._id;
             apiUsers.saveImage(userId, this.image)
             .then(response => {

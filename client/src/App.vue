@@ -77,7 +77,6 @@ export default {
   name: 'app',
   methods: {
     logout() {
-      console.log('testing logout')
       api.logout(this.$root);
       this.$router.push('/');
       var elem = document.querySelectorAll('[id=tagove-update-api-auth]');
@@ -105,13 +104,10 @@ export default {
     },
   },
   beforeUpdate: function() {
-    console.log("App.vue beforeUpdate")
     this.page = this.$route.path.split('',7).join('');
-    console.log('this page is...')
   },
   created(){
     this.page = this.$route.path.split('',7).join('');
-    console.log('this page is...', this.page)
 
   },
 }

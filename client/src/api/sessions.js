@@ -26,12 +26,9 @@ const apiSessions = {
   },
 
   createSession: (teacherId, studentId) => {
-    console.log('the ids are: teacher', teacherId, 'student', studentId )
-    console.log('SESSION', session)
     return session
       .post("/session", { teacherId, studentId })
       .then(response => {
-        console.log('the response is',response);
         return response;
       })
       .catch(err => {
@@ -42,7 +39,6 @@ const apiSessions = {
     return session
       .patch(`/session/${id}/endDate`)
       .then(response => {
-        console.log(response);
         return response;
       })
       .catch(err => {
@@ -51,14 +47,12 @@ const apiSessions = {
   },
 
   updateSession: (id, rating, comment) => {
-    console.log("hi from API:", rating, comment);
     return session
       .patch(`/session/${id}`, {
         rating,
         comment
       })
       .then(response => {
-        console.log(response);
         return response.data;
       })
       .catch(err => {

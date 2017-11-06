@@ -22,8 +22,6 @@ export default {
     },
     components: {
         TeacherInfo,
-        // Payment,
-        // LessonHistory,
     },
 
     created(){
@@ -31,7 +29,6 @@ export default {
 
         apiUsers.getTeacherById(userId).then(user => {
             this.role = user.role;
-            console.log('this role is...', this.role)
         })
         .catch(err => {
         this.error = error.response;
