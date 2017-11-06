@@ -69,7 +69,7 @@ export default {
   font-size: 1.1rem !important;
 }
 .own-text-editor{
-    background: url(http://i.imgur.com/2cOaJ.png);
+    background: url(/static/code-editor.png);
     background-size: 48.5px;
     background-attachment: local;
     background-repeat: no-repeat;
