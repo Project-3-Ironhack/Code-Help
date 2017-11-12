@@ -6,14 +6,14 @@
            <form @submit.prevent="signup">
             <div class="field">
 
-                <div>
+                <!-- <div>
                   <span>I'm here to...&nbsp &nbsp &nbsp</span>
                     <input type="radio" id="student" value="Student" v-model="role">
                     <label class="is-size-6" for="student">Study</label>
                     &nbsp &nbsp &nbsp &nbsp
                     <input type="radio" id="teacher" value="Teacher" v-model="role">
                     <label class="is-size-6" for="teacher">Teach</label>
-                </div>
+                </div> -->
               </div>
 
               <div class="field">
@@ -70,7 +70,7 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      role: '',
+      role: 'Student',
       username: '',
       password: '',
       name: '',

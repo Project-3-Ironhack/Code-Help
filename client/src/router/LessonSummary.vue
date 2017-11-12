@@ -72,7 +72,8 @@ export default {
     apiSessions
       .getSession(id)
       .then(session => {
-        this.sessionLength = (Date.parse(session.session.endDate)- Date.parse(session.session.startDate)) / 1000 / 60;;
+        this.sessionLength = (Date.parse(session.session.endDate)- Date.parse(session.session.startDate)) / 1000 / 60;
+        console.log('the session lasted', this.sessionLength);
         return (this.liveSession = session);
       })
       .then(() => {

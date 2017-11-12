@@ -1,12 +1,13 @@
 <template>
   <div>
     <form @submit.prevent="signup">
+<!--       
     <input type="radio" id="student" value="Student" v-model="role">
     <label for="one">Student</label>
     <br>
     <input type="radio" id="teacher" value="Teacher" v-model="role">
     <label for="two">Teacher</label>
-    <br>
+    <br> -->
 
       </label><br/>
       <label>Email
@@ -33,7 +34,7 @@ import api from '@/api/auth'
 export default {
   data() {
     return {
-      role: '',
+      role: 'Student',
       username: '',
       password: '',
       name: '',
