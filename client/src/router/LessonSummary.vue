@@ -21,7 +21,7 @@
           </label>
           <br />
           <br />
-            
+
           <label class="label" style="text-align: left">Help your fellow coders by leaving some feedback <span style="font-weight: normal">(required)</span>
           <b-field type="is-info no-icons" >
             <b-input pack="fa" maxlength="200" size="is-medium" type="textarea" v-model="comment" placeholder="So...tell us how it went!"/>
@@ -69,6 +69,7 @@ export default {
   },
   created() {
     const id = this.$route.params[0];
+    tagoveApp.remove();
     apiSessions
       .getSession(id)
       .then(session => {
@@ -200,4 +201,3 @@ input[type="radio"]:checked + label >
 }
 
 </style>
-

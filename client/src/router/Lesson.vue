@@ -33,8 +33,7 @@ export default {
 
   methods: {
     endLesson() {
-      tagoveApp.remove();
-      console.log('removing tagove app')
+      //tagoveApp.remove();
       const id = this.$route.params[0]
       apiSessions.endSession(id).then(session => {
         this.session = session.data.response;
@@ -70,7 +69,7 @@ export default {
   font-size: 1.1rem !important;
 }
 .own-text-editor{
-    background: url(http://i.imgur.com/2cOaJ.png);
+    background: url(/static/code-editor.png);
     background-size: 48.5px;
     background-attachment: local;
     background-repeat: no-repeat;
@@ -91,10 +90,10 @@ export default {
     float: left;
     margin-left: 5%;
 
-    width: calc(100% - 500px);
-    
+    width: calc(100% - 700px);
+
     min-width: 350px;
-    
+
 }
 
 .capitalise{
